@@ -1,0 +1,783 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Armando Medina</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<style>
+/* Layout: portafolio de una página, columna centrada de 1120px; ilustraciones de línea negra con un solo acento naranja. Tema claro único, por decisión. */
+:root {
+  --bg: #fdfcfa;
+  --ink: #15130f;
+  --muted: #5f5a52;
+  --line: #ece7df;
+  --orange: #f26b1d;
+  --orange-soft: #fff1e7;
+  --card: #ffffff;
+  --f-display: "Sora", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(.2,.8,.2,1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+/* nav */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter: blur(10px); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 18px; }
+.logo { font-family: var(--f-display); font-weight: 800; font-size: 26px; letter-spacing: -.06em; display: inline-flex; align-items: baseline; }
+.logo b { color: var(--orange); }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; font-weight: 600; font-size: 14px; }
+.nav ul a { position: relative; padding: 4px 0; white-space: nowrap; transition: color .2s; }
+.nav ul a::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 18px; height: 2px; border-radius: 2px; background: var(--orange); transform: translateX(-50%) scaleX(0); transition: transform .3s var(--ease); }
+.nav ul a:hover, .nav ul a.on { color: var(--orange); }
+.nav ul a.on::after { transform: translateX(-50%) scaleX(1); }
+
+.nav-end { display: flex; align-items: center; gap: 12px; }
+.lang { display: flex; padding: 3px; border: 1.5px solid var(--line); border-radius: 999px; position: relative; background: #fff; }
+.lang::before { content: ""; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 999px; background: var(--orange); transition: transform .35s var(--ease); }
+.lang[data-on="en"]::before { transform: translateX(100%); }
+.lang button { position: relative; z-index: 1; border: 0; background: none; font: inherit; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 6px 11px; border-radius: 999px; cursor: pointer; color: var(--muted); transition: color .3s; }
+.lang button[aria-pressed="true"] { color: #fff; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; border: 1.5px solid var(--ink); cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s, color .2s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgba(21,19,15,.45); }
+.btn svg { transition: transform .25s var(--ease); }
+.btn:hover svg { transform: translateX(3px); }
+.btn.dark { background: var(--ink); color: #fff; padding: 10px 16px; }
+.btn.orange { background: var(--orange); border-color: var(--orange); color: #fff; }
+.btn.outline { background: transparent; }
+.btn.outline svg { color: var(--orange); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; padding-block: 48px 40px; }
+.hi { font-weight: 700; font-size: 16px; margin: 0; }
+.squiggle { display: block; width: 34px; height: 8px; margin-top: 4px; }
+.squiggle path { fill: none; stroke: var(--orange); stroke-width: 2.4; stroke-linecap: round; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(46px, 7vw, 80px); line-height: 1; letter-spacing: -.045em; margin: 22px 0 14px; }
+h1 .w { display: inline-block; white-space: nowrap; }
+h1 .ch { display: inline-block; }
+h1 .orange { color: var(--orange); }
+.role { font-weight: 600; color: var(--muted); font-size: 17px; margin: 0; }
+.pitch { max-width: 46ch; color: var(--muted); margin: 22px 0 30px; font-size: 15.5px; }
+.cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.stats { display: flex; gap: 34px; margin-top: 36px; flex-wrap: wrap; }
+.stats div { display: flex; flex-direction: column; }
+.stats b { font-family: var(--f-display); font-size: 26px; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.stats span { font-size: 12.5px; color: var(--muted); }
+
+/* illustration slots: SVG de respaldo, se reemplaza si existe la imagen */
+.illo { position: relative; margin: 0; }
+.illo img { width: 100%; height: auto; display: block; }
+.illo.has-img svg.art { display: none; }
+.hero .illo img { animation: float 6s ease-in-out infinite; }
+svg.art { width: 100%; height: auto; display: block; overflow: visible; }
+svg.art .k { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+svg.art .o { fill: var(--orange); }
+svg.art .w { fill: #fff; }
+svg.art .ink { fill: var(--ink); }
+.lamp { transform-origin: 175px 0; animation: swing 5s ease-in-out infinite; }
+.glow { animation: glow 2.6s ease-in-out infinite; }
+.float { animation: float 6s ease-in-out infinite; }
+.typing { animation: type .5s steps(2) infinite; }
+.steam path { stroke: var(--muted); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-dasharray: 30; animation: steam 2.4s linear infinite; }
+.steam path:nth-child(2) { animation-delay: .8s; }
+.leaf { transform-origin: 452px 108px; animation: sway 4s ease-in-out infinite; }
+
+/* sections */
+section { scroll-margin-top: 80px; }
+.sec { padding-block: 56px; }
+.sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
+h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(24px, 3vw, 30px); letter-spacing: -.03em; margin: 0; line-height: 1.15; text-wrap: balance; }
+.more { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; font-size: 14px; }
+.more svg { color: var(--orange); transition: transform .25s var(--ease); }
+.more:hover svg { transform: translateX(4px); }
+
+.about .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.about p { color: var(--muted); max-width: 58ch; margin: 18px 0 26px; }
+.traits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 20px; }
+.trait { display: flex; gap: 10px; align-items: center; font-weight: 600; font-size: 13.5px; }
+.trait svg { color: var(--orange); width: 22px; height: 22px; transition: transform .4s var(--ease); }
+.trait:hover svg { transform: rotate(-12deg) scale(1.15); }
+hr.div { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+.skills { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px; }
+.skill { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 8px 14px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; font-size: 12.5px; font-weight: 600; transition: transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.skill svg { width: 30px; height: 30px; stroke-width: 1.6; transition: color .3s; }
+.skill:hover { transform: translateY(-6px); border-color: var(--orange); box-shadow: 0 16px 30px -18px rgba(242,107,29,.6); }
+.skill:hover svg { color: var(--orange); }
+
+.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform .35s var(--ease), box-shadow .35s; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -26px rgba(21,19,15,.35); }
+.thumb { aspect-ratio: 4/3; max-width: 100%; display: grid; place-items: center; background: var(--orange-soft); position: relative; overflow: hidden; }
+.thumb.grey { background: #f3f2ef; }
+.thumb svg.art { width: 74%; transition: transform .5s var(--ease); }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform .5s var(--ease); }
+.card:hover .thumb img { transform: scale(1.04); }
+.card:hover .thumb svg.art { transform: scale(1.05) rotate(-1deg); }
+.card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card h3 { margin: 0; font-family: var(--f-display); font-size: 16px; letter-spacing: -.02em; display: flex; gap: 8px; align-items: center; }
+.card h3 svg { color: var(--orange); width: 16px; height: 16px; }
+.card p { margin: 0; color: var(--muted); font-size: 13.5px; flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--muted); font-weight: 600; }
+.tags span + span::before { content: "•"; color: var(--orange); margin-right: 10px; }
+
+.exp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; position: relative; }
+.job { display: grid; grid-template-columns: 56px 1fr; gap: 14px; position: relative; }
+.job-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--orange-soft); display: grid; place-items: center; transition: background .3s, color .3s; }
+.job-ic svg { width: 24px; height: 24px; }
+.job:hover .job-ic { background: var(--orange); color: #fff; }
+.when { color: var(--orange); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
+.job h3 { margin: 2px 0 2px; font-family: var(--f-display); font-size: 15px; letter-spacing: -.02em; line-height: 1.3; }
+.org { color: var(--orange); font-size: 12.5px; font-weight: 600; }
+.job p { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+
+.process { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; position: relative; }
+.process::before { content: ""; position: absolute; top: 34px; left: 10%; right: 10%; height: 2px; background: repeating-linear-gradient(90deg, var(--orange) 0 8px, transparent 8px 16px); opacity: .55; animation: dash 1.2s linear infinite; }
+.step { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.step-ic { width: 68px; height: 68px; border-radius: 50%; background: var(--orange-soft); display: grid; place-items: center; margin-bottom: 10px; border: 6px solid var(--bg); box-sizing: content-box; transition: transform .35s var(--ease), background .3s, color .3s; }
+.step-ic svg { width: 26px; height: 26px; }
+.step:hover .step-ic { transform: translateY(-6px) rotate(-6deg); background: var(--orange); color: #fff; }
+.step .n { color: var(--orange); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
+.step b { font-size: 14px; }
+.step span:last-child { font-size: 12.5px; color: var(--muted); max-width: 20ch; }
+
+footer { background: #fbf4ee; margin-top: 40px; }
+footer .wrap { padding-block: 48px 26px; }
+.foot { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 30px; align-items: start; }
+.foot h2 .orange { color: var(--orange); }
+.contact { display: flex; flex-direction: column; gap: 14px; font-size: 14px; font-weight: 500; }
+.contact div { display: flex; gap: 12px; align-items: center; overflow-wrap: anywhere; }
+.copy-btn { border: 0; background: none; padding: 2px 6px; font: inherit; font-size: 12px; color: var(--orange); font-weight: 700; cursor: pointer; }
+.social b { display: block; font-size: 14px; margin-bottom: 14px; }
+.social .row { display: flex; gap: 12px; flex-wrap: wrap; }
+.social a { width: 44px; height: 44px; border: 1.5px solid var(--ink); border-radius: 10px; display: grid; place-items: center; background: #fff; transition: transform .25s var(--ease), background .2s, color .2s; }
+.social a:hover { transform: translateY(-3px); background: var(--ink); color: #fff; }
+.legal { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 40px; display: flex; justify-content: center; gap: 6px; align-items: center; }
+.legal svg { color: var(--orange); fill: var(--orange); width: 14px; height: 14px; animation: beat 1.6s ease-in-out infinite; }
+
+/* scroll reveal: visible en reposo; anima solo donde el navegador soporta view timelines */
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+}
+
+@keyframes rise { from { opacity: .15; transform: translateY(36px); } to { opacity: 1; transform: none; } }
+@keyframes swing { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes glow { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes type { 50% { transform: translateY(1.5px); } }
+@keyframes steam { from { stroke-dashoffset: 30; opacity: 0; } 40% { opacity: 1; } to { stroke-dashoffset: -30; opacity: 0; } }
+@keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes dash { to { background-position: 16px 0; } }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } }
+
+
+/* Panel «Hablemos»: hoja de vida completa */
+body.cvp-open { overflow: hidden; }
+.cvp { position: fixed; inset: 0; z-index: 100; display: flex; justify-content: center; align-items: flex-end; }
+.cvp-backdrop { position: absolute; inset: 0; background: rgba(21,19,15,.42); backdrop-filter: blur(6px); }
+.cvp-sheet { position: relative; width: min(980px, 100%); height: calc(100% - 24px - env(safe-area-inset-top, 0px)); background: var(--bg); border-radius: 22px 22px 0 0; display: flex; flex-direction: column; box-shadow: 0 -30px 80px -30px rgba(21,19,15,.5); overflow: hidden; }
+.cvp-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); border-bottom: 1px solid var(--line); background: color-mix(in oklab, var(--bg) 92%, transparent); }
+.cvp-close { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--ink); background: #fff; border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
+.cvp-close:hover { background: var(--ink); color: #fff; }
+.cvp-body { overflow-y: auto; padding-block: 36px 60px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 40px; }
+.cvp-head { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; }
+.cvp-head h2 { font-size: clamp(30px, 5vw, 46px); letter-spacing: -.045em; line-height: 1.02; }
+.cvp-head .orange { color: var(--orange); }
+.cvp-role { margin: 10px 0 0; font-weight: 600; color: var(--muted); font-size: 16px; }
+.cvp-contact { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.cvp-contact span, .cvp-contact a { display: inline-flex; gap: 7px; align-items: center; overflow-wrap: anywhere; }
+.cvp-contact svg { width: 15px; height: 15px; color: var(--orange); }
+.cvp-contact a:hover { color: var(--orange); }
+.cvp-photo { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--bg), 0 0 0 7px var(--orange); }
+.cvp-sec h3, .cvp-cta h3 { margin: 0 0 18px; font-family: var(--f-display); font-size: 20px; letter-spacing: -.03em; display: flex; flex-direction: column; gap: 6px; }
+.cvp-sec h3::after { content: ""; width: 30px; height: 3px; border-radius: 3px; background: var(--orange); }
+.cvp-lead { margin: 0; color: var(--muted); max-width: 75ch; font-size: 15px; line-height: 1.7; }
+.cvp-timeline { position: relative; display: flex; flex-direction: column; gap: 26px; padding-left: 26px; }
+.cvp-timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--orange), color-mix(in oklab, var(--orange) 12%, transparent)); border-radius: 2px; }
+.cvp-job { position: relative; }
+.cvp-job::before { content: ""; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2.5px solid var(--orange); box-sizing: border-box; transition: background .25s; }
+.cvp-job:hover::before { background: var(--orange); }
+.cvp-job-top { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; align-items: baseline; }
+.cvp-job h4 { margin: 0; font-size: 15.5px; font-weight: 500; line-height: 1.35; }
+.cvp-job h4 b { font-weight: 700; }
+.cvp-job h4 i { font-style: normal; color: var(--orange); margin: 0 2px; }
+.cvp-job h4 > span { color: var(--orange); }
+.cvp-date { font-size: 12.5px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cvp-job ul { margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 80ch; }
+.cvp-job li::marker { color: var(--orange); }
+.cvp-stack { margin: 8px 0 0; font-size: 12.5px; font-style: italic; color: var(--muted); }
+.cvp-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; }
+.cvp-grid > * { min-width: 0; display: flex; flex-direction: column; gap: 40px; }
+.cvp-grid > section { gap: 0; }
+.cvp-comp { margin-bottom: 18px; }
+.cvp-comp > b { display: block; font-size: 13.5px; margin-bottom: 8px; }
+.cvp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cvp-chips span { font-size: 12.5px; padding: 4px 10px; border-radius: 8px; background: var(--orange-soft); font-weight: 500; transition: background .2s, color .2s; }
+.cvp-chips span:hover { background: var(--orange); color: #fff; }
+.cvp-list, .cvp-certs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.cvp-list li, .cvp-certs li { display: flex; flex-direction: column; font-size: 14px; }
+.cvp-list li > span, .cvp-certs li > span { font-size: 12.5px; color: var(--muted); }
+.cvp-certs { margin-bottom: 20px; }
+.cvp-certs > b { display: block; font-size: 13.5px; margin-bottom: 10px; color: var(--orange); }
+.cvp-certs li { flex-direction: row; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+.cvp-certs li > span { font-weight: 700; font-variant-numeric: tabular-nums; }
+.cvp-cta { background: #fbf4ee; border-radius: 18px; padding: 28px; }
+.cvp-cta p { margin: -6px 0 18px; color: var(--muted); }
+.cvp-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cvp-pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.cvp-pill svg { color: var(--orange); width: 17px; height: 17px; }
+@media (max-width: 760px) {
+  .cvp-sheet { height: calc(100% - 10px - env(safe-area-inset-top, 0px)); border-radius: 18px 18px 0 0; }
+  .cvp-head { grid-template-columns: 1fr; }
+  .cvp-photo { order: -1; width: 96px; height: 96px; }
+  .cvp-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1000px) {
+  .skills { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .exp { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .nav ul { display: none; }
+  .hero .wrap, .about .wrap { grid-template-columns: 1fr; }
+  .hero .illo { order: -1; max-width: 520px; }
+  .work { grid-template-columns: 1fr; }
+  .foot { grid-template-columns: 1fr; }
+  .process { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .process::before { display: none; }
+  .traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .nav .btn.dark { display: none; }
+  .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .exp { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+
+<!-- íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16v-4M12 16V8M17 16v-7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5M22 10v6"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M15.1 14c.2-1 .7-1.7 1.4-2.5A4.7 4.7 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.4 2.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M10 6h11M10 12h11M10 18h11M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1zM12 15l-3-3a22 22 0 0 1 2-4A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5l-5-5L2 17M16 7h6v6"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4M3.3 19a10 10 0 1 1 17.4 0"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l9 5H3z"/></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15 6.7L3 16M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M3 21v-5h5"/></symbol>
+  <symbol id="i-kanban" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v7M12 7v4M16 7v9"/></symbol>
+  <symbol id="i-hex" viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="M9 10v4.5a1.5 1.5 0 0 1-3 0M16.5 10.5c-.4-.5-1-.7-1.6-.6-.8.1-1.2.7-1 1.3.4 1.2 2.9.9 2.9 2.4 0 .7-.6 1.3-1.5 1.3-.7 0-1.3-.3-1.7-.8"/></symbol>
+  <symbol id="i-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8zM5 2l.6 1.4L7 4l-1.4.6L5 6l-.6-1.4L3 4l1.4-.6z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#inicio" class="logo" aria-label="Armando Medina, inicio">AM<b>.</b></a>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="#inicio" class="on"><span data-en="Home">Inicio</span></a></li>
+        <li><a href="#sobre-mi"><span data-en="About">Sobre mí</span></a></li>
+        <li><a href="#competencias"><span data-en="Skills">Competencias</span></a></li>
+        <li><a href="#proyectos"><span data-en="Work">Proyectos</span></a></li>
+        <li><a href="#experiencia"><span data-en="Experience">Experiencia</span></a></li>
+        <li><a href="#contacto"><span data-en="Contact">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="nav-end">
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a href="#hablemos" data-open-cv class="btn dark"><span data-en="Let&#x27;s talk">Hablemos</span> <svg class="i" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="hi"><span data-en="Hi, I&#x27;m">Hola, soy</span></p>
+      <svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
+      <h1 id="name" aria-label="Armando Medina"><span class="w">Armando</span> <span class="w orange">Medina</span></h1>
+      <p class="role"><span data-en="Technical Product Manager &amp;amp; Product Owner">Product Manager Técnico &amp; Product Owner</span></p>
+      <p class="pitch"><span data-en="I build digital products that solve real business problems. I come from engineering, so I take every idea from discovery to launch with technically sound decisions.">Construyo productos digitales que resuelven problemas reales de negocio. Vengo de la ingeniería, así que llevo cada idea del discovery al lanzamiento con decisiones técnicas viables.</span></p>
+      <div class="cta">
+        <a href="#proyectos" class="btn orange"><span data-en="View my work">Ver mi trabajo</span> <svg class="i" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+        <a href="#hablemos" data-open-cv class="btn outline"><span data-en="View full CV">Ver CV completo</span> <svg class="i" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
+      </div>
+      <div class="stats">
+        <div><b data-count="13">13+</b><span><span data-en="years in product">años en producto</span></span></div>
+        <div><b data-count="5">5</b><span><span data-en="paying Flowcol clients">clientes pagos en Flowcol</span></span></div>
+        <div><b data-count="8">8</b><span><span data-en="certifications">certificaciones</span></span></div>
+      </div>
+    </div>
+
+    <figure class="illo" data-img="img/hero.png">
+      <svg class="art" viewBox="0 0 540 400" role="img" aria-label="Ilustración: Armando trabajando en su portátil sobre un puf">
+        <!-- lámpara -->
+        <g class="lamp">
+          <path class="k" d="M175 0v70"/>
+          <path class="k w" d="M135 112c0-24 18-42 40-42s40 18 40 42z"/>
+          <circle class="o glow" cx="175" cy="124" r="16" opacity=".5"/>
+          <circle class="o" cx="175" cy="118" r="6"/>
+          <path class="k" d="M160 140l-4 8M175 144v9M190 140l4 8" stroke-width="2.4"/>
+        </g>
+        <!-- repisa -->
+        <path class="k" d="M380 150h150M392 150v8M518 150v8"/>
+        <rect class="k w" x="398" y="78" width="12" height="72" rx="2"/>
+        <rect class="k w" x="414" y="86" width="12" height="64" rx="2"/>
+        <rect class="k o" x="430" y="92" width="11" height="58" rx="2" transform="rotate(-8 435 150)"/>
+        <g class="leaf"><path class="k" d="M470 108c-6-18 2-34 14-40 4 16-2 32-14 40zM470 108c10-14 26-18 38-12-8 14-24 18-38 12zM470 108c-14-8-18-22-14-34 12 6 18 20 14 34z"/></g>
+        <path class="k o" d="M452 112h36l-5 36h-26z"/>
+        <!-- piso -->
+        <path class="k" d="M70 372h440"/>
+        <g class="float">
+          <!-- puf -->
+          <path class="o" d="M262 372c-40 0-58-22-50-62 10-52 40-118 106-124 70-6 112 48 116 112 4 52-26 74-70 74z"/>
+          <path class="k" d="M262 372c-40 0-58-22-50-62 10-52 40-118 106-124 70-6 112 48 116 112 4 52-26 74-70 74z"/>
+          <path class="k" d="M350 210c24 22 34 60 30 100" stroke-width="2.4" opacity=".55"/>
+          <!-- cuerpo -->
+          <path class="k w" d="M286 208c-26 4-42 26-46 60l-4 44 110 4 4-58c2-34-26-54-64-50z"/>
+          <!-- piernas -->
+          <path class="k ink" d="M236 312c-30 4-74 16-98 28l8 18c30-6 64-10 96-12l90-2c14 0 20-14 14-26z"/>
+          <path class="k o" d="M128 338c-10 6-14 16-10 22h40l-6-22z"/>
+          <path class="k o" d="M150 346c-10 6-12 14-8 20h36l-4-20z" transform="translate(30 0)"/>
+          <!-- cabeza -->
+          <path class="k w" d="M286 206v-18"/>
+          <circle class="k w" cx="290" cy="150" r="36"/>
+          <path class="ink" d="M256 140c-2-26 20-44 44-40 18 3 30 14 30 30-14-8-30-10-44-4-10 4-20 10-30 14z"/>
+          <circle class="k" cx="278" cy="152" r="10" stroke-width="2.6"/>
+          <circle class="k" cx="304" cy="152" r="10" stroke-width="2.6"/>
+          <path class="k" d="M288 152h6" stroke-width="2.6"/>
+          <path class="ink" d="M266 168c4 16 14 24 26 24s22-8 24-22c-8 6-14 6-24 6s-18-2-26-8z"/>
+          <path class="k" d="M284 176c4 2 8 2 12 0" stroke="#fff" stroke-width="2"/>
+          <!-- portátil -->
+          <path class="k w" d="M196 232l92 0 -14 64h-92z"/>
+          <circle class="o" cx="236" cy="264" r="7"/>
+          <path class="k" d="M182 296h104"/>
+          <!-- brazos -->
+          <path class="k w typing" d="M262 226c-14 18-20 40-6 62l40 4"/>
+          <path class="k w typing" style="animation-delay:.25s" d="M318 226c10 26 6 52-16 64"/>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="sec about" id="sobre-mi">
+  <div class="wrap">
+    <figure class="illo reveal" data-img="img/sobre-mi.png">
+      <svg class="art" viewBox="0 0 420 300" role="img" aria-label="Ilustración: Armando con una taza de café junto a una ventana">
+        <path class="k" d="M30 160V60c0-30 22-50 50-50s50 20 50 50v100M80 10v150M30 90h100"/>
+        <path class="k" d="M44 72c0-8 8-12 14-8 2-8 14-8 16 0 8-2 12 6 8 10H44z" stroke-width="2.4"/>
+        <g class="float">
+          <path class="k w" d="M150 290c0-60 30-96 76-96s74 36 74 96"/>
+          <circle class="k w" cx="226" cy="140" r="44"/>
+          <path class="ink" d="M184 128c-4-34 26-54 54-48 22 4 36 22 32 44-16-14-40-16-58-8-12 6-20 10-28 12z"/>
+          <circle class="ink" cx="244" cy="140" r="4"/>
+          <path class="k" d="M250 160c-6 6-14 6-20 2" stroke-width="2.6"/>
+          <path class="k" d="M258 132c4-2 8-2 12 1" stroke-width="2.6"/>
+          <path class="k w" d="M190 290c-6-34 4-56 30-62l60 4"/>
+          <rect class="k o" x="270" y="206" width="38" height="44" rx="6"/>
+          <path class="k" d="M308 216c14 0 14 24 0 24"/>
+          <g class="steam"><path d="M280 196c-6-8 6-14 0-24"/><path d="M296 196c-6-8 6-14 0-24"/></g>
+        </g>
+        <rect class="k w" x="330" y="262" width="74" height="16" rx="3"/>
+        <rect class="k w" x="336" y="246" width="66" height="16" rx="3"/>
+        <rect class="k o" x="328" y="230" width="70" height="16" rx="3"/>
+        <path class="k" d="M20 290h390"/>
+      </svg>
+    </figure>
+    <div class="reveal">
+      <h2><span data-en="About me">Sobre mí</span></h2>
+      <svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
+      <p><span data-en="I have spent more than 13 years leading digital products end to end in banking and insurance, the public sector, construction, industry and education. I founded Flowcol, a cloud ERP for small businesses, and today I combine product work, university teaching and a Master&#x27;s in Artificial Intelligence.">Llevo más de 13 años liderando productos digitales de extremo a extremo en banca y seguros, sector público, construcción, industria y educación. Fundé Flowcol, un ERP en la nube para pymes, y hoy combino producto, docencia universitaria y un Máster en Inteligencia Artificial.</span></p>
+      <div class="traits">
+        <div class="trait"><svg class="i"><use href="#i-layers"/></svg><span data-en="Hybrid profile">Perfil híbrido</span></div>
+        <div class="trait"><svg class="i"><use href="#i-chart"/></svg><span data-en="Data-driven decisions">Decisiones con datos</span></div>
+        <div class="trait"><svg class="i"><use href="#i-users"/></svg><span data-en="Agile leadership">Liderazgo ágil</span></div>
+        <div class="trait"><svg class="i"><use href="#i-book"/></svg><span data-en="Lifelong learner">Aprendizaje continuo</span></div>
+        <div class="trait"><svg class="i"><use href="#i-cap"/></svg><span data-en="University lecturer">Docente universitario</span></div>
+        <div class="trait"><svg class="i"><use href="#i-bulb"/></svg><span data-en="Business vision">Visión de negocio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><hr class="div"></div>
+
+<section class="sec" id="competencias">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><h2><span data-en="Skills &amp; technologies">Competencias y tecnologías</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div></div>
+    <div class="skills reveal">
+      <div class="skill"><svg class="i"><use href="#i-cycle"/></svg>Scrum</div>
+      <div class="skill"><svg class="i"><use href="#i-kanban"/></svg><span data-en="Jira &amp;amp; Kanban">Jira y Kanban</span></div>
+      <div class="skill"><svg class="i"><use href="#i-chart"/></svg>Power BI</div>
+      <div class="skill"><svg class="i"><use href="#i-spark"/></svg><span data-en="Generative AI">IA generativa</span></div>
+      <div class="skill"><svg class="i"><use href="#i-hex"/></svg>Node.js</div>
+      <div class="skill"><svg class="i"><use href="#i-atom"/></svg>React</div>
+      <div class="skill"><svg class="i"><use href="#i-db"/></svg>PostgreSQL</div>
+      <div class="skill"><svg class="i"><use href="#i-cloud"/></svg><span data-en="Azure &amp;amp; AWS">Azure y AWS</span></div>
+      <a class="skill" href="#hablemos" data-open-cv><svg class="i"><use href="#i-dots"/></svg><span data-en="More">Más</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="proyectos">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><h2><span data-en="Selected work">Proyectos destacados</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
+      <a class="more" href="#hablemos" data-open-cv><span data-en="View full career">Ver trayectoria completa</span> <svg class="i"><use href="#i-arrow"/></svg></a></div>
+    <div class="work">
+      <article class="card reveal">
+        <div class="thumb" data-img="img/flowcol.png">
+          <svg class="art" viewBox="0 0 240 150" aria-hidden="true">
+            <rect class="k w" x="20" y="10" width="200" height="112" rx="8"/>
+            <rect class="ink" x="20" y="10" width="200" height="16" rx="6"/>
+            <circle class="o" cx="32" cy="18" r="3"/>
+            <rect class="ink" x="20" y="26" width="44" height="96" opacity=".9"/>
+            <path class="k" d="M30 42h24M30 54h20M30 66h24M30 78h16" stroke="#fff" stroke-width="2.4"/>
+            <rect class="o" x="76" y="36" width="40" height="22" rx="4"/><rect class="k" x="124" y="36" width="40" height="22" rx="4" stroke-width="2"/><rect class="k" x="172" y="36" width="38" height="22" rx="4" stroke-width="2"/>
+            <path class="k" d="M78 72h130M78 86h130M78 100h130M78 112h90" stroke-width="2" opacity=".5"/>
+            <path class="k" d="M100 122l-8 18h56l-8-18M86 140h68"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Flowcol <svg class="i"><use href="#i-ext"/></svg></h3>
+          <p><span data-en="Cloud ERP for small businesses: sales, purchasing, inventory, accounting and e-invoicing. Five paying clients in under a year.">ERP en la nube para pymes: ventas, compras, inventario, contabilidad y facturación electrónica. Cinco clientes pagos en menos de un año.</span></p>
+          <div class="tags"><span>Node.js</span><span>PostgreSQL</span><span>React</span></div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb grey" data-img="img/flow-gravity.png">
+          <svg class="art" viewBox="0 0 240 150" aria-hidden="true">
+            <rect class="k w" x="20" y="10" width="200" height="112" rx="8"/>
+            <path class="k" d="M20 26h200" stroke-width="2"/>
+            <circle class="o" cx="30" cy="18" r="3"/><circle class="k" cx="40" cy="18" r="3" stroke-width="2"/>
+            <path class="k" d="M44 96a32 32 0 0 1 64 0" stroke-width="5"/>
+            <path d="M44 96a32 32 0 0 1 48-27.7" fill="none" stroke="var(--orange)" stroke-width="5" stroke-linecap="round"/>
+            <path class="k" d="M76 96l14-16" stroke-width="2.6"/>
+            <path class="k" d="M124 100l18-20 16 10 18-30 20 14" stroke-width="2.6"/>
+            <path d="M124 100l18-20 16 10 18-30 20 14" fill="none" stroke="var(--orange)" stroke-width="2.6" stroke-dasharray="4 5" transform="translate(0 6)" opacity=".7"/>
+            <rect class="o" x="124" y="36" width="30" height="10" rx="3"/><rect class="k" x="160" y="36" width="44" height="10" rx="3" stroke-width="2"/>
+            <path class="k" d="M100 122l-8 18h56l-8-18M86 140h68"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Flow · Gravity Tunnel <svg class="i"><use href="#i-ext"/></svg></h3>
+          <p><span data-en="SCADA-style control of the wind tunnel over Modbus TCP, real-time telemetry and a management platform with 15 modules and 5 roles.">Control tipo SCADA del túnel de viento por Modbus TCP, telemetría en tiempo real y plataforma de gestión con 15 módulos y 5 roles.</span></p>
+          <div class="tags"><span>Modbus TCP</span><span>WebSockets</span><span>Flutter</span></div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="thumb" data-img="img/primer-paso.png">
+          <svg class="art" viewBox="0 0 240 150" aria-hidden="true" style="width:46%">
+            <rect class="k w" x="80" y="4" width="80" height="142" rx="14" transform="rotate(8 120 75)"/>
+            <g transform="rotate(8 120 75)">
+              <path class="k" d="M108 14h24" stroke-width="2.4"/>
+              <circle class="o" cx="120" cy="46" r="14"/>
+              <path class="k" d="M113 46l5 5 9-10" stroke="#fff" stroke-width="2.6"/>
+              <rect class="k" x="92" y="72" width="56" height="12" rx="6" stroke-width="2"/>
+              <rect class="k" x="92" y="90" width="56" height="12" rx="6" stroke-width="2"/>
+              <rect class="o" x="92" y="112" width="56" height="14" rx="7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Primer Paso <svg class="i"><use href="#i-ext"/></svg></h3>
+          <p><span data-en="Mobile app for initial mental-health screening and guidance at Universidad El Bosque, from scope definition to delivery.">App móvil de diagnóstico inicial y orientación en salud mental para la Universidad El Bosque, desde el alcance hasta la entrega.</span></p>
+          <div class="tags"><span>Flutter</span><span>Discovery</span><span><span data-en="Product">Producto</span></span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experiencia">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><h2><span data-en="Experience">Experiencia</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
+      <a class="more" href="#hablemos" data-open-cv><span data-en="All 10 roles">Las 10 posiciones</span> <svg class="i"><use href="#i-arrow"/></svg></a></div>
+    <div class="exp">
+      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-brief"/></svg></div><div>
+        <div class="when"><span data-en="2025 – Present">2025 – Actual</span></div><h3><span data-en="Founder &amp;amp; Product Manager">Fundador y Product Manager</span></h3><div class="org">Flowcol</div>
+        <p><span data-en="From idea to a live product: MVP, roadmap and customer onboarding.">De la idea al producto en operación: MVP, roadmap y onboarding de clientes.</span></p></div></div>
+      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-cap"/></svg></div><div>
+        <div class="when"><span data-en="2024 – Present">2024 – Actual</span></div><h3><span data-en="Continuing Education Lecturer">Docente de Educación Continuada</span></h3><div class="org">Universidad de los Andes</div>
+        <p><span data-en="AI-driven strategic leadership, Scrum, PMP and innovation for professionals.">Liderazgo estratégico con IA, Scrum, PMP e innovación para profesionales.</span></p></div></div>
+      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-gauge"/></svg></div><div>
+        <div class="when">2023 – 2026</div><h3><span data-en="Solutions Analyst">Analista de Soluciones</span></h3><div class="org">Gravity Tunnel</div>
+        <p><span data-en="SCADA system, real-time telemetry and the internal Flow platform.">Sistema SCADA, telemetría en tiempo real y la plataforma interna Flow.</span></p></div></div>
+      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-bank"/></svg></div><div>
+        <div class="when">2022 – 2023</div><h3>Service Manager</h3><div class="org">Sophos Solutions</div>
+        <p><span data-en="Projects for Banco de Bogotá, Seguros Alfa, ATH and the Colombian Stock Exchange.">Proyectos para Banco de Bogotá, Seguros Alfa, ATH y la Bolsa de Valores de Colombia.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><h2><span data-en="How I build a product">Cómo trabajo un producto</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div></div>
+    <div class="process reveal">
+      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-search"/></svg></div><span class="n">01</span><b><span data-en="Discover">Descubrir</span></b><span><span data-en="User research and the real problem.">User research y el problema real.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-pen"/></svg></div><span class="n">02</span><b><span data-en="Define">Definir</span></b><span><span data-en="Value proposition and MVP.">Propuesta de valor y MVP.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-list"/></svg></div><span class="n">03</span><b><span data-en="Prioritize">Priorizar</span></b><span><span data-en="Roadmap and backlog by impact.">Roadmap y backlog por impacto.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-rocket"/></svg></div><span class="n">04</span><b><span data-en="Deliver">Entregar</span></b><span><span data-en="Scrum sprints and launch.">Sprints con Scrum y lanzamiento.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-trend"/></svg></div><span class="n">05</span><b><span data-en="Measure">Medir</span></b><span><span data-en="KPIs, learning and iteration.">KPIs, aprendizaje e iteración.</span></span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot">
+      <h2><span data-en="Let&#x27;s build something&lt;br&gt;meaningful &lt;span class=&quot;orange&quot;&gt;together.&lt;/span&gt;">Construyamos algo<br>con impacto <span class="orange">juntos.</span></span><svg class="squiggle" viewBox="0 0 34 8" style="margin-top:10px"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></h2>
+      <div class="contact">
+        <div><svg class="i"><use href="#i-mail"/></svg><span id="mail">rmedinan2009@gmail.com</span><button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></div>
+        <div><svg class="i"><use href="#i-phone"/></svg><span>+57 320 434 4662</span><button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></div>
+        <div><svg class="i"><use href="#i-pin"/></svg><span>Bogotá, Colombia</span></div>
+      </div>
+      <div class="social">
+        <b data-en="Let&#x27;s connect">Conectemos</b>
+        <div class="row">
+          <a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-in"/></svg></a>
+          <a href="#hablemos" data-open-cv aria-label="Hoja de vida"><svg class="i"><use href="#i-book"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">© 2026 Armando Medina. <span data-en="Made with">Hecho con</span> <svg class="i"><use href="#i-heart"/></svg> <span data-en="in Bogotá.">en Bogotá.</span></div>
+  </div>
+</footer>
+
+<div class="cvp" id="hablemos" role="dialog" aria-modal="true" aria-labelledby="cvp-name" hidden>
+  <div class="cvp-backdrop" data-close></div>
+  <div class="cvp-sheet">
+    <div class="cvp-bar">
+      <span class="logo">AM<b>.</b></span>
+      <div class="nav-end">
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="cvp-close" data-close aria-label="Cerrar / Close"><span data-en="Close">Cerrar</span> <svg class="i" style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+    </div>
+    <div class="cvp-body">
+      <header class="cvp-head cvp-in">
+        <div>
+          <h2 id="cvp-name">Armando Ricardo <span class="orange">Medina Nieto</span></h2>
+          <p class="cvp-role"><span data-en="Technical Product Manager · Product Owner &amp;nbsp;|&amp;nbsp; 13+ years in product, development and consulting">Product Manager Técnico · Product Owner &nbsp;|&nbsp; 13+ años en producto, desarrollo y consultoría</span></p>
+          <p class="cvp-contact"><span><svg class="i"><use href="#i-pin"/></svg>Bogotá, Colombia</span><span><svg class="i"><use href="#i-phone"/></svg>+57 320 434 4662</span><span><svg class="i"><use href="#i-mail"/></svg>rmedinan2009@gmail.com</span><a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i"><use href="#i-in"/></svg>linkedin.com/in/armandomedinapm</a><span><span data-en="English: B1">Inglés: B1</span></span></p>
+        </div>
+        <img class="cvp-photo" src="img/foto.jpg" alt="Armando Medina" width="132" height="132">
+      </header>
+
+      <section class="cvp-sec cvp-in">
+        <h3><span data-en="Profile">Perfil</span></h3>
+        <p class="cvp-lead"><span data-en="Technical Product Manager (Product Owner) with more than 13 years of experience leading digital products end to end: product discovery and user research, MVP and roadmap definition, backlog prioritization, KPI definition and delivery with agile teams using Scrum and Kanban. Founder of Flowcol, a cloud ERP platform that now runs with five paying clients. My edge is a hybrid profile: I come from engineering, so I translate business needs into viable technical decisions and work as a peer with development, architecture and data teams. Experience in banking and insurance, the public sector, construction, industry and education.">Product Manager técnico (Product Owner) con más de 13 años de experiencia liderando productos digitales de extremo a extremo: product discovery y user research, definición de MVP y roadmap, priorización de backlog, definición de KPIs y entrega con equipos ágiles bajo Scrum y Kanban. Fundador de Flowcol, plataforma ERP en la nube que hoy opera con cinco clientes pagos. Mi diferencial es el perfil híbrido: vengo de la ingeniería, así que traduzco necesidades de negocio en decisiones técnicas viables y dialogo de igual a igual con equipos de desarrollo, arquitectura y datos. Experiencia en banca y seguros, sector público, construcción, industria y educación.</span></p>
+      </section>
+
+      <section class="cvp-sec cvp-in">
+        <h3><span data-en="Professional experience">Experiencia profesional</span></h3>
+        <div class="cvp-timeline">
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Universidad Manuela Beltrán</b> <i>—</i> <span data-en="Full-time Lecturer">Docente tiempo completo</span></h4><span class="cvp-date" data-en="Sep 2026 – Present">Sep 2026 – Actualmente</span></div>
+          <ul><li><span data-en="I teach Artificial Intelligence, database theory, web development, expert systems, object-oriented programming, mobile computing and emerging development technologies.">Encargado de las asignaturas de Inteligencia Artificial, teoría de bases de datos, desarrollo web, sistemas expertos, programación orientada a objetos, computación móvil y nuevas tecnologías de desarrollo.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Flowcol</b> <i>—</i> <span data-en="Founder &amp;amp; Product Manager">Fundador y Product Manager</span></h4><span class="cvp-date" data-en="Nov 2025 – Present">Nov 2025 – Actualmente</span></div>
+          <ul><li><span data-en="I founded Flowcol and took it from idea to a live product: a cloud ERP (SaaS) for small businesses, now with five active paying clients less than a year after launch.">Fundé Flowcol y la llevé de idea a producto en operación: una plataforma ERP en la nube (SaaS) para pymes, hoy con cinco clientes pagos activos en menos de un año desde el lanzamiento.</span></li><li><span data-en="I defined the value proposition, MVP and roadmap from user research with the first clients, prioritizing the sales, purchasing, inventory, accounting, treasury and third-party modules.">Definí la propuesta de valor, el MVP y el roadmap a partir de user research con los primeros clientes, priorizando los módulos de ventas, compras, inventario, contabilidad, tesorería y terceros.</span></li><li><span data-en="I run the full product cycle: discovery, functional definition, development, launch, client onboarding and post-sale support, shortening the time-to-market of every release.">Dirijo el ciclo completo del producto: discovery, definición funcional, desarrollo, lanzamiento, onboarding de clientes y soporte post-venta, reduciendo el time-to-market de cada release.</span></li><li><span data-en="I validated product-market fit against Excel and oversized ERPs: I moved error-prone manual processes to automated, validated workflows built around the real needs of entrepreneurs and small businesses.">Validé el product-market fit frente a Excel y ERPs sobredimensionados para pymes: migré procesos manuales propensos a error hacia flujos automatizados y validados, adaptados a las necesidades reales de emprendedores y pequeñas empresas.</span></li><li><span data-en="I designed the multi-company architecture with users, roles and permissions per company, plus e-invoicing integration with an external provider through a microservice.">Diseñé la arquitectura multiempresa con control de usuarios, roles y permisos por compañía, y la integración de facturación electrónica con proveedor externo vía microservicio.</span></li></ul><p class="cvp-stack">Stack: Node.js, Express, PostgreSQL, React, Tailwind CSS, APIs REST, Render, Cloudflare</p>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Universidad de los Andes</b> <i>—</i> <span data-en="Continuing Education Lecturer">Docente de Educación Continuada</span></h4><span class="cvp-date" data-en="Aug 2024 – Present">Ago 2024 – Actualmente</span></div>
+          <ul><li><span data-en="I currently teach the course Strategic Leadership and AI-Driven Decision Making.">Actualmente dicto el curso Liderazgo Estratégico y Toma de Decisiones Impulsado por IA.</span></li><li><span data-en="I trained professionals in project management, Scrum, the PMP framework and innovation methods, in partnership with Colsubsidio.">Formé profesionales en gestión de proyectos, metodologías ágiles Scrum, marco PMP y metodologías de innovación, en convenio con Colsubsidio.</span></li><li><span data-en="I designed the program&#x27;s content and coached participants in applying agile, predictive and innovative approaches to real projects in their organizations.">Diseñé el contenido académico del programa y acompañé a los participantes en la aplicación de enfoques ágiles, predictivos e innovadores a proyectos reales de sus organizaciones.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Universidad El Bosque</b> <i>—</i> <span data-en="Associate Instructor">Instructor Asociado</span></h4><span class="cvp-date" data-en="Sep 2023 – Jul 2026">Sep 2023 – Jul 2026</span></div>
+          <ul><li><span data-en="I taught Introduction to Engineering, Applied Mathematics, Data Structures and Databases in the Systems Engineering program, using interactive methods that build critical thinking and markedly raised participation and academic performance.">Orienté las asignaturas de Introducción a la Ingeniería, Matemáticas Aplicadas, Estructuras de Datos y Bases de Datos en el programa de Ingeniería de Sistemas, con métodos interactivos que fomentan el pensamiento crítico y lograron un aumento notable en la participación y el rendimiento académico.</span></li><li><span data-en="Contract manager for the Cybersecurity diploma programs delivered to the Ministry of Defense: I supervised execution and compliance with the contract terms through inspection, evaluation, analysis, control, follow-up and verification of commitments.">Gestor del contrato de los diplomados en Ciberseguridad impartidos al Ministerio de Defensa: supervisé la ejecución y el cumplimiento de los términos contractuales mediante inspección, evaluación, análisis, control, seguimiento y verificación de los compromisos establecidos.</span></li><li><span data-en="I led the development of Primer Paso, a Flutter mobile app for initial mental-health screening and guidance, from scope definition to delivery.">Lideré el desarrollo de Primer Paso, aplicación móvil en Flutter para diagnóstico inicial y orientación en salud mental, desde la definición del alcance hasta la entrega.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Gravity Tunnel</b> <i>—</i> <span data-en="Solutions Analyst / Full Stack Developer">Analista de Soluciones / Desarrollador Full Stack</span></h4><span class="cvp-date" data-en="Mar 2023 – Sep 2026">Mar 2023 – Sep 2026</span></div>
+          <ul><li><span data-en="I designed and built a SCADA-style control system for the tunnel motor&#x27;s frequency drive, using Modbus TCP in a dual-host architecture (separate read and write channels) that keeps operations under control even if one of the two links fails.">Diseñé e implementé un sistema de control tipo SCADA para el variador de frecuencia del motor del túnel, con comunicación Modbus TCP en arquitectura dual-host (canales separados de lectura y escritura) para sostener el control operativo aun si uno de los dos enlaces falla.</span></li><li><span data-en="I built industrial resilience mechanisms (watchdogs, heartbeats, automatic reconnection and read-back write verification) that tell &quot;backend connected&quot; apart from &quot;real drive signal&quot;, eliminating false availability positives and the need for manual restarts.">Construí mecanismos de resiliencia industrial (watchdogs, heartbeats, reconexión automática y verificación de escritura por lectura de confirmación) que distinguen entre "backend conectado" y "señal real del variador", eliminando falsos positivos de disponibilidad y la necesidad de reinicios manuales.</span></li><li><span data-en="I implemented real-time telemetry (RPM and % power) pushed over WebSockets to multiple operator and public-facing screens, kept in sync with automatic visual and audio alerts based on the time left in each flight.">Implementé telemetría en tiempo real (RPM y % de potencia) propagada por WebSockets a múltiples pantallas de operación y de cara al público, sincronizadas entre sí con alertas visuales y sonoras automáticas según el tiempo restante de cada vuelo.</span></li><li><span data-en="I developed a Flutter (Android) remote-control app that mirrors the physical panel&#x27;s commands (power, presets, start/pause of sets) over the same socket channel, so the tunnel can be run from a mobile device with the same logic and telemetry.">Desarrollé una app de control remoto en Flutter (Android) que replica los comandos del panel físico (potencia, presets, inicio/pausa de sets) sobre el mismo canal de sockets, permitiendo operar el túnel desde un dispositivo móvil con la misma lógica y telemetría.</span></li><li><span data-en="I defined and led the build of Flow, the internal platform for administration, user control, reporting, billing, operational closings and energy metering; today it is the operation&#x27;s central tool.">Definí y lideré la construcción de Flow, plataforma interna para gestión administrativa, control de usuarios, reportes, facturación, cierres operativos y medición de consumo energético; hoy es la herramienta central de la operación.</span></li><li><span data-en="I gathered requirements with the operations and administration teams and prioritized the feature backlog by operational impact and implementation cost.">Levanté requerimientos con las áreas de operación y administración y prioricé el backlog de funcionalidades según impacto operativo y costo de implementación.</span></li><li><span data-en="I implemented role-based access control with 5 distinct roles (administration, cashier, coaches, energy, flights), segmenting the use of more than 15 platform modules by operational responsibility.">Implementé un esquema de control de acceso basado en 5 roles diferenciados (administración, caja, coaches, energía, vuelos), segmentando el uso de los más de 15 módulos de la plataforma según responsabilidad operativa.</span></li><li><span data-en="I designed the energy module with per-zone consumption reconciliation, automatic calculation of idle-period usage between closings and aggregation aligned with the real electricity billing cycle, giving traceability to audit the tunnel&#x27;s energy spend.">Diseñé el módulo de control de energía con conciliación de consumo por zona, cálculo automático del consumo en periodos inactivos entre cierres y agregación alineada al ciclo real de facturación eléctrica, dando trazabilidad para auditar el gasto energético del túnel.</span></li><li><span data-en="I merged cash, billing and energy reconciliation, previously separate reports, into a single daily closing flow.">Integré en un único flujo de cierre diario la conciliación de caja, facturación y energía, antes gestionadas como reportes independientes.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Sophos Solutions</b> <i>—</i> <span data-en="Service Manager">Service Manager</span></h4><span class="cvp-date" data-en="Jul 2022 – Jun 2023">Jul 2022 – Jun 2023</span></div>
+          <ul><li><span data-en="I led the delivery of technology projects and services for financial-sector clients: Seguros Alfa, Banco de Bogotá, ATH and the Colombian Stock Exchange.">Lideré la entrega de proyectos y servicios tecnológicos para clientes del sector financiero: Seguros Alfa, Banco de Bogotá, ATH y Bolsa de Valores de Colombia.</span></li><li><span data-en="I managed teams of 15 people and budgets of COP 300 million, accountable for scope, timelines, quality and the client relationship (stakeholder management).">Gestioné equipos de 15 personas y presupuestos de 300 millones de pesos, respondiendo por alcance, tiempos, calidad y relación con el cliente (stakeholder management).</span></li><li><span data-en="I coordinated 2 projects in parallel, aligning technical teams with the client&#x27;s business areas.">Coordiné 2 proyectos en paralelo, articulando equipos técnicos con las áreas de negocio del cliente.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Lavenir SAS</b> <i>—</i> <span data-en="Product Manager">Gerente de Producto (Product Manager)</span></h4><span class="cvp-date" data-en="Feb 2022 – Jun 2022">Feb 2022 – Jun 2022</span></div>
+          <ul><li><span data-en="I managed the product roadmap and requirements planning, writing user stories and acceptance criteria.">Gestioné el roadmap del producto y la planificación de requerimientos, definiendo historias de usuario y criterios de aceptación.</span></li><li><span data-en="I prioritized the functional backlog and tracked Scrum sprints, acting as the team&#x27;s Product Owner and the bridge between business and development.">Prioricé el backlog funcional y di seguimiento a los sprints bajo Scrum, actuando como Product Owner del equipo y como puente entre negocio y desarrollo.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Double V Partners</b> <i>—</i> <span data-en="Technical Lead">Líder Técnico</span></h4><span class="cvp-date" data-en="Apr 2021 – Oct 2021">Abr 2021 – Oct 2021</span></div>
+          <ul><li><span data-en="I designed microservice architectures, cloud solutions and monolithic applications for consulting clients, defining development and integration patterns and technology selection criteria that guided product teams&#x27; decisions.">Diseñé arquitecturas de microservicios, soluciones cloud y aplicaciones monolíticas para clientes de la consultoría, definiendo patrones de desarrollo, integración y criterios de selección tecnológica que guiaron las decisiones de los equipos de producto.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Fondo Nacional de Garantías</b> <i>—</i> <span data-en="Development Engineer VII">Ingeniero de Desarrollo VII</span></h4><span class="cvp-date" data-en="Apr 2016 – Apr 2021">Abr 2016 – Abr 2021</span></div>
+          <ul><li><span data-en="I led the organization&#x27;s Microsoft projects: Dynamics CRM, SharePoint, document management, the transactional portal and the corporate website.">Lideré los proyectos Microsoft de la entidad: Dynamics CRM, SharePoint, gestión documental, portal transaccional y sitio web corporativo.</span></li><li><span data-en="I wrote user stories, coordinated a team of 5 people and managed follow-up on contracts with technology vendors.">Definí historias de usuario, coordiné un equipo de 5 personas y gestioné el seguimiento a contratos con proveedores tecnológicos.</span></li><li><span data-en="I led updates and maintenance of the transactional portal that serves financial institutions nationwide for tracking and executing guarantees, integrating the solution with SAP ERP.">Lideré el ajuste y mantenimiento del portal transaccional que atiende a las entidades financieras a nivel nacional para el seguimiento y la ejecución de garantías, integrando la solución con el ERP SAP.</span></li></ul>
+        </article>
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>Constructora Bolívar</b> <i>—</i> <span data-en="CRM Administrator">Administrador CRM</span></h4><span class="cvp-date" data-en="Jun 2012 – Apr 2016">Jun 2012 – Abr 2016</span></div>
+          <ul><li><span data-en="I managed the Dynamics CRM 2011 platform, led requirements gathering with the sales and service teams, and turned business needs into user stories and functional improvements to the platform.">Administré la plataforma Dynamics CRM 2011, lideré el levantamiento de requerimientos con las áreas comerciales y de servicio, y traduje necesidades de negocio en historias de usuario y mejoras funcionales de la plataforma.</span></li></ul>
+        </article>
+        </div>
+      </section>
+
+      <div class="cvp-grid">
+        <section class="cvp-sec cvp-in"><h3><span data-en="Skills">Competencias</span></h3><div class="cvp-comp"><b data-en="Product">Producto</b><div class="cvp-chips"><span data-en="Product discovery">Product discovery</span><span data-en="user research">user research</span><span data-en="MVP definition">definición de MVP</span><span data-en="product roadmap">roadmap de producto</span><span data-en="user stories and acceptance criteria">historias de usuario y criterios de aceptación</span><span data-en="backlog prioritization and refinement">priorización y refinamiento de backlog</span><span data-en="product metrics (KPIs">métricas de producto (KPIs</span><span data-en="OKRs)">OKRs)</span><span data-en="stakeholder management">gestión de stakeholders</span><span data-en="go-to-market">go-to-market</span><span data-en="time-to-market">time-to-market</span></div></div><div class="cvp-comp"><b data-en="Methodologies">Metodologías</b><div class="cvp-chips"><span data-en="Scrum">Scrum</span><span data-en="Kanban">Kanban</span><span data-en="Agile">Agile</span><span data-en="PMI/PMP framework">marco PMI/PMP</span><span data-en="Product Owner">Product Owner</span><span data-en="Jira">Jira</span><span data-en="Azure Boards">Azure Boards</span><span data-en="Confluence">Confluence</span></div></div><div class="cvp-comp"><b data-en="Data &amp;amp; AI">Datos e IA</b><div class="cvp-chips"><span data-en="Power BI">Power BI</span><span data-en="Tableau">Tableau</span><span data-en="generative AI">IA generativa</span><span data-en="enterprise assistants">asistentes empresariales</span><span data-en="AI risk management">gestión de riesgos de IA</span></div></div><div class="cvp-comp"><b data-en="Technical foundation">Base técnica</b><div class="cvp-chips"><span data-en="Node.js">Node.js</span><span data-en="Express">Express</span><span data-en=".NET / .NET Core">.NET / .NET Core</span><span data-en="Python">Python</span><span data-en="React">React</span><span data-en="Angular">Angular</span><span data-en="PostgreSQL">PostgreSQL</span><span data-en="SQL Server">SQL Server</span><span data-en="MongoDB">MongoDB</span><span data-en="REST APIs and microservices">APIs REST y microservicios</span><span data-en="Azure">Azure</span><span data-en="AWS">AWS</span><span data-en="Docker">Docker</span><span data-en="Power Automate">Power Automate</span><span data-en="SharePoint">SharePoint</span><span data-en="Microsoft 365">Microsoft 365</span><span data-en="Dynamics CRM">Dynamics CRM</span><span data-en="SAP">SAP</span></div></div></section>
+        <div>
+          <section class="cvp-sec cvp-in"><h3><span data-en="Education">Educación</span></h3><ul class="cvp-list"><li><b data-en="Master&#x27;s Degree in Artificial Intelligence">Máster Universitario en Inteligencia Artificial</b><span>UNIR · <span data-en="In progress">En curso</span></span></li><li><b data-en="Specialization in University Teaching and Pedagogy">Especialización en Docencia y Pedagogía Universitaria</b><span>Universidad La Gran Colombia · <span data-en="2012">2012</span></span></li><li><b data-en="B.S. in Systems Engineering">Ingeniería de Sistemas</b><span>Universidad Los Libertadores · <span data-en="2010">2010</span></span></li></ul></section>
+          <section class="cvp-sec cvp-in"><h3><span data-en="Certifications">Certificaciones</span></h3><div class="cvp-certs"><b data-en="Product &amp;amp; agility">Producto y agilidad</b><ul><li>Scrum Product Owner Professional (SPOPC)<span>2024</span></li><li>Scrum Master Professional (SMPC)<span>2024</span></li><li>Scrum Developer Professional (SDPC)<span>2024</span></li><li><span data-en="PMI Project Management · EUD">Gerencia de Proyectos PMI · EUD</span><span>2023</span></li></ul></div><div class="cvp-certs"><b data-en="Artificial intelligence">Inteligencia artificial</b><ul><li>AI Expert Certificate (CAIEC)<span>2025</span></li><li>AI Professional Certificate (CAIPC)<span>2025</span></li><li>AI Project Manager Foundation<span>2024</span></li><li>AI Risk Management Professional<span>2024</span></li></ul></div></section>
+        </div>
+      </div>
+
+      <section class="cvp-cta cvp-in">
+        <h3><span data-en="Shall we talk?">¿Hablamos?</span></h3>
+        <p><span data-en="Email or call me and let&amp;#x27;s talk about your product.">Escríbeme o llámame y conversamos sobre tu producto.</span></p>
+        <div class="cvp-cta-row">
+          <span class="cvp-pill"><svg class="i"><use href="#i-mail"/></svg>rmedinan2009@gmail.com <button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></span>
+          <span class="cvp-pill"><svg class="i"><use href="#i-phone"/></svg>+57 320 434 4662 <button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></span>
+          <a class="btn orange" href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i" style="width:16px;height:16px"><use href="#i-in"/></svg> LinkedIn</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Ilustraciones: si existe la imagen generada en /img, reemplaza el SVG provisional
+  document.querySelectorAll("[data-img]").forEach(slot => {
+    const img = new Image();
+    img.alt = "";
+    img.onload = () => { slot.classList.add("has-img"); slot.querySelector("svg.art")?.remove(); slot.appendChild(img); };
+    img.src = slot.dataset.img;
+  });
+
+  // Entrada del nombre letra por letra
+  const h1 = document.getElementById("name");
+  h1.querySelectorAll(".w").forEach(w => { w.innerHTML = [...w.textContent].map(c => `<span class="ch">${c}</span>`).join(""); });
+  if (!reduce && Element.prototype.animate) {
+    const E = "cubic-bezier(.2,.8,.2,1)";
+    h1.querySelectorAll(".ch").forEach((c, i) => c.animate(
+      [{ transform: "translateY(60%) rotate(6deg)", opacity: 0 }, { transform: "none", opacity: 1 }],
+      { duration: 700, delay: 150 + i * 40, easing: E, fill: "backwards" }));
+    document.querySelectorAll(".hero .role, .hero .pitch, .hero .cta, .hero .stats").forEach((el, i) => el.animate(
+      [{ transform: "translateY(16px)", opacity: 0 }, { transform: "none", opacity: 1 }],
+      { duration: 700, delay: 650 + i * 120, easing: E, fill: "backwards" }));
+    const art = document.querySelector(".hero .illo");
+    art.animate([{ transform: "translateX(40px) scale(.96)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 1000, delay: 200, easing: E, fill: "backwards" });
+
+    // contadores
+    document.querySelectorAll("[data-count]").forEach(el => {
+      const end = +el.dataset.count, suffix = el.textContent.replace(/\d+/, ""), t0 = performance.now() + 900;
+      const tick = now => { const p = Math.min(Math.max((now - t0) / 1200, 0), 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suffix; if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // Enlace activo del menú según la sección visible
+  const links = [...document.querySelectorAll(".nav ul a")];
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  ["inicio", "sobre-mi", "competencias", "proyectos", "experiencia", "contacto"].forEach(id => { const s = document.getElementById(id); if (s) io.observe(s); });
+
+  // Idioma: español / inglés
+  const UI = { es: { copied: "Copiado", copy: "Copiar" }, en: { copied: "Copied", copy: "Copy" } };
+  let lang = "es";
+  const tr = [...document.querySelectorAll("[data-en]")];
+  tr.forEach(el => { el.dataset.es = el.innerHTML; });
+  const sws = [...document.querySelectorAll(".lang")];
+  function setLang(l, animate) {
+    lang = l === "en" ? "en" : "es";
+    const apply = () => tr.forEach(el => { el.innerHTML = el.dataset[lang]; });
+    if (animate && !reduce && Element.prototype.animate) {
+      tr.forEach(el => el.animate([{ opacity: 1, filter: "blur(0)" }, { opacity: 0, filter: "blur(3px)" }], { duration: 160, fill: "forwards" }));
+      setTimeout(() => { apply(); tr.forEach(el => { el.getAnimations().forEach(a => a.cancel()); el.animate([{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "none" }], { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" }); }); }, 160);
+    } else apply();
+    document.documentElement.lang = lang;
+    sws.forEach(sw => { sw.dataset.on = lang; sw.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang)); });
+    try { localStorage.setItem("am-lang", lang); } catch {}
+  }
+  sws.forEach(sw => sw.addEventListener("click", e => { const b = e.target.closest("button[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); }));
+  let start = location.hash === "#en" ? "en" : location.hash === "#es" ? "es" : null;
+  if (!start) { try { start = localStorage.getItem("am-lang"); } catch {} }
+  if (!start) start = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
+  setLang(start, false);
+
+
+  // Panel «Hablemos» con la hoja de vida completa
+  const cvp = document.getElementById("hablemos"), cvpSheet = cvp.querySelector(".cvp-sheet");
+  let lastFocus = null;
+  function openCV() {
+    if (!cvp.hidden) return;
+    lastFocus = document.activeElement;
+    cvp.hidden = false; document.body.classList.add("cvp-open");
+    cvp.querySelector(".cvp-body").scrollTop = 0;
+    if (!reduce && Element.prototype.animate) {
+      const E = "cubic-bezier(.2,.8,.2,1)";
+      cvp.querySelector(".cvp-backdrop").animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+      cvpSheet.animate([{ transform: "translateY(100%)" }, { transform: "none" }], { duration: 600, easing: E });
+      cvp.querySelectorAll(".cvp-in").forEach((el, i) => el.animate([{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }], { duration: 600, delay: 250 + i * 90, easing: E, fill: "backwards" }));
+      cvp.querySelectorAll(".cvp-job").forEach((el, i) => el.animate([{ opacity: 0, transform: "translateX(-14px)" }, { opacity: 1, transform: "none" }], { duration: 500, delay: 520 + i * 70, easing: E, fill: "backwards" }));
+      cvp.querySelector(".cvp-photo").animate([{ transform: "scale(.5) rotate(-15deg)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 800, delay: 300, easing: E, fill: "backwards" });
+    }
+    cvp.querySelector(".cvp-close").focus({ preventScroll: true });
+  }
+  function closeCV() {
+    if (cvp.hidden) return;
+    const done = () => { cvp.hidden = true; document.body.classList.remove("cvp-open"); lastFocus?.focus?.({ preventScroll: true }); };
+    if (!reduce && Element.prototype.animate) {
+      cvp.querySelector(".cvp-backdrop").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "forwards" });
+      cvpSheet.animate([{ transform: "none" }, { transform: "translateY(100%)" }], { duration: 380, easing: "cubic-bezier(.6,0,.8,.3)", fill: "forwards" }).onfinish = () => { cvp.getAnimations({ subtree: true }).forEach(a => a.cancel()); done(); };
+    } else done();
+  }
+  document.querySelectorAll("[data-open-cv]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); openCV(); }));
+  cvp.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", closeCV));
+  addEventListener("keydown", e => { if (e.key === "Escape") closeCV(); });
+  if (location.hash === "#hablemos") openCV();
+
+  // Copiar correo y teléfono
+  document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {
+    const done = () => { b.textContent = UI[lang].copied; setTimeout(() => b.textContent = UI[lang].copy, 1600); };
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Ctrl/Cmd + C"; };
+    navigator.clipboard ? navigator.clipboard.writeText(b.dataset.copy).then(done, sel) : sel();
+  }));
+})();
+</script>
