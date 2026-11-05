@@ -1,33 +1,63 @@
 # Armando Medina · Portafolio y hoja de vida
 
-Sitio estático (HTML, CSS y JavaScript sin dependencias) con el portafolio y la hoja de vida de Armando Ricardo Medina Nieto, Product Manager técnico. Funciona en español e inglés.
+Sitio estático (HTML, CSS y JavaScript sin dependencias) con el portafolio y la hoja de vida de Armando Ricardo Medina Nieto, Product Manager Técnico | Product Owner. Funciona en español e inglés.
 
-## Páginas
+## Archivos
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | Portafolio. El botón «Hablemos» abre la hoja de vida completa en un panel. |
-| `cv.html` | Editor de la hoja de vida con vista previa animada. `cv.html#cv` muestra solo el CV, y el botón «Imprimir / PDF» genera un PDF en A4. |
+| `index.html` | Portafolio. «Ver CV completo» abre la hoja de vida en un panel; «Descargar CV en PDF» abre la versión imprimible. |
+| `cv.html` | Hoja de vida. `cv.html#cv` es la versión para compartir e imprimir (ATS); sin `#cv`, es el editor con vista previa animada. |
+| `cv-data.js` | **Fuente única de la hoja de vida en español e inglés.** La usan el panel del portafolio, la vista `#cv` y el editor. Los campos `todo` marcan evidencia pendiente y no se muestran. |
 | `img/` | Ilustraciones y foto. |
+| `tests/` | Pruebas de navegación y de accesibilidad que se ejecutan en la consola del navegador. |
+| `docs/auditoria-accesibilidad.md` | Auditoría WCAG 2.2 AA: incidencias, correcciones, criterios de aceptación y limitaciones. |
 | `PROMPTS-CHATGPT.md` | Prompts usados para generar las ilustraciones. |
+
+Para cambiar un cargo, una fecha o una viñeta, edita solo `cv-data.js`; el panel, el PDF y el editor se actualizan juntos.
+
+## Hoja de vida en PDF
+
+`cv.html#cv` muestra el CV en una sola columna, con texto real (seleccionable), títulos estándar y contacto en texto, pensado para sistemas ATS. La barra superior permite elegir idioma y versión:
+
+| Enlace | Resultado |
+|---|---|
+| `cv.html?lang=es&version=completo#cv` | CV completo en español (4 páginas A4) |
+| `cv.html?lang=es&version=resumen#cv` | CV resumido en español (2 páginas A4) |
+| `cv.html?lang=en&version=completo#cv` | Full résumé in English (4 pages) |
+| `cv.html?lang=en&version=resumen#cv` | Short résumé in English (2 pages) |
+
+Al añadir `&print=1` se abre directamente el cuadro de impresión; ahí se elige **«Guardar como PDF»**. El PDF se genera en el navegador a partir de los datos vigentes, así que no hay archivos PDF guardados que puedan quedar desactualizados. El nombre sugerido del archivo sigue el patrón `Armando-Medina-CV-ES-completo`.
+
+La impresión usa `@media print` con márgenes A4 de 15–16 mm, tipografía en puntos y saltos de página que evitan títulos huérfanos y viñetas partidas. La versión resumida conserva las viñetas marcadas en `short` dentro de `cv-data.js` y agrupa los cargos anteriores a 2022 en una línea cada uno.
 
 ## Navegación
 
-- **Menú:** Inicio, Sobre mí, Competencias, Proyectos, Experiencia y Contacto. Cada enlace se desplaza con suavidad y deja la sección justo debajo del encabezado sticky. La altura del encabezado se mide en vivo y se guarda en la variable CSS `--nav-h`.
-- **«Hablemos»** (encabezado) lleva a la sección de contacto (`#contacto`).
-- **La hoja de vida completa** se abre en un panel desde «Ver CV completo», «Más», «Ver trayectoria completa», «Las 10 posiciones» y el ícono de libro del pie. Todos usan el atributo `data-open-cv`.
-- **Menú responsive (≤ 860 px):** botón con `aria-expanded` y `aria-controls`. Con el teclado: flechas arriba/abajo, Inicio y Fin recorren los enlaces, y Escape cierra el menú y devuelve el foco al botón. Se cierra al elegir un enlace, al hacer clic fuera o al salir con Tab. Cerrado, sus enlaces quedan fuera del orden de tabulación.
-- El enlace de la sección visible se marca con `aria-current="location"`.
+- **Menú:** Inicio, Sobre mí, Competencias, Proyectos, Experiencia y Contacto. Cada enlace se desplaza con suavidad y deja la sección justo debajo del encabezado sticky (variable CSS `--nav-h`, medida en vivo).
+- **«Hablemos»** (encabezado) lleva a `#contacto`.
+- **El panel de la hoja de vida** se abre desde «Ver CV completo», «Más competencias», «Las 10 posiciones» y el ícono de libro del pie (atributo `data-open-cv`).
+- **Menú responsive (≤ 860 px):** botón con `aria-expanded` y `aria-controls`. Con el teclado: flechas, Inicio y Fin recorren los enlaces, y Escape cierra y devuelve el foco al botón. Se cierra al elegir un enlace, al hacer clic fuera o al salir con Tab. Cerrado, el menú es `inert`.
+- El enlace de la sección visible lleva `aria-current="location"`.
+
+## Accesibilidad
+
+- Enlace «Saltar al contenido», foco visible de 3 px y `scroll-padding-top` para que el encabezado no tape el foco.
+- Panel del CV como diálogo modal: foco inicial en «Cerrar», Tab y Mayús+Tab circulan dentro, el fondo queda `inert`, Escape cierra y el foco vuelve al botón que lo abrió.
+- Contraste AA: el naranja de marca (`#f26b1d`) se reserva para rellenos e íconos; el texto naranja usa `--orange-ink` (`#b14a0c`, 5.3:1) y los botones con texto blanco usan `--orange-strong` (`#c2540f`, 4.6:1).
+- Todas las animaciones se desactivan con `prefers-reduced-motion`.
 
 ## Enlaces útiles
 
-- `index.html#en`: abre el portafolio en inglés (`#es` en español).
+- `index.html#en` / `#es`: portafolio en inglés o español.
 - `index.html#hablemos`: abre el portafolio con la hoja de vida desplegada.
 - `index.html#contacto` (o cualquier sección): abre el portafolio en esa sección.
 
 ## Pruebas
 
-`tests/navegacion.js` prueba los enlaces, el desplazamiento con compensación, el menú responsive, el teclado y los accesos al panel. Abre el sitio, pega el archivo en la consola del navegador y repítelo en escritorio, tablet (768 px) y móvil (375 px) con el modo de dispositivo de las herramientas de desarrollo. Muestra una tabla con el resultado de cada prueba.
+Abre el sitio, pega el archivo en la consola del navegador y pulsa Enter. Muestra una tabla con el resultado de cada prueba.
+
+- `tests/navegacion.js`: enlaces, desplazamiento con compensación, menú responsive, teclado y accesos al panel. Ejecútala en escritorio, tablet (768 px) y móvil (375 px).
+- `tests/accesibilidad.js`: contraste, tamaño de objetivos, texto alternativo, ids duplicados, desbordamiento, menú inerte y diálogo modal. Ejecútala en 320, 375, 390, 430, 768, 1024, 1440 y 1920 px.
 
 ## Verlo en local
 

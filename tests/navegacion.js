@@ -68,9 +68,8 @@
       key("ArrowDown"); check("Flecha abajo en el último → primero", document.activeElement === items[0]);
       key("Escape"); await wait(50); // el menú se oculta al terminar su transición
       check("Escape cierra y devuelve el foco al botón", btn.getAttribute("aria-expanded") === "false" && document.activeElement === btn);
-      // espera a que termine la transición de cierre (hasta 2 s)
-      for (let i = 0; i < 20 && getComputedStyle(document.getElementById("nav-menu")).visibility !== "hidden"; i++) await wait(100);
-      check("Menú cerrado fuera del orden de tabulación", getComputedStyle(document.getElementById("nav-menu")).visibility === "hidden");
+      // cerrado, el menú es inerte (no recibe foco ni se anuncia), sin depender de la transición
+      check("Menú cerrado fuera del orden de tabulación", document.getElementById("nav-menu").inert === true);
     }
 
     // 5. Accesos al panel de la hoja de vida

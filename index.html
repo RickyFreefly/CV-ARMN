@@ -14,6 +14,8 @@
   --line: #ece7df;
   --orange: #f26b1d;
   --orange-soft: #fff1e7;
+  --orange-ink: #b14a0c;    /* naranja para texto pequeño y foco: 5.3:1 sobre el fondo */
+  --orange-strong: #c2540f; /* rellenos con texto blanco y títulos grandes: 4.6:1 */
   --card: #ffffff;
   --f-display: "Sora", "Helvetica Neue", Arial, sans-serif;
   --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -22,10 +24,10 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h, 80px) + 12px); }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 3px solid var(--orange-ink); outline-offset: 3px; border-radius: 6px; }
 svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
 .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
@@ -35,11 +37,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter: blur(10px); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 18px; }
 .logo { font-family: var(--f-display); font-weight: 800; font-size: 26px; letter-spacing: -.06em; display: inline-flex; align-items: baseline; }
-.logo b { color: var(--orange); }
+.logo b { color: var(--orange-ink); }
 .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; font-weight: 600; font-size: 14px; }
 .nav ul a { position: relative; padding: 4px 0; white-space: nowrap; transition: color .2s; }
 .nav ul a::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 18px; height: 2px; border-radius: 2px; background: var(--orange); transform: translateX(-50%) scaleX(0); transition: transform .3s var(--ease); }
-.nav ul a:hover, .nav ul a.on { color: var(--orange); }
+.nav ul a:hover, .nav ul a.on { color: var(--orange-ink); }
 .nav ul a.on::after { transform: translateX(-50%) scaleX(1); }
 
 /* botón de menú (solo en pantallas estrechas) */
@@ -56,7 +58,7 @@ header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; 
 
 .nav-end { display: flex; align-items: center; gap: 12px; }
 .lang { display: flex; padding: 3px; border: 1.5px solid var(--line); border-radius: 999px; position: relative; background: #fff; }
-.lang::before { content: ""; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 999px; background: var(--orange); transition: transform .35s var(--ease); }
+.lang::before { content: ""; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 999px; background: var(--orange-strong); transition: transform .35s var(--ease); }
 .lang[data-on="en"]::before { transform: translateX(100%); }
 .lang button { position: relative; z-index: 1; border: 0; background: none; font: inherit; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 6px 11px; border-radius: 999px; cursor: pointer; color: var(--muted); transition: color .3s; }
 .lang button[aria-pressed="true"] { color: #fff; }
@@ -65,7 +67,7 @@ header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; 
 .btn svg { transition: transform .25s var(--ease); }
 .btn:hover svg { transform: translateX(3px); }
 .btn.dark { background: var(--ink); color: #fff; padding: 10px 16px; }
-.btn.orange { background: var(--orange); border-color: var(--orange); color: #fff; }
+.btn.orange { background: var(--orange-strong); border-color: var(--orange-strong); color: #fff; }
 .btn.outline { background: transparent; }
 .btn.outline svg { color: var(--orange); }
 
@@ -77,7 +79,7 @@ header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; 
 h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(46px, 7vw, 80px); line-height: 1; letter-spacing: -.045em; margin: 22px 0 14px; }
 h1 .w { display: inline-block; white-space: nowrap; }
 h1 .ch { display: inline-block; }
-h1 .orange { color: var(--orange); }
+h1 .orange { color: var(--orange-strong); }
 .role { font-weight: 600; color: var(--muted); font-size: 17px; margin: 0; }
 .pitch { max-width: 46ch; color: var(--muted); margin: 22px 0 30px; font-size: 15.5px; }
 .cta { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -142,16 +144,16 @@ hr.div { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .card h3 svg { color: var(--orange); width: 16px; height: 16px; }
 .card p { margin: 0; color: var(--muted); font-size: 13.5px; flex: 1; }
 .tags { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--muted); font-weight: 600; }
-.tags span + span::before { content: "•"; color: var(--orange); margin-right: 10px; }
+.tags span + span::before { content: "•"; color: var(--orange-ink); margin-right: 10px; }
 
 .exp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; position: relative; }
 .job { display: grid; grid-template-columns: 56px 1fr; gap: 14px; position: relative; }
 .job-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--orange-soft); display: grid; place-items: center; transition: background .3s, color .3s; }
 .job-ic svg { width: 24px; height: 24px; }
 .job:hover .job-ic { background: var(--orange); color: #fff; }
-.when { color: var(--orange); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
+.when { color: var(--orange-ink); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
 .job h3 { margin: 2px 0 2px; font-family: var(--f-display); font-size: 15px; letter-spacing: -.02em; line-height: 1.3; }
-.org { color: var(--orange); font-size: 12.5px; font-weight: 600; }
+.org { color: var(--orange-ink); font-size: 12.5px; font-weight: 600; }
 .job p { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
 
 .process { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; position: relative; }
@@ -160,17 +162,17 @@ hr.div { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .step-ic { width: 68px; height: 68px; border-radius: 50%; background: var(--orange-soft); display: grid; place-items: center; margin-bottom: 10px; border: 6px solid var(--bg); box-sizing: content-box; transition: transform .35s var(--ease), background .3s, color .3s; }
 .step-ic svg { width: 26px; height: 26px; }
 .step:hover .step-ic { transform: translateY(-6px) rotate(-6deg); background: var(--orange); color: #fff; }
-.step .n { color: var(--orange); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
+.step .n { color: var(--orange-ink); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
 .step b { font-size: 14px; }
 .step span:last-child { font-size: 12.5px; color: var(--muted); max-width: 20ch; }
 
 footer { background: #fbf4ee; margin-top: 40px; }
 footer .wrap { padding-block: 48px 26px; }
 .foot { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 30px; align-items: start; }
-.foot h2 .orange { color: var(--orange); }
+.foot h2 .orange { color: var(--orange-strong); }
 .contact { display: flex; flex-direction: column; gap: 14px; font-size: 14px; font-weight: 500; }
 .contact div { display: flex; gap: 12px; align-items: center; overflow-wrap: anywhere; }
-.copy-btn { border: 0; background: none; padding: 2px 6px; font: inherit; font-size: 12px; color: var(--orange); font-weight: 700; cursor: pointer; }
+.copy-btn { border: 0; background: none; padding: 2px 6px; font: inherit; font-size: 12px; color: var(--orange-ink); font-weight: 700; cursor: pointer; }
 .social b { display: block; font-size: 14px; margin-bottom: 14px; }
 .social .row { display: flex; gap: 12px; flex-wrap: wrap; }
 .social a { width: 44px; height: 44px; border: 1.5px solid var(--ink); border-radius: 10px; display: grid; place-items: center; background: #fff; transition: transform .25s var(--ease), background .2s, color .2s; }
@@ -200,17 +202,20 @@ body.cvp-open { overflow: hidden; }
 .cvp-backdrop { position: absolute; inset: 0; background: rgba(21,19,15,.42); backdrop-filter: blur(6px); }
 .cvp-sheet { position: relative; width: min(980px, 100%); height: calc(100% - 24px - env(safe-area-inset-top, 0px)); background: var(--bg); border-radius: 22px 22px 0 0; display: flex; flex-direction: column; box-shadow: 0 -30px 80px -30px rgba(21,19,15,.5); overflow: hidden; }
 .cvp-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); border-bottom: 1px solid var(--line); background: color-mix(in oklab, var(--bg) 92%, transparent); }
-.cvp-close { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--ink); background: #fff; border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
-.cvp-close:hover { background: var(--ink); color: #fff; }
+.cvp-close, .cvp-pdf { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--ink); background: #fff; border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
+.cvp-close:hover, .cvp-pdf:hover { background: var(--ink); color: #fff; }
+.cvp-content { display: contents; }
+.cvp-pdf svg { color: var(--orange); }
+.cvp-pdf:hover svg { color: #fff; }
 .cvp-body { overflow-y: auto; padding-block: 36px 60px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 40px; }
 .cvp-head { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; }
 .cvp-head h2 { font-size: clamp(30px, 5vw, 46px); letter-spacing: -.045em; line-height: 1.02; }
-.cvp-head .orange { color: var(--orange); }
+.cvp-head .orange { color: var(--orange-strong); }
 .cvp-role { margin: 10px 0 0; font-weight: 600; color: var(--muted); font-size: 16px; }
 .cvp-contact { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
 .cvp-contact span, .cvp-contact a { display: inline-flex; gap: 7px; align-items: center; overflow-wrap: anywhere; }
 .cvp-contact svg { width: 15px; height: 15px; color: var(--orange); }
-.cvp-contact a:hover { color: var(--orange); }
+.cvp-contact a:hover { color: var(--orange-ink); }
 .cvp-photo { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--bg), 0 0 0 7px var(--orange); }
 .cvp-sec h3, .cvp-cta h3 { margin: 0 0 18px; font-family: var(--f-display); font-size: 20px; letter-spacing: -.03em; display: flex; flex-direction: column; gap: 6px; }
 .cvp-sec h3::after { content: ""; width: 30px; height: 3px; border-radius: 3px; background: var(--orange); }
@@ -223,8 +228,8 @@ body.cvp-open { overflow: hidden; }
 .cvp-job-top { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; align-items: baseline; }
 .cvp-job h4 { margin: 0; font-size: 15.5px; font-weight: 500; line-height: 1.35; }
 .cvp-job h4 b { font-weight: 700; }
-.cvp-job h4 i { font-style: normal; color: var(--orange); margin: 0 2px; }
-.cvp-job h4 > span { color: var(--orange); }
+.cvp-job h4 i { font-style: normal; color: var(--orange-ink); margin: 0 2px; }
+.cvp-job h4 > span { color: var(--orange-ink); }
 .cvp-date { font-size: 12.5px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .cvp-job ul { margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 80ch; }
 .cvp-job li::marker { color: var(--orange); }
@@ -236,12 +241,12 @@ body.cvp-open { overflow: hidden; }
 .cvp-comp > b { display: block; font-size: 13.5px; margin-bottom: 8px; }
 .cvp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .cvp-chips span { font-size: 12.5px; padding: 4px 10px; border-radius: 8px; background: var(--orange-soft); font-weight: 500; transition: background .2s, color .2s; }
-.cvp-chips span:hover { background: var(--orange); color: #fff; }
+.cvp-chips span:hover { background: var(--orange-strong); color: #fff; }
 .cvp-list, .cvp-certs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .cvp-list li, .cvp-certs li { display: flex; flex-direction: column; font-size: 14px; }
 .cvp-list li > span, .cvp-certs li > span { font-size: 12.5px; color: var(--muted); }
 .cvp-certs { margin-bottom: 20px; }
-.cvp-certs > b { display: block; font-size: 13.5px; margin-bottom: 10px; color: var(--orange); }
+.cvp-certs > b { display: block; font-size: 13.5px; margin-bottom: 10px; color: var(--orange-ink); }
 .cvp-certs li { flex-direction: row; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
 .cvp-certs li > span { font-weight: 700; font-variant-numeric: tabular-nums; }
 .cvp-cta { background: #fbf4ee; border-radius: 18px; padding: 28px; }
@@ -261,20 +266,20 @@ body.cvp-open { overflow: hidden; }
 /* competencias por grupo */
 .skill-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
 .skill-group { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.skill-group h3 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+.skill-group h3 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
 .skill-group .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 /* experiencia: profesional y docente */
 .exp-note { margin: -10px 0 26px; color: var(--muted); font-size: 14px; }
-.exp-title { margin: 0 0 18px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+.exp-title { margin: 0 0 18px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
 .exp + .exp-title { margin-top: 38px; }
 .exp-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 /* panel: resumen y etiquetas */
 .cvp-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .cvp-sum { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.cvp-sum-label { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); }
+.cvp-sum-label { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-ink); }
 .cvp-sum b { font-family: var(--f-display); font-size: 20px; letter-spacing: -.03em; }
 .cvp-sum p { margin: 4px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
-.cvp-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 6px; background: var(--orange-soft); color: var(--orange); font-size: 11px; font-weight: 700; letter-spacing: .02em; vertical-align: 2px; }
+.cvp-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 6px; background: var(--orange-soft); color: var(--orange-ink); font-size: 11px; font-weight: 700; letter-spacing: .02em; vertical-align: 2px; }
 
 @media (max-width: 1000px) {
   .skills { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -323,6 +328,16 @@ body.cvp-open { overflow: hidden; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* accesibilidad */
+.skip { position: absolute; left: max(12px, env(safe-area-inset-left, 0px)); top: calc(env(safe-area-inset-top, 0px) + 8px); z-index: 200; padding: 10px 14px; border-radius: 10px; background: var(--ink); color: #fff; font-weight: 700; transform: translateY(-160%); transition: transform .2s var(--ease); }
+.skip:focus { transform: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.copy-btn { min-height: 28px; min-width: 44px; padding: 4px 8px; border-radius: 6px; }
+.copy-btn:hover { background: var(--orange-soft); }
+.more { padding-block: 4px; }
+.lang button { min-height: 28px; }
+main:focus { outline: none; }
 </style>
 
 <!-- íconos reutilizables -->
@@ -360,6 +375,8 @@ body.cvp-open { overflow: hidden; }
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
 </svg>
 
+<a class="skip" href="#main" data-en="Skip to content">Saltar al contenido</a>
+<p class="sr-only" id="live" aria-live="polite"></p>
 <header class="nav">
   <div class="wrap">
     <a href="#inicio" class="logo" aria-label="Armando Medina, inicio">AM<b>.</b></a>
@@ -378,7 +395,7 @@ body.cvp-open { overflow: hidden; }
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <a href="#contacto" class="btn dark nav-cta"><span data-en="Let&#x27;s talk">Hablemos</span> <svg class="i" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+    <a href="#contacto" class="btn dark nav-cta"><span data-en="Let&#x27;s talk">Hablemos</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
       <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
@@ -386,18 +403,19 @@ body.cvp-open { overflow: hidden; }
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="hero" id="inicio">
   <div class="wrap">
     <div>
       <p class="hi"><span data-en="Hi, I&#x27;m">Hola, soy</span></p>
-      <svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
+      <svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
       <h1 id="name" aria-label="Armando Medina"><span class="w">Armando</span> <span class="w orange">Medina</span></h1>
       <p class="role"><span data-en="Technical Product Manager | Product Owner">Product Manager Técnico | Product Owner</span></p>
       <p class="pitch"><span data-en="Systems Engineer focused on turning business needs into scalable digital products. I combine product management, software architecture, artificial intelligence and team leadership to take solutions from discovery through implementation and ongoing evolution.">Ingeniero de Sistemas especializado en transformar necesidades de negocio en productos digitales escalables. Combino gestión de producto, arquitectura de software, inteligencia artificial y liderazgo de equipos para llevar soluciones desde el descubrimiento hasta su implementación y evolución.</span></p>
       <div class="cta">
-        <a href="#proyectos" class="btn orange"><span data-en="View my work">Ver mi trabajo</span> <svg class="i" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
-        <a href="#hablemos" data-open-cv class="btn outline"><span data-en="View full CV">Ver CV completo</span> <svg class="i" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
+        <a href="#proyectos" class="btn orange"><span data-en="View my work">Ver mi trabajo</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+        <a href="#hablemos" data-open-cv class="btn outline"><span data-en="View full CV">Ver CV completo</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-book"/></svg></a>
+        <a href="cv.html?lang=es&amp;version=completo&amp;print=1#cv" data-pdf="completo" target="_blank" rel="noopener" class="btn outline"><span data-en="Download CV (PDF)">Descargar CV en PDF</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
       </div>
       <div class="stats">
         <div><b data-count="14">14+</b><span><span data-en="years of professional experience">años de experiencia profesional</span></span></div>
@@ -484,15 +502,15 @@ body.cvp-open { overflow: hidden; }
     </figure>
     <div class="reveal">
       <h2><span data-en="About me">Sobre mí</span></h2>
-      <svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
+      <svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
       <p><span data-en="Systems Engineer with 14 years of professional experience in banking and insurance, the public sector, construction, industry and education. I have held Product Manager, Product Owner and technical lead roles, founded Flowcol, a cloud ERP for small businesses, and have taught at universities since 2023. I am currently pursuing a Master&#x27;s in Artificial Intelligence.">Ingeniero de Sistemas con 14 años de experiencia profesional en banca y seguros, sector público, construcción, industria y educación. He ocupado cargos de Product Manager, Product Owner y líder técnico; fundé Flowcol, un ERP en la nube para pymes, y desde 2023 soy docente universitario. Actualmente curso un Máster en Inteligencia Artificial.</span></p>
       <div class="traits">
-        <div class="trait"><svg class="i"><use href="#i-layers"/></svg><span data-en="Hybrid profile">Perfil híbrido</span></div>
-        <div class="trait"><svg class="i"><use href="#i-chart"/></svg><span data-en="Data-driven decisions">Decisiones con datos</span></div>
-        <div class="trait"><svg class="i"><use href="#i-users"/></svg><span data-en="Agile leadership">Liderazgo ágil</span></div>
-        <div class="trait"><svg class="i"><use href="#i-book"/></svg><span data-en="Lifelong learner">Aprendizaje continuo</span></div>
-        <div class="trait"><svg class="i"><use href="#i-cap"/></svg><span data-en="University lecturer">Docente universitario</span></div>
-        <div class="trait"><svg class="i"><use href="#i-bulb"/></svg><span data-en="Business vision">Visión de negocio</span></div>
+        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span data-en="Hybrid profile">Perfil híbrido</span></div>
+        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg><span data-en="Data-driven decisions">Decisiones con datos</span></div>
+        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span data-en="Agile leadership">Liderazgo ágil</span></div>
+        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span data-en="Lifelong learner">Aprendizaje continuo</span></div>
+        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg><span data-en="University lecturer">Docente universitario</span></div>
+        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-bulb"/></svg><span data-en="Business vision">Visión de negocio</span></div>
       </div>
     </div>
   </div>
@@ -502,24 +520,24 @@ body.cvp-open { overflow: hidden; }
 
 <section class="sec" id="competencias">
   <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="Skills">Competencias</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
-      <a class="more" href="#hablemos" data-open-cv><span data-en="More skills">Más competencias</span> <svg class="i"><use href="#i-arrow"/></svg></a></div>
+    <div class="sec-head reveal"><div><h2><span data-en="Skills">Competencias</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
+      <a class="more" href="#hablemos" data-open-cv><span data-en="More skills">Más competencias</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
     <div class="skill-groups reveal">
       <div class="skill-group">
         <h3 data-en="Product">Producto</h3>
-        <div class="skills"><div class="skill"><svg class="i"><use href="#i-search"/></svg>Discovery</div><div class="skill"><svg class="i"><use href="#i-rocket"/></svg><span data-en="MVP &amp;amp; roadmap">MVP y roadmap</span></div><div class="skill"><svg class="i"><use href="#i-list"/></svg>Backlog</div><div class="skill"><svg class="i"><use href="#i-target"/></svg><span data-en="KPIs &amp;amp; OKRs">KPIs y OKRs</span></div></div>
+        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg>Discovery</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg><span data-en="MVP &amp;amp; roadmap">MVP y roadmap</span></div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Backlog</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-target"/></svg><span data-en="KPIs &amp;amp; OKRs">KPIs y OKRs</span></div></div>
       </div>
       <div class="skill-group">
         <h3 data-en="Leadership">Liderazgo</h3>
-        <div class="skills"><div class="skill"><svg class="i"><use href="#i-cycle"/></svg>Scrum</div><div class="skill"><svg class="i"><use href="#i-kanban"/></svg><span data-en="Jira &amp;amp; Kanban">Jira y Kanban</span></div><div class="skill"><svg class="i"><use href="#i-users"/></svg>Stakeholders</div><div class="skill"><svg class="i"><use href="#i-brief"/></svg><span data-en="PMI framework">Marco PMI</span></div></div>
+        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cycle"/></svg>Scrum</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-kanban"/></svg><span data-en="Jira &amp;amp; Kanban">Jira y Kanban</span></div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Stakeholders</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-brief"/></svg><span data-en="PMI framework">Marco PMI</span></div></div>
       </div>
       <div class="skill-group">
         <h3 data-en="Engineering">Ingeniería</h3>
-        <div class="skills"><div class="skill"><svg class="i"><use href="#i-hex"/></svg>Node.js</div><div class="skill"><svg class="i"><use href="#i-atom"/></svg>React</div><div class="skill"><svg class="i"><use href="#i-db"/></svg>PostgreSQL</div><div class="skill"><svg class="i"><use href="#i-cloud"/></svg><span data-en="Azure &amp;amp; AWS">Azure y AWS</span></div></div>
+        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-hex"/></svg>Node.js</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-atom"/></svg>React</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-db"/></svg>PostgreSQL</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cloud"/></svg><span data-en="Azure &amp;amp; AWS">Azure y AWS</span></div></div>
       </div>
       <div class="skill-group">
         <h3 data-en="Data &amp;amp; AI">Datos e IA</h3>
-        <div class="skills"><div class="skill"><svg class="i"><use href="#i-chart"/></svg>Power BI</div><div class="skill"><svg class="i"><use href="#i-trend"/></svg>Tableau</div><div class="skill"><svg class="i"><use href="#i-spark"/></svg><span data-en="Generative AI">IA generativa</span></div><div class="skill"><svg class="i"><use href="#i-layers"/></svg><span data-en="AI risk">Riesgos de IA</span></div></div>
+        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg>Power BI</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg>Tableau</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg><span data-en="Generative AI">IA generativa</span></div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span data-en="AI risk">Riesgos de IA</span></div></div>
       </div>
     </div>
   </div>
@@ -527,8 +545,8 @@ body.cvp-open { overflow: hidden; }
 
 <section class="sec" id="proyectos">
   <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="Selected work">Proyectos destacados</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
-      <a class="more" href="#hablemos" data-open-cv><span data-en="View full career">Ver trayectoria completa</span> <svg class="i"><use href="#i-arrow"/></svg></a></div>
+    <div class="sec-head reveal"><div><h2><span data-en="Selected work">Proyectos destacados</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
+      <a class="more" href="#hablemos" data-open-cv><span data-en="View full career">Ver trayectoria completa</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
     <div class="work">
       <article class="card reveal">
         <div class="thumb" data-img="img/flowcol.png">
@@ -544,7 +562,7 @@ body.cvp-open { overflow: hidden; }
           </svg>
         </div>
         <div class="card-body">
-          <h3>Flowcol <svg class="i"><use href="#i-ext"/></svg></h3>
+          <h3>Flowcol</h3>
           <p><span data-en="Cloud ERP for small businesses: sales, purchasing, inventory, accounting and e-invoicing. Five paying clients in under a year.">ERP en la nube para pymes: ventas, compras, inventario, contabilidad y facturación electrónica. Cinco clientes pagos en menos de un año.</span></p>
           <div class="tags"><span>Node.js</span><span>PostgreSQL</span><span>React</span></div>
         </div>
@@ -565,7 +583,7 @@ body.cvp-open { overflow: hidden; }
           </svg>
         </div>
         <div class="card-body">
-          <h3>Flow · Gravity Tunnel <svg class="i"><use href="#i-ext"/></svg></h3>
+          <h3>Flow · Gravity Tunnel</h3>
           <p><span data-en="SCADA-style control of the wind tunnel over Modbus TCP, real-time telemetry and a management platform with 15 modules and 5 roles.">Control tipo SCADA del túnel de viento por Modbus TCP, telemetría en tiempo real y plataforma de gestión con 15 módulos y 5 roles.</span></p>
           <div class="tags"><span>Modbus TCP</span><span>WebSockets</span><span>Flutter</span></div>
         </div>
@@ -585,7 +603,7 @@ body.cvp-open { overflow: hidden; }
           </svg>
         </div>
         <div class="card-body">
-          <h3>Primer Paso <svg class="i"><use href="#i-ext"/></svg></h3>
+          <h3>Primer Paso</h3>
           <p><span data-en="Mobile app for initial mental-health screening and guidance at Universidad El Bosque, from scope definition to delivery.">App móvil de diagnóstico inicial y orientación en salud mental para la Universidad El Bosque, desde el alcance hasta la entrega.</span></p>
           <div class="tags"><span>Flutter</span><span>Discovery</span><span><span data-en="Product">Producto</span></span></div>
         </div>
@@ -596,33 +614,33 @@ body.cvp-open { overflow: hidden; }
 
 <section class="sec" id="experiencia">
   <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="Experience">Experiencia</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
-      <a class="more" href="#hablemos" data-open-cv><span data-en="All 10 roles">Las 10 posiciones</span> <svg class="i"><use href="#i-arrow"/></svg></a></div>
+    <div class="sec-head reveal"><div><h2><span data-en="Experience">Experiencia</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
+      <a class="more" href="#hablemos" data-open-cv><span data-en="All 10 roles">Las 10 posiciones</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
     <p class="exp-note reveal"><span data-en="14 years of professional experience since 2012 · university lecturer since 2023">14 años de experiencia profesional desde 2012 · docente universitario desde 2023</span></p>
     <h3 class="exp-title reveal" data-en="Product &amp;amp; technology">Producto y tecnología</h3>
     <div class="exp">
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-brief"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-brief"/></svg></div><div>
         <div class="when"><span data-en="2025 – Present">2025 – Actual</span></div><h3><span data-en="Founder &amp;amp; Product Manager">Fundador y Product Manager</span></h3><div class="org">Flowcol</div>
         <p><span data-en="From idea to a live product: MVP, roadmap and onboarding of five paying clients.">De la idea al producto en operación: MVP, roadmap y onboarding de cinco clientes pagos.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-gauge"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg></div><div>
         <div class="when">2023 – 2026</div><h3><span data-en="Solutions Analyst / Full Stack">Analista de Soluciones / Full Stack</span></h3><div class="org">Gravity Tunnel</div>
         <p><span data-en="SCADA system, real-time telemetry and the internal Flow platform.">Sistema SCADA, telemetría en tiempo real y la plataforma interna Flow.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-bank"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-bank"/></svg></div><div>
         <div class="when">2022 – 2023</div><h3>Service Manager</h3><div class="org">Sophos Solutions</div>
         <p><span data-en="Teams of 15 for Banco de Bogotá, Seguros Alfa, ATH and the Colombian Stock Exchange.">Equipos de 15 personas para Banco de Bogotá, Seguros Alfa, ATH y la Bolsa de Valores de Colombia.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-list"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></div><div>
         <div class="when">2022</div><h3>Product Manager</h3><div class="org">Lavenir SAS</div>
         <p><span data-en="Roadmap, user stories and backlog under Scrum as Product Owner.">Roadmap, historias de usuario y backlog bajo Scrum como Product Owner.</span></p></div></div>
     </div>
     <h3 class="exp-title reveal" data-en="University teaching">Docencia universitaria</h3>
     <div class="exp exp-3">
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-cap"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg></div><div>
         <div class="when"><span data-en="2026 – Present">2026 – Actual</span></div><h3><span data-en="Full-time Lecturer">Docente tiempo completo</span></h3><div class="org">Universidad Manuela Beltrán</div>
         <p><span data-en="Artificial intelligence, databases, web development, expert systems and mobile computing.">Inteligencia artificial, bases de datos, desarrollo web, sistemas expertos y computación móvil.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-book"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg></div><div>
         <div class="when"><span data-en="2024 – Present">2024 – Actual</span></div><h3><span data-en="Continuing Education Lecturer">Docente de Educación Continuada</span></h3><div class="org">Universidad de los Andes</div>
         <p><span data-en="AI-driven strategic leadership, Scrum, PMP and innovation for professionals.">Liderazgo estratégico con IA, Scrum, PMP e innovación para profesionales.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i"><use href="#i-users"/></svg></div><div>
+      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></div><div>
         <div class="when">2023 – 2026</div><h3><span data-en="Associate Instructor">Instructor Asociado</span></h3><div class="org">Universidad El Bosque</div>
         <p><span data-en="Data structures and databases in Systems Engineering; managed cybersecurity diploma programs.">Estructuras de datos y bases de datos en Ingeniería de Sistemas; gestión de diplomados en ciberseguridad.</span></p></div></div>
     </div>
@@ -631,13 +649,13 @@ body.cvp-open { overflow: hidden; }
 
 <section class="sec" id="proceso">
   <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="How I build a product">Cómo trabajo un producto</span></h2><svg class="squiggle" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div></div>
+    <div class="sec-head reveal"><div><h2><span data-en="How I build a product">Cómo trabajo un producto</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div></div>
     <div class="process reveal">
-      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-search"/></svg></div><span class="n">01</span><b><span data-en="Discover">Descubrir</span></b><span><span data-en="User research and the real problem.">User research y el problema real.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-pen"/></svg></div><span class="n">02</span><b><span data-en="Define">Definir</span></b><span><span data-en="Value proposition and MVP.">Propuesta de valor y MVP.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-list"/></svg></div><span class="n">03</span><b><span data-en="Prioritize">Priorizar</span></b><span><span data-en="Roadmap and backlog by impact.">Roadmap y backlog por impacto.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-rocket"/></svg></div><span class="n">04</span><b><span data-en="Deliver">Entregar</span></b><span><span data-en="Scrum sprints and launch.">Sprints con Scrum y lanzamiento.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i"><use href="#i-trend"/></svg></div><span class="n">05</span><b><span data-en="Measure">Medir</span></b><span><span data-en="KPIs, learning and iteration.">KPIs, aprendizaje e iteración.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></div><span class="n">01</span><b><span data-en="Discover">Descubrir</span></b><span><span data-en="User research and the real problem.">User research y el problema real.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg></div><span class="n">02</span><b><span data-en="Define">Definir</span></b><span><span data-en="Value proposition and MVP.">Propuesta de valor y MVP.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></div><span class="n">03</span><b><span data-en="Prioritize">Priorizar</span></b><span><span data-en="Roadmap and backlog by impact.">Roadmap y backlog por impacto.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg></div><span class="n">04</span><b><span data-en="Deliver">Entregar</span></b><span><span data-en="Scrum sprints and launch.">Sprints con Scrum y lanzamiento.</span></span></div>
+      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg></div><span class="n">05</span><b><span data-en="Measure">Medir</span></b><span><span data-en="KPIs, learning and iteration.">KPIs, aprendizaje e iteración.</span></span></div>
     </div>
   </div>
 </section>
@@ -646,21 +664,21 @@ body.cvp-open { overflow: hidden; }
 <footer id="contacto">
   <div class="wrap">
     <div class="foot">
-      <h2><span data-en="Let&#x27;s build something&lt;br&gt;meaningful &lt;span class=&quot;orange&quot;&gt;together.&lt;/span&gt;">Construyamos algo<br>con impacto <span class="orange">juntos.</span></span><svg class="squiggle" viewBox="0 0 34 8" style="margin-top:10px"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></h2>
+      <h2><span data-en="Let&#x27;s build something&lt;br&gt;meaningful &lt;span class=&quot;orange&quot;&gt;together.&lt;/span&gt;">Construyamos algo<br>con impacto <span class="orange">juntos.</span></span><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8" style="margin-top:10px"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></h2>
       <div class="contact">
-        <div><svg class="i"><use href="#i-mail"/></svg><span id="mail">rmedinan2009@gmail.com</span><button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></div>
-        <div><svg class="i"><use href="#i-phone"/></svg><span>+57 320 434 4662</span><button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></div>
-        <div><svg class="i"><use href="#i-pin"/></svg><span>Bogotá, Colombia</span></div>
+        <div><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><span id="mail">rmedinan2009@gmail.com</span><button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></div>
+        <div><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span>+57 320 434 4662</span><button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></div>
+        <div><svg class="i" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><span>Bogotá, Colombia</span></div>
       </div>
       <div class="social">
         <b data-en="Let&#x27;s connect">Conectemos</b>
         <div class="row">
-          <a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-in"/></svg></a>
-          <a href="#hablemos" data-open-cv aria-label="Hoja de vida"><svg class="i"><use href="#i-book"/></svg></a>
+          <a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-in"/></svg></a>
+          <a href="#hablemos" data-open-cv aria-label="Hoja de vida"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg></a>
         </div>
       </div>
     </div>
-    <div class="legal">© 2026 Armando Medina. <span data-en="Made with">Hecho con</span> <svg class="i"><use href="#i-heart"/></svg> <span data-en="in Bogotá.">en Bogotá.</span></div>
+    <div class="legal">© 2026 Armando Medina. <span data-en="Made with">Hecho con</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg> <span data-en="in Bogotá.">en Bogotá.</span></div>
   </div>
 </footer>
 
@@ -674,112 +692,76 @@ body.cvp-open { overflow: hidden; }
           <button type="button" data-lang="es" aria-pressed="true">ES</button>
           <button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
-        <button type="button" class="cvp-close" data-close aria-label="Cerrar / Close"><span data-en="Close">Cerrar</span> <svg class="i" style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        <a class="cvp-pdf" href="cv.html?lang=es&amp;version=completo&amp;print=1#cv" data-pdf="completo" target="_blank" rel="noopener"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg> <span data-en="PDF">PDF</span></a>
+        <button type="button" class="cvp-close" data-close aria-label="Cerrar / Close"><span data-en="Close">Cerrar</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
     </div>
     <div class="cvp-body">
-      <header class="cvp-head cvp-in">
-        <div>
-          <h2 id="cvp-name">Armando Ricardo <span class="orange">Medina Nieto</span></h2>
-          <p class="cvp-role"><span data-en="Technical Product Manager | Product Owner &amp;nbsp;·&amp;nbsp; Systems Engineer">Product Manager Técnico | Product Owner &nbsp;·&nbsp; Ingeniero de Sistemas</span></p>
-          <p class="cvp-contact"><span><svg class="i"><use href="#i-pin"/></svg>Bogotá, Colombia</span><span><svg class="i"><use href="#i-phone"/></svg>+57 320 434 4662</span><span><svg class="i"><use href="#i-mail"/></svg>rmedinan2009@gmail.com</span><a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i"><use href="#i-in"/></svg>linkedin.com/in/armandomedinapm</a><span><span data-en="English: B1">Inglés: B1</span></span></p>
-        </div>
-        <img class="cvp-photo" src="img/foto.jpg" alt="Armando Medina" width="132" height="132">
-      </header>
-
-      <section class="cvp-sec cvp-in">
-        <h3><span data-en="Profile">Perfil</span></h3>
-        <p class="cvp-lead"><span data-en="Systems Engineer with 14 years of professional experience (since 2012) in banking and insurance, the public sector, construction, industry, consulting and education. I have worked as Product Manager, Product Owner, technical lead and Service Manager, and as a university lecturer since 2023. Founder of Flowcol, a cloud ERP platform that now runs with five paying clients. I combine product management (discovery, MVP, roadmap and backlog), software architecture and artificial intelligence to translate business needs into viable technical decisions and work as a peer with development, architecture and data teams.">Ingeniero de Sistemas con 14 años de experiencia profesional (desde 2012) en banca y seguros, sector público, construcción, industria, consultoría y educación. He trabajado como Product Manager, Product Owner, líder técnico y Service Manager, y desde 2023 como docente universitario. Fundador de Flowcol, plataforma ERP en la nube que hoy opera con cinco clientes pagos. Combino gestión de producto (discovery, MVP, roadmap y backlog), arquitectura de software e inteligencia artificial para traducir necesidades de negocio en decisiones técnicas viables y trabajar de igual a igual con equipos de desarrollo, arquitectura y datos.</span></p>
-      </section>
-
-      <section class="cvp-sec cvp-in">
-        <h3><span data-en="Experience at a glance">Resumen de experiencia</span></h3>
-        <div class="cvp-summary"><div class="cvp-sum"><span class="cvp-sum-label" data-en="Professional experience">Experiencia profesional</span><b data-en="14 years">14 años</b><p data-en="Since June 2012 in banking and insurance, the public sector, construction, industry, consulting and software.">Desde junio de 2012 en banca y seguros, sector público, construcción, industria, consultoría y software.</p></div><div class="cvp-sum"><!-- TODO: confirmar el total de años de experiencia específica en producto antes de publicarlo como cifra. --><span class="cvp-sum-label" data-en="Product-specific experience">Experiencia específica en producto</span><b data-en="2 product roles">2 cargos de producto</b><p data-en="Product Manager at Lavenir SAS (2022) and Founder &amp;amp; Product Manager at Flowcol (2025 – present). Product responsibilities (requirements, user stories and backlog) at Gravity Tunnel, Fondo Nacional de Garantías and Constructora Bolívar.">Product Manager en Lavenir SAS (2022) y Fundador y Product Manager en Flowcol (2025 – actual). Funciones de producto (requerimientos, historias de usuario y backlog) en Gravity Tunnel, Fondo Nacional de Garantías y Constructora Bolívar.</p></div><div class="cvp-sum"><span class="cvp-sum-label" data-en="Teaching experience">Experiencia docente</span><b data-en="Since 2023">Desde 2023</b><p data-en="Universidad El Bosque, Universidad de los Andes and Universidad Manuela Beltrán.">Universidad El Bosque, Universidad de los Andes y Universidad Manuela Beltrán.</p></div></div>
-      </section>
-
-      <section class="cvp-sec cvp-in">
-        <h3><span data-en="Professional experience">Experiencia profesional</span></h3>
-        <div class="cvp-timeline">
-        <article class="cvp-job">
-          <!-- TODO: añadir un resultado medible de la automatización (p. ej., horas ahorradas o errores evitados por cliente) y, si existe, la métrica de time-to-market por release. -->
-          <div class="cvp-job-top"><h4><b>Flowcol</b> <i>—</i> <span data-en="Founder &amp;amp; Product Manager">Fundador y Product Manager</span> <span class="cvp-tag" data-en="Product role">Cargo de producto</span></h4><span class="cvp-date" data-en="Nov 2025 – Present">Nov 2025 – Actual</span></div>
-          <ul><li><span data-en="I founded Flowcol and took it from idea to a live product: a cloud ERP (SaaS) for small businesses, now with five active paying clients less than a year after launch.">Fundé Flowcol y la llevé de idea a producto en operación: una plataforma ERP en la nube (SaaS) para pymes, hoy con cinco clientes pagos activos en menos de un año desde el lanzamiento.</span></li><li><span data-en="I defined the value proposition, MVP and roadmap from user research with the first clients, prioritizing the sales, purchasing, inventory, accounting, treasury and third-party modules.">Definí la propuesta de valor, el MVP y el roadmap a partir de user research con los primeros clientes, priorizando los módulos de ventas, compras, inventario, contabilidad, tesorería y terceros.</span></li><li><span data-en="I run the full product cycle: discovery, functional definition, development, launch, client onboarding and post-sale support.">Dirijo el ciclo completo del producto: discovery, definición funcional, desarrollo, lanzamiento, onboarding de clientes y soporte post-venta.</span></li><li><span data-en="I replaced error-prone manual Excel processes with automated, validated workflows built around the needs of entrepreneurs and small businesses.">Reemplacé procesos manuales en Excel, propensos a error, por flujos automatizados y validados, adaptados a las necesidades de emprendedores y pequeñas empresas.</span></li><li><span data-en="I designed the multi-company architecture with users, roles and permissions per company, plus e-invoicing integration with an external provider through a microservice.">Diseñé la arquitectura multiempresa con control de usuarios, roles y permisos por compañía, y la integración de facturación electrónica con proveedor externo vía microservicio.</span></li></ul><p class="cvp-stack">Stack: Node.js, Express, PostgreSQL, React, Tailwind CSS, APIs REST, Render, Cloudflare</p>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Gravity Tunnel</b> <i>—</i> <span data-en="Solutions Analyst / Full Stack Developer">Analista de Soluciones / Desarrollador Full Stack</span></h4><span class="cvp-date" data-en="Mar 2023 – Sep 2026">Mar 2023 – Sep 2026</span></div>
-          <ul><li><span data-en="I designed and built a SCADA-style control system for the tunnel motor&#x27;s frequency drive, using Modbus TCP in a dual-host architecture (separate read and write channels) that keeps operations under control even if one of the two links fails.">Diseñé e implementé un sistema de control tipo SCADA para el variador de frecuencia del motor del túnel, con comunicación Modbus TCP en arquitectura dual-host (canales separados de lectura y escritura) para sostener el control operativo aun si uno de los dos enlaces falla.</span></li><li><span data-en="I built industrial resilience mechanisms (watchdogs, heartbeats, automatic reconnection and read-back write verification) that tell &quot;backend connected&quot; apart from &quot;real drive signal&quot;, to avoid false availability positives and manual restarts.">Construí mecanismos de resiliencia industrial (watchdogs, heartbeats, reconexión automática y verificación de escritura por lectura de confirmación) que distinguen entre «backend conectado» y «señal real del variador», para evitar falsos positivos de disponibilidad y reinicios manuales.</span></li><li><span data-en="I implemented real-time telemetry (RPM and % power) pushed over WebSockets to multiple operator and public-facing screens, kept in sync with automatic visual and audio alerts based on the time left in each flight.">Implementé telemetría en tiempo real (RPM y % de potencia) propagada por WebSockets a múltiples pantallas de operación y de cara al público, sincronizadas entre sí con alertas visuales y sonoras automáticas según el tiempo restante de cada vuelo.</span></li><li><span data-en="I developed a Flutter (Android) remote-control app that mirrors the physical panel&#x27;s commands (power, presets, start/pause of sets) over the same socket channel, so the tunnel can be run from a mobile device with the same logic and telemetry.">Desarrollé una app de control remoto en Flutter (Android) que replica los comandos del panel físico (potencia, presets, inicio/pausa de sets) sobre el mismo canal de sockets, permitiendo operar el túnel desde un dispositivo móvil con la misma lógica y telemetría.</span></li><li><span data-en="I defined and led the build of Flow, the internal platform for administration, user control, reporting, billing, operational closings and energy metering; today it is the operation&#x27;s central tool.">Definí y lideré la construcción de Flow, plataforma interna para gestión administrativa, control de usuarios, reportes, facturación, cierres operativos y medición de consumo energético; hoy es la herramienta central de la operación.</span></li><li><span data-en="I gathered requirements with the operations and administration teams and prioritized the feature backlog by operational impact and implementation cost.">Levanté requerimientos con las áreas de operación y administración y prioricé el backlog de funcionalidades según impacto operativo y costo de implementación.</span></li><li><span data-en="I implemented role-based access control with 5 distinct roles (administration, cashier, coaches, energy, flights), segmenting the use of more than 15 platform modules by operational responsibility.">Implementé un esquema de control de acceso basado en 5 roles diferenciados (administración, caja, coaches, energía, vuelos), segmentando el uso de los más de 15 módulos de la plataforma según responsabilidad operativa.</span></li><li><span data-en="I designed the energy module with per-zone consumption reconciliation, automatic calculation of idle-period usage between closings and aggregation aligned with the real electricity billing cycle, giving traceability to audit the tunnel&#x27;s energy spend.">Diseñé el módulo de control de energía con conciliación de consumo por zona, cálculo automático del consumo en periodos inactivos entre cierres y agregación alineada al ciclo real de facturación eléctrica, dando trazabilidad para auditar el gasto energético del túnel.</span></li><li><span data-en="I merged cash, billing and energy reconciliation, previously separate reports, into a single daily closing flow.">Integré en un único flujo de cierre diario la conciliación de caja, facturación y energía, antes gestionadas como reportes independientes.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Sophos Solutions</b> <i>—</i> <span data-en="Service Manager">Service Manager</span></h4><span class="cvp-date" data-en="Jul 2022 – Jun 2023">Jul 2022 – Jun 2023</span></div>
-          <ul><li><span data-en="I led the delivery of technology projects and services for financial-sector clients: Seguros Alfa, Banco de Bogotá, ATH and the Colombian Stock Exchange.">Lideré la entrega de proyectos y servicios tecnológicos para clientes del sector financiero: Seguros Alfa, Banco de Bogotá, ATH y Bolsa de Valores de Colombia.</span></li><li><span data-en="I managed teams of 15 people and budgets of COP 300 million, accountable for scope, timelines, quality and the client relationship (stakeholder management).">Gestioné equipos de 15 personas y presupuestos de 300 millones de pesos, respondiendo por alcance, tiempos, calidad y relación con el cliente (stakeholder management).</span></li><li><span data-en="I coordinated 2 projects in parallel, aligning technical teams with the client&#x27;s business areas.">Coordiné 2 proyectos en paralelo, articulando equipos técnicos con las áreas de negocio del cliente.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Lavenir SAS</b> <i>—</i> <span data-en="Product Manager">Gerente de Producto (Product Manager)</span> <span class="cvp-tag" data-en="Product role">Cargo de producto</span></h4><span class="cvp-date" data-en="Feb 2022 – Jun 2022">Feb 2022 – Jun 2022</span></div>
-          <ul><li><span data-en="I managed the product roadmap and requirements planning, writing user stories and acceptance criteria.">Gestioné el roadmap del producto y la planificación de requerimientos, definiendo historias de usuario y criterios de aceptación.</span></li><li><span data-en="I prioritized the functional backlog and tracked Scrum sprints, acting as the team&#x27;s Product Owner and the bridge between business and development.">Prioricé el backlog funcional y di seguimiento a los sprints bajo Scrum, actuando como Product Owner del equipo y como puente entre negocio y desarrollo.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Double V Partners</b> <i>—</i> <span data-en="Technical Lead">Líder Técnico</span></h4><span class="cvp-date" data-en="Apr 2021 – Oct 2021">Abr 2021 – Oct 2021</span></div>
-          <ul><li><span data-en="I designed microservice architectures, cloud solutions and monolithic applications for consulting clients, defining development and integration patterns and technology selection criteria that guided product teams&#x27; decisions.">Diseñé arquitecturas de microservicios, soluciones cloud y aplicaciones monolíticas para clientes de la consultoría, definiendo patrones de desarrollo, integración y criterios de selección tecnológica que guiaron las decisiones de los equipos de producto.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Fondo Nacional de Garantías</b> <i>—</i> <span data-en="Development Engineer VII">Ingeniero de Desarrollo VII</span></h4><span class="cvp-date" data-en="Apr 2016 – Apr 2021">Abr 2016 – Abr 2021</span></div>
-          <ul><li><span data-en="I led the organization&#x27;s Microsoft projects: Dynamics CRM, SharePoint, document management, the transactional portal and the corporate website.">Lideré los proyectos Microsoft de la entidad: Dynamics CRM, SharePoint, gestión documental, portal transaccional y sitio web corporativo.</span></li><li><span data-en="I wrote user stories, coordinated a team of 5 people and managed follow-up on contracts with technology vendors.">Definí historias de usuario, coordiné un equipo de 5 personas y gestioné el seguimiento a contratos con proveedores tecnológicos.</span></li><li><span data-en="I led updates and maintenance of the transactional portal that serves financial institutions nationwide for tracking and executing guarantees, integrating the solution with SAP ERP.">Lideré el ajuste y mantenimiento del portal transaccional que atiende a las entidades financieras a nivel nacional para el seguimiento y la ejecución de garantías, integrando la solución con el ERP SAP.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Constructora Bolívar</b> <i>—</i> <span data-en="CRM Administrator">Administrador CRM</span></h4><span class="cvp-date" data-en="Jun 2012 – Apr 2016">Jun 2012 – Abr 2016</span></div>
-          <ul><li><span data-en="I managed the Dynamics CRM 2011 platform, led requirements gathering with the sales and service teams, and turned business needs into user stories and functional improvements to the platform.">Administré la plataforma Dynamics CRM 2011, lideré el levantamiento de requerimientos con las áreas comerciales y de servicio, y traduje necesidades de negocio en historias de usuario y mejoras funcionales de la plataforma.</span></li></ul>
-        </article>
-        </div>
-      </section>
-
-      <section class="cvp-sec cvp-in">
-        <h3><span data-en="Teaching experience">Experiencia docente</span></h3>
-        <div class="cvp-timeline">
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Universidad Manuela Beltrán</b> <i>—</i> <span data-en="Full-time Lecturer">Docente tiempo completo</span></h4><span class="cvp-date" data-en="Sep 2026 – Present">Sep 2026 – Actual</span></div>
-          <ul><li><span data-en="I teach Artificial Intelligence, database theory, web development, expert systems, object-oriented programming, mobile computing and emerging development technologies.">Encargado de las asignaturas de Inteligencia Artificial, teoría de bases de datos, desarrollo web, sistemas expertos, programación orientada a objetos, computación móvil y nuevas tecnologías de desarrollo.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>Universidad de los Andes</b> <i>—</i> <span data-en="Continuing Education Lecturer">Docente de Educación Continuada</span></h4><span class="cvp-date" data-en="Aug 2024 – Present">Ago 2024 – Actual</span></div>
-          <ul><li><span data-en="I currently teach the course Strategic Leadership and AI-Driven Decision Making.">Actualmente dicto el curso Liderazgo Estratégico y Toma de Decisiones Impulsado por IA.</span></li><li><span data-en="I trained professionals in project management, Scrum, the PMP framework and innovation methods, in partnership with Colsubsidio.">Formé profesionales en gestión de proyectos, metodologías ágiles Scrum, marco PMP y metodologías de innovación, en convenio con Colsubsidio.</span></li><li><span data-en="I designed the program&#x27;s content and coached participants in applying agile, predictive and innovative approaches to real projects in their organizations.">Diseñé el contenido académico del programa y acompañé a los participantes en la aplicación de enfoques ágiles, predictivos e innovadores a proyectos reales de sus organizaciones.</span></li></ul>
-        </article>
-        <article class="cvp-job">
-          <!-- TODO: si hay datos (encuestas, notas o asistencia), añadir la mejora en participación o rendimiento académico. -->
-          <div class="cvp-job-top"><h4><b>Universidad El Bosque</b> <i>—</i> <span data-en="Associate Instructor">Instructor Asociado</span></h4><span class="cvp-date" data-en="Sep 2023 – Jul 2026">Sep 2023 – Jul 2026</span></div>
-          <ul><li><span data-en="I taught Introduction to Engineering, Applied Mathematics, Data Structures and Databases in the Systems Engineering program, using interactive methods focused on critical thinking.">Orienté las asignaturas de Introducción a la Ingeniería, Matemáticas Aplicadas, Estructuras de Datos y Bases de Datos en el programa de Ingeniería de Sistemas, con métodos interactivos orientados al pensamiento crítico.</span></li><li><span data-en="Contract manager for the Cybersecurity diploma programs delivered to the Ministry of Defense: I supervised execution and compliance with the contract terms through inspection, evaluation, analysis, control, follow-up and verification of commitments.">Gestor del contrato de los diplomados en Ciberseguridad impartidos al Ministerio de Defensa: supervisé la ejecución y el cumplimiento de los términos contractuales mediante inspección, evaluación, análisis, control, seguimiento y verificación de los compromisos establecidos.</span></li><li><span data-en="I led the development of Primer Paso, a Flutter mobile app for initial mental-health screening and guidance, from scope definition to delivery.">Lideré el desarrollo de Primer Paso, aplicación móvil en Flutter para diagnóstico inicial y orientación en salud mental, desde la definición del alcance hasta la entrega.</span></li></ul>
-        </article>
-        </div>
-      </section>
-
-      <div class="cvp-grid">
-        <section class="cvp-sec cvp-in"><h3><span data-en="Skills">Competencias</span></h3><div class="cvp-comp"><b data-en="Product">Producto</b><div class="cvp-chips"><span>Product discovery</span><span>user research</span><span data-en="MVP definition">definición de MVP</span><span data-en="product roadmap">roadmap de producto</span><span data-en="user stories and acceptance criteria">historias de usuario y criterios de aceptación</span><span data-en="backlog prioritization and refinement">priorización y refinamiento de backlog</span><span data-en="KPIs and OKRs">KPIs y OKRs</span><span>go-to-market</span></div></div><div class="cvp-comp"><b data-en="Leadership">Liderazgo</b><div class="cvp-chips"><span>Scrum</span><span>Kanban</span><span data-en="PMI/PMP framework">marco PMI/PMP</span><span>Product Owner</span><span data-en="stakeholder management">gestión de stakeholders</span><span data-en="leading teams of up to 15 people">coordinación de equipos de hasta 15 personas</span><span data-en="budget and vendor contract management">gestión de presupuestos y contratos con proveedores</span><span>Jira</span><span>Azure Boards</span><span>Confluence</span></div></div><div class="cvp-comp"><b data-en="Engineering">Ingeniería</b><div class="cvp-chips"><span data-en="Microservice architecture">Arquitectura de microservicios</span><span data-en="REST APIs">APIs REST</span><span>Node.js</span><span>Express</span><span>.NET / .NET Core</span><span>Python</span><span>React</span><span>Angular</span><span>Flutter</span><span>PostgreSQL</span><span>SQL Server</span><span>MongoDB</span><span>Azure</span><span>AWS</span><span>Docker</span><span>WebSockets</span><span>Modbus TCP</span><span>Dynamics CRM</span><span>SharePoint</span><span>SAP</span><span>Power Automate</span><span>Microsoft 365</span></div></div><div class="cvp-comp"><b data-en="Data &amp;amp; AI">Datos e IA</b><div class="cvp-chips"><span>Power BI</span><span>Tableau</span><span data-en="generative AI">IA generativa</span><span data-en="enterprise assistants">asistentes empresariales</span><span data-en="AI risk management">gestión de riesgos de IA</span></div></div></section>
-        <div>
-          <section class="cvp-sec cvp-in"><h3><span data-en="Education">Educación</span></h3><ul class="cvp-list"><li><b data-en="Master&#x27;s Degree in Artificial Intelligence">Máster Universitario en Inteligencia Artificial</b><span>UNIR · <span data-en="In progress">En curso</span></span></li><li><b data-en="Specialization in University Teaching and Pedagogy">Especialización en Docencia y Pedagogía Universitaria</b><span>Universidad La Gran Colombia · <span data-en="2012">2012</span></span></li><li><b data-en="B.S. in Systems Engineering">Ingeniería de Sistemas</b><span>Universidad Los Libertadores · <span data-en="2010">2010</span></span></li></ul></section>
-          <section class="cvp-sec cvp-in"><h3><span data-en="Certifications &amp;amp; courses">Certificaciones y cursos</span></h3><div class="cvp-certs"><b data-en="Product &amp;amp; agility">Producto y agilidad</b><ul><li>Scrum Product Owner Professional (SPOPC)<span>CertiProf · 2024</span></li><li>Scrum Master Professional (SMPC)<span>CertiProf · 2024</span></li><li>Scrum Developer Professional (SDPC)<span>CertiProf · 2024</span></li></ul></div><div class="cvp-certs"><b data-en="Artificial intelligence">Inteligencia artificial</b><ul><li>Generative AI Professional Certification (GAIPC)<span>CertiProf · 2024</span></li><li>AI Project Manager Foundation (AIPMFPC)<span>CertiProf · 2024</span></li><li>AI Risk Management Professional (AIRMPC)<span>CertiProf · 2024</span></li><!-- TODO: adjuntar soporte; el PDF no incluye este certificado. --><li>AI Expert Certificate (CAIEC)<span>2025</span></li><!-- TODO: adjuntar soporte o confirmar si corresponde a GAIPC (2024), que sí está en el PDF. --><li>AI Professional Certificate (CAIPC)<span>2025</span></li></ul></div><div class="cvp-certs"><b data-en="Courses">Cursos</b><ul><li><span data-en="PMI Project Management · 84 h">Gerencia de Proyectos PMI · 84 h</span><span>EUD · 2023</span></li><li><span data-en="Agile Project Management with Scrum · 40 h">Gestión ágil de proyectos con Scrum · 40 h</span><span>EUD · 2023</span></li></ul></div></section>
-        </div>
-      </div>
+      <div class="cvp-content" id="cvp-content"></div>
 
       <section class="cvp-cta cvp-in">
         <h3><span data-en="Shall we talk?">¿Hablamos?</span></h3>
         <p><span data-en="Email or call me and let&amp;#x27;s talk about your product.">Escríbeme o llámame y conversamos sobre tu producto.</span></p>
         <div class="cvp-cta-row">
-          <span class="cvp-pill"><svg class="i"><use href="#i-mail"/></svg>rmedinan2009@gmail.com <button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></span>
-          <span class="cvp-pill"><svg class="i"><use href="#i-phone"/></svg>+57 320 434 4662 <button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></span>
-          <a class="btn orange" href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i" style="width:16px;height:16px"><use href="#i-in"/></svg> LinkedIn</a>
+          <span class="cvp-pill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>rmedinan2009@gmail.com <button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></span>
+          <span class="cvp-pill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>+57 320 434 4662 <button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></span>
+          <a class="btn outline" href="cv.html?lang=es&amp;version=completo&amp;print=1#cv" data-pdf="completo" target="_blank" rel="noopener"><span data-en="Full CV (PDF)">CV completo (PDF)</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
+          <a class="btn outline" href="cv.html?lang=es&amp;version=resumen&amp;print=1#cv" data-pdf="resumen" target="_blank" rel="noopener"><span data-en="2-page CV (PDF)">CV de 2 páginas (PDF)</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
+          <a class="btn orange" href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-in"/></svg> LinkedIn</a>
         </div>
       </section>
     </div>
   </div>
 </div>
 
+<script src="cv-data.js"></script>
 <script>
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+
+  // Panel «Hablemos»: se genera desde cv-data.js (misma fuente que cv.html)
+  (function renderCVPanel() {
+    const D = window.CV_DATA, box = document.getElementById("cvp-content");
+    if (!D || !box) return;
+    const h = v => String(v).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    // data-en guarda HTML escapado; el cambio de idioma lo asigna con innerHTML
+    const T = (o, tag = "span", cls = "") => o.es === o.en ? `<${tag}${cls ? ` class="${cls}"` : ""}>${h(o.es)}</${tag}>`
+      : `<${tag}${cls ? ` class="${cls}"` : ""} data-en="${h(h(o.en))}">${h(o.es)}</${tag}>`;
+    const L = k => ({ es: D.labels.es[k], en: D.labels.en[k] });
+    const c = D.contact;
+    const job = e => `
+        <article class="cvp-job">
+          <div class="cvp-job-top"><h4><b>${h(e.org)}</b> <i>—</i> ${T(e.role)}${e.product ? " " + T(L("productRole"), "span", "cvp-tag") : ""}</h4>${T({ es: `${e.start.es} – ${e.end.es}`, en: `${e.start.en} – ${e.end.en}` }, "span", "cvp-date")}</div>
+          <ul>${e.bullets.map(b => `<li>${T(b)}</li>`).join("")}</ul>${e.stack ? `<p class="cvp-stack">Stack: ${h(e.stack)}</p>` : ""}
+        </article>`;
+    const chips = g => g.items.es.map((x, i) => T({ es: x, en: g.items.en[i] })).join("");
+    box.innerHTML = `
+      <header class="cvp-head cvp-in">
+        <div>
+          <h2 id="cvp-name">Armando Ricardo <span class="orange">Medina Nieto</span></h2>
+          <p class="cvp-role">${T({ es: `${D.role.es} · ${D.degree.es}`, en: `${D.role.en} · ${D.degree.en}` })}</p>
+          <p class="cvp-contact"><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>${h(c.location)}</span><span><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>${h(c.phone)}</span><span><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>${h(c.email)}</span><a href="${h(c.linkedinUrl)}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg>${h(c.linkedin)}</a><span>${T({ es: "Inglés: B1", en: "English: B1" })}</span></p>
+        </div>
+        <img class="cvp-photo" src="${h(c.photo)}" alt="Armando Medina" width="132" height="132">
+      </header>
+      <section class="cvp-sec cvp-in"><h3>${T({ es: "Perfil", en: "Profile" })}</h3><p class="cvp-lead">${T(D.profile)}</p></section>
+      <section class="cvp-sec cvp-in"><h3>${T(L("summary"))}</h3><div class="cvp-summary">${D.summary.map(x => `<div class="cvp-sum">${T(x.label, "span", "cvp-sum-label")}${T(x.value, "b")}${T(x.text, "p")}</div>`).join("")}</div></section>
+      <section class="cvp-sec cvp-in"><h3>${T(L("experience"))}</h3><div class="cvp-timeline">${D.experience.filter(e => e.kind === "pro").map(job).join("")}</div></section>
+      <section class="cvp-sec cvp-in"><h3>${T(L("teaching"))}</h3><div class="cvp-timeline">${D.experience.filter(e => e.kind === "doc").map(job).join("")}</div></section>
+      <div class="cvp-grid">
+        <section class="cvp-sec cvp-in"><h3>${T(L("skills"))}</h3>${D.skills.map(g => `<div class="cvp-comp">${T(g.group, "b")}<div class="cvp-chips">${chips(g)}</div></div>`).join("")}</section>
+        <div>
+          <section class="cvp-sec cvp-in"><h3>${T(L("education"))}</h3><ul class="cvp-list">${D.education.map(x => `<li>${T(x.title, "b")}<span>${h(x.school)} · ${T(x.year)}</span></li>`).join("")}</ul></section>
+          <section class="cvp-sec cvp-in"><h3>${T(L("certifications"))}</h3>${D.certifications.map(g => `<div class="cvp-certs">${T(g.group, "b")}<ul>${g.items.map(i => `<li>${T(i.name)}<span>${[i.issuer, i.year].filter(Boolean).map(h).join(" · ")}</span></li>`).join("")}</ul></div>`).join("")}</section>
+        </div>
+      </div>`;
+  })();
+
   // Ilustraciones: si existe la imagen generada en /img, reemplaza el SVG provisional
   document.querySelectorAll("[data-img]").forEach(slot => {
     const img = new Image();
-    img.alt = "";
+    img.alt = slot.querySelector("svg.art")?.getAttribute("aria-label") || "";
     img.onload = () => { slot.classList.add("has-img"); slot.querySelector("svg.art")?.remove(); slot.appendChild(img); };
     img.src = slot.dataset.img;
   });
@@ -860,8 +842,10 @@ body.cvp-open { overflow: hidden; }
     menuBtn.setAttribute("aria-label", MENU[menuLang][open ? 1 : 0]);
     document.getElementById("site-nav").setAttribute("aria-label", MENU[menuLang][2]);
   }
+  const syncInert = () => { menu.inert = narrow.matches && !nav.hasAttribute("data-open"); };
   function openMenu() {
     nav.setAttribute("data-open", "");
+    syncInert();
     menuBtn.setAttribute("aria-expanded", "true");
     labelMenu();
     (menu.querySelector("a.on") || menu.querySelector("a")).focus({ preventScroll: true });
@@ -869,6 +853,7 @@ body.cvp-open { overflow: hidden; }
   function closeMenu(returnFocus) {
     if (!nav.hasAttribute("data-open")) return;
     nav.removeAttribute("data-open");
+    syncInert();
     menuBtn.setAttribute("aria-expanded", "false");
     labelMenu();
     if (returnFocus) menuBtn.focus({ preventScroll: true });
@@ -884,7 +869,8 @@ body.cvp-open { overflow: hidden; }
   });
   document.addEventListener("click", e => { if (nav.hasAttribute("data-open") && !nav.contains(e.target)) closeMenu(false); });
   nav.addEventListener("focusout", e => { if (nav.hasAttribute("data-open") && e.relatedTarget && !nav.contains(e.relatedTarget)) closeMenu(false); });
-  narrow.addEventListener("change", () => closeMenu(false));
+  narrow.addEventListener("change", () => { closeMenu(false); syncInert(); });
+  syncInert();
 
   // Idioma: español / inglés
   const UI = { es: { copied: "Copiado", copy: "Copiar" }, en: { copied: "Copied", copy: "Copy" } };
@@ -903,6 +889,7 @@ body.cvp-open { overflow: hidden; }
     sws.forEach(sw => { sw.dataset.on = lang; sw.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang)); });
     try { localStorage.setItem("am-lang", lang); } catch {}
     menuLang = lang; labelMenu();
+    document.querySelectorAll("[data-pdf]").forEach(a => { a.href = `cv.html?lang=${lang}&version=${a.dataset.pdf}&print=1#cv`; });
     header.querySelector(".logo").setAttribute("aria-label", lang === "en" ? "Armando Medina, home" : "Armando Medina, inicio");
     document.querySelector('.social a[data-open-cv]').setAttribute("aria-label", lang === "en" ? "Résumé" : "Hoja de vida");
   }
@@ -916,6 +903,17 @@ body.cvp-open { overflow: hidden; }
   // Panel «Hablemos» con la hoja de vida completa
   const cvp = document.getElementById("hablemos"), cvpSheet = cvp.querySelector(".cvp-sheet");
   let lastFocus = null;
+  // fondo inerte mientras el panel está abierto: ni foco ni lector de pantalla
+  const background = [document.querySelector(".skip"), header, document.getElementById("main"), document.querySelector("footer")].filter(Boolean);
+  // Tab y Mayús+Tab circulan dentro del panel
+  cvp.addEventListener("keydown", e => {
+    if (e.key !== "Tab") return;
+    const f = [...cvp.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(el => el.offsetParent !== null || el === document.activeElement);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !cvp.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   let closingAnim = null;
   function openCV() {
     if (closingAnim) { closingAnim.onfinish = null; closingAnim = null; cvp.getAnimations({ subtree: true }).forEach(x => x.cancel()); cvp.hidden = true; }
@@ -923,6 +921,7 @@ body.cvp-open { overflow: hidden; }
     closeMenu(false);
     lastFocus = document.activeElement;
     cvp.hidden = false; document.body.classList.add("cvp-open");
+    background.forEach(el => { el.inert = true; });
     cvp.querySelector(".cvp-body").scrollTop = 0;
     if (!reduce && Element.prototype.animate) {
       const E = "cubic-bezier(.2,.8,.2,1)";
@@ -936,11 +935,14 @@ body.cvp-open { overflow: hidden; }
   }
   function closeCV() {
     if (cvp.hidden || closingAnim) return;
-    const done = () => { cvp.hidden = true; document.body.classList.remove("cvp-open"); lastFocus?.focus?.({ preventScroll: true }); };
+    const done = () => { cvp.hidden = true; document.body.classList.remove("cvp-open"); background.forEach(el => { el.inert = false; }); syncInert(); lastFocus?.focus?.({ preventScroll: true }); };
     if (!reduce && Element.prototype.animate) {
       cvp.querySelector(".cvp-backdrop").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "forwards" });
       closingAnim = cvpSheet.animate([{ transform: "none" }, { transform: "translateY(100%)" }], { duration: 380, easing: "cubic-bezier(.6,0,.8,.3)", fill: "forwards" });
-      closingAnim.onfinish = () => { closingAnim = null; cvp.getAnimations({ subtree: true }).forEach(a => a.cancel()); done(); };
+      // se cierra al terminar la animación o, si el navegador no la reproduce (pestaña en segundo plano), a los 450 ms
+      const finish = () => { if (!closingAnim) return; closingAnim = null; cvp.getAnimations({ subtree: true }).forEach(a => a.cancel()); done(); };
+      closingAnim.onfinish = finish;
+      setTimeout(finish, 450);
     } else done();
   }
   document.querySelectorAll("[data-open-cv]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); openCV(); }));
@@ -950,7 +952,7 @@ body.cvp-open { overflow: hidden; }
 
   // Copiar correo y teléfono
   document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {
-    const done = () => { b.textContent = UI[lang].copied; setTimeout(() => b.textContent = UI[lang].copy, 1600); };
+    const done = () => { b.textContent = UI[lang].copied; document.getElementById("live").textContent = UI[lang].copied + ": " + b.dataset.copy; setTimeout(() => b.textContent = UI[lang].copy, 1600); };
     const sel = () => { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Ctrl/Cmd + C"; };
     navigator.clipboard ? navigator.clipboard.writeText(b.dataset.copy).then(done, sel) : sel();
   }));
