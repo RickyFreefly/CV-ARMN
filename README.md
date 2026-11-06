@@ -16,6 +16,14 @@ Sitio estático (HTML, CSS y JavaScript sin dependencias) con el portafolio y la
 
 Para cambiar un cargo, una fecha o una viñeta, edita solo `cv-data.js`; el panel, el PDF y el editor se actualizan juntos.
 
+## Casos de estudio
+
+Cada tarjeta de «Proyectos destacados» tiene un enlace «Ver caso de estudio» que abre un diálogo con el reto, lo que hice, las decisiones clave, los resultados, el rol, el periodo y la tecnología. Se navega entre casos con «Caso anterior» y «Siguiente caso».
+
+- Los casos están en `projects` dentro de `cv-data.js`, en español e inglés. Solo incluyen hechos de la hoja de vida. Lo que falta (métricas, adopción, stack completo de Flow, fechas de Primer Paso) está en el campo `todo` de cada caso y no se muestra.
+- Enlaces directos: `index.html#caso-flowcol`, `#caso-gravity` y `#caso-primer-paso`.
+- El diálogo comparte el comportamiento accesible del panel del CV: foco atrapado, fondo inerte, Escape y foco devuelto al enlace.
+
 ## Hoja de vida en PDF
 
 `cv.html#cv` muestra el CV en una sola columna, con texto real (seleccionable), títulos estándar y contacto en texto, pensado para sistemas ATS. La barra superior permite elegir idioma y versión:
@@ -57,7 +65,7 @@ La impresión usa `@media print` con márgenes A4 de 15–16 mm, tipografía en 
 Abre el sitio, pega el archivo en la consola del navegador y pulsa Enter. Muestra una tabla con el resultado de cada prueba.
 
 - `tests/navegacion.js`: enlaces, desplazamiento con compensación, menú responsive, teclado y accesos al panel. Ejecútala en escritorio, tablet (768 px) y móvil (375 px).
-- `tests/accesibilidad.js`: contraste, tamaño de objetivos, texto alternativo, ids duplicados, desbordamiento, menú inerte y diálogo modal. Ejecútala en 320, 375, 390, 430, 768, 1024, 1440 y 1920 px.
+- `tests/accesibilidad.js`: contraste, tamaño de objetivos, texto alternativo, ids duplicados, desbordamiento, menú inerte, panel del CV y los tres casos de estudio. Ejecútala en 320, 375, 390, 430, 768, 1024, 1440 y 1920 px.
 
 ## Verlo en local
 

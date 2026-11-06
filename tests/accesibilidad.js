@@ -90,6 +90,30 @@
   check("Panel: el foco vuelve al botón que lo abrió", document.activeElement === opener);
   check("Panel: el fondo deja de estar inerte", !document.getElementById("main").inert);
 
+  // casos de estudio
+  const caseLinks = [...document.querySelectorAll("[data-open-case]")], caseDlg = document.getElementById("caso");
+  check("Casos: un enlace por tarjeta de proyecto", caseLinks.length === document.querySelectorAll("#proyectos .card").length && caseLinks.length > 0);
+  for (const link of caseLinks) {
+    link.focus(); link.click(); await wait(150);
+    document.getAnimations().forEach(a => { try { if (a.effect?.getComputedTiming().iterations !== Infinity) a.finish(); } catch {} });
+    const art = document.getElementById("caso-" + link.dataset.openCase);
+    const title = document.getElementById(caseDlg.getAttribute("aria-labelledby"));
+    check(`Caso «${link.dataset.openCase}»: abre con su título`, !caseDlg.hidden && !art.hidden && art.contains(title), title?.textContent);
+    check(`Caso «${link.dataset.openCase}»: foco en «Cerrar» y fondo inerte`, document.activeElement?.classList.contains("cvp-close") && document.getElementById("main").inert);
+    check(`Caso «${link.dataset.openCase}»: sin desbordamiento`, caseDlg.querySelector(".cvp-body").scrollWidth <= caseDlg.querySelector(".cvp-body").clientWidth + 1);
+    const lowK = scanContrast(caseDlg), smallK = scanTargets(caseDlg);
+    check(`Caso «${link.dataset.openCase}»: contraste`, lowK.length === 0, lowK.slice(0, 4).join(" · "));
+    check(`Caso «${link.dataset.openCase}»: objetivos ≥ 24 px`, smallK.length === 0, smallK.slice(0, 4).join(" · "));
+    const imgs = [...art.querySelectorAll("img")].filter(i => !i.alt);
+    check(`Caso «${link.dataset.openCase}»: imagen con texto alternativo`, imgs.length === 0);
+    // siguiente caso dentro del diálogo
+    const next = art.querySelector(".case-pager .next"); next.click(); await wait(80);
+    check(`Caso «${link.dataset.openCase}»: «Siguiente caso» cambia de caso`, art.hidden && !caseDlg.hidden);
+    document.activeElement.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    for (let i = 0; i < 20 && !caseDlg.hidden; i++) await wait(100);
+    check(`Caso «${link.dataset.openCase}»: Escape cierra y el foco vuelve al enlace`, caseDlg.hidden && document.activeElement === link && !document.getElementById("main").inert);
+  }
+
   console.table(res);
   const failed = res.filter(r => r.resultado !== "OK");
   return `${res.length - failed.length}/${res.length} OK (${innerWidth}px)` + (failed.length ? " · Fallan: " + failed.map(f => `${f.prueba} [${f.detalle}]`).join("; ") : "");

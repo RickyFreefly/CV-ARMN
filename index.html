@@ -281,6 +281,43 @@ body.cvp-open { overflow: hidden; }
 .cvp-sum p { margin: 4px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
 .cvp-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 6px; background: var(--orange-soft); color: var(--orange-ink); font-size: 11px; font-weight: 700; letter-spacing: .02em; vertical-align: 2px; }
 
+/* casos de estudio */
+.card { position: relative; }
+.case-link { align-self: flex-start; margin-top: 4px; font-size: 13.5px; }
+.case-link::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.case-link:focus-visible { outline: none; }
+.card:has(.case-link:focus-visible) { outline: 3px solid var(--orange-ink); outline-offset: 3px; }
+.card:hover .case-link svg { transform: translateX(4px); }
+.case-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.case-media { margin: 0; background: var(--orange-soft); border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3; max-width: 100%; display: grid; place-items: center; }
+.case-media.grey { background: #f3f2ef; }
+.case-media img { width: 100%; height: 100%; object-fit: contain; }
+.case-eyebrow { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
+.case-hero h2 { font-size: clamp(28px, 4.4vw, 42px); letter-spacing: -.04em; line-height: 1.05; }
+.case-sub { margin: 10px 0 0; font-size: 17px; font-weight: 600; color: var(--muted); }
+.case-meta { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.case-meta span { font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 8px; background: #fff; border: 1px solid var(--line); }
+.case-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.case-main { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+.case-main ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.case-main li::marker { color: var(--orange); }
+.case-facts { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.case-facts h3 { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
+.case-facts p { margin: 0; font-weight: 600; }
+.case-results { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.case-results li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14.5px; line-height: 1.5; }
+.case-results svg { width: 18px; height: 18px; margin-top: 2px; color: var(--orange-ink); }
+.case-pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+.case-pager button { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 14px; border: 1.5px solid var(--ink); border-radius: 10px; background: #fff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
+.case-pager button:hover { background: var(--ink); color: #fff; }
+.case-pager .prev svg { transform: rotate(180deg); }
+.case-pager small { display: block; font-size: 11px; font-weight: 600; color: var(--muted); text-align: left; }
+.case-pager button:hover small { color: #fff; }
+@media (max-width: 760px) {
+  .case-hero, .case-grid { grid-template-columns: 1fr; }
+  .case-hero { gap: 20px; }
+}
+
 @media (max-width: 1000px) {
   .skills { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .exp, .exp-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -372,6 +409,7 @@ main:focus { outline: none; }
   <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8zM5 2l.6 1.4L7 4l-1.4.6L5 6l-.6-1.4L3 4l1.4-.6z"/></symbol>
   <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
 </svg>
 
@@ -565,6 +603,7 @@ main:focus { outline: none; }
           <h3>Flowcol</h3>
           <p><span data-en="Cloud ERP for small businesses: sales, purchasing, inventory, accounting and e-invoicing. Five paying clients in under a year.">ERP en la nube para pymes: ventas, compras, inventario, contabilidad y facturación electrónica. Cinco clientes pagos en menos de un año.</span></p>
           <div class="tags"><span>Node.js</span><span>PostgreSQL</span><span>React</span></div>
+          <a class="more case-link" href="#caso-flowcol" data-open-case="flowcol"><span data-en="View case study">Ver caso de estudio</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </div>
       </article>
       <article class="card reveal">
@@ -586,6 +625,7 @@ main:focus { outline: none; }
           <h3>Flow · Gravity Tunnel</h3>
           <p><span data-en="SCADA-style control of the wind tunnel over Modbus TCP, real-time telemetry and a management platform with 15 modules and 5 roles.">Control tipo SCADA del túnel de viento por Modbus TCP, telemetría en tiempo real y plataforma de gestión con 15 módulos y 5 roles.</span></p>
           <div class="tags"><span>Modbus TCP</span><span>WebSockets</span><span>Flutter</span></div>
+          <a class="more case-link" href="#caso-gravity" data-open-case="gravity"><span data-en="View case study">Ver caso de estudio</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </div>
       </article>
       <article class="card reveal">
@@ -606,6 +646,7 @@ main:focus { outline: none; }
           <h3>Primer Paso</h3>
           <p><span data-en="Mobile app for initial mental-health screening and guidance at Universidad El Bosque, from scope definition to delivery.">App móvil de diagnóstico inicial y orientación en salud mental para la Universidad El Bosque, desde el alcance hasta la entrega.</span></p>
           <div class="tags"><span>Flutter</span><span>Discovery</span><span><span data-en="Product">Producto</span></span></div>
+          <a class="more case-link" href="#caso-primer-paso" data-open-case="primer-paso"><span data-en="View case study">Ver caso de estudio</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </div>
       </article>
     </div>
@@ -681,6 +722,23 @@ main:focus { outline: none; }
     <div class="legal">© 2026 Armando Medina. <span data-en="Made with">Hecho con</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg> <span data-en="in Bogotá.">en Bogotá.</span></div>
   </div>
 </footer>
+
+<div class="cvp case" id="caso" role="dialog" aria-modal="true" aria-labelledby="case-title-flowcol" hidden>
+  <div class="cvp-backdrop" data-close></div>
+  <div class="cvp-sheet">
+    <div class="cvp-bar">
+      <span class="logo">AM<b>.</b></span>
+      <div class="nav-end">
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="cvp-close" data-close aria-label="Cerrar / Close"><span data-en="Close">Cerrar</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+    </div>
+    <div class="cvp-body" id="case-body"></div>
+  </div>
+</div>
 
 <div class="cvp" id="hablemos" role="dialog" aria-modal="true" aria-labelledby="cvp-name" hidden>
   <div class="cvp-backdrop" data-close></div>
@@ -758,6 +816,50 @@ main:focus { outline: none; }
       </div>`;
   })();
 
+
+  // Casos de estudio: se generan desde cv-data.js
+  (function renderCases() {
+    const D = window.CV_DATA, box = document.getElementById("case-body");
+    if (!D || !box || !D.projects) return;
+    const h = v => String(v).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const T = (o, tag = "span", attrs = "") => o.es === o.en ? `<${tag}${attrs}>${h(o.es)}</${tag}>` : `<${tag}${attrs} data-en="${h(h(o.en))}">${h(o.es)}</${tag}>`;
+    const L = k => ({ es: D.labels.es[k], en: D.labels.en[k] });
+    const P = D.projects, n = P.length;
+    const arrow = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>';
+    box.innerHTML = P.map((p, i) => {
+      const prev = P[(i - 1 + n) % n], next = P[(i + 1) % n];
+      return `
+      <article class="case-article" id="caso-${p.id}" data-case="${p.id}" hidden>
+        <header class="case-hero cvp-in">
+          <div>
+            <p class="case-eyebrow">${T(L("caseStudy"))} · ${i + 1} ${T(L("of"))} ${n}</p>
+            <h2 id="case-title-${p.id}">${h(p.title)}</h2>
+            <p class="case-sub">${T(p.subtitle)}</p>
+            <p class="case-meta"><span>${T(p.role)}</span><span>${T(p.period)}</span></p>
+          </div>
+          <figure class="case-media${p.id === "gravity" ? " grey" : ""}"><img src="${h(p.image)}" alt="${h(p.imageAlt.es)}" data-alt-en="${h(p.imageAlt.en)}" loading="lazy" width="1200" height="900"></figure>
+        </header>
+        <div class="case-grid">
+          <div class="case-main">
+            <section class="cvp-sec cvp-in"><h3>${T(L("challenge"))}</h3><p class="cvp-lead">${T(p.context)}</p></section>
+            <section class="cvp-sec cvp-in"><h3>${T(L("did"))}</h3><ul>${p.did.map(d => `<li>${T(d)}</li>`).join("")}</ul></section>
+            ${p.decisions.length ? `<section class="cvp-sec cvp-in"><h3>${T(L("decisions"))}</h3><ul>${p.decisions.map(d => `<li>${T(d)}</li>`).join("")}</ul></section>` : ""}
+          </div>
+          <aside class="case-facts cvp-in">
+            <div><h3>${T(L("results"))}</h3><ul class="case-results">${p.results.map(r => `<li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>${T(r)}</li>`).join("")}</ul></div>
+            <div><h3>${T(L("role"))}</h3><p>${T(p.role)}</p></div>
+            <div><h3>${T(L(p.periodLabel === "org" ? "org" : "period"))}</h3><p>${T(p.period)}</p></div>
+            <div><h3>${T(L("stack"))}</h3><div class="cvp-chips">${p.stack.map(x => `<span>${h(x)}</span>`).join("")}</div></div>
+          </aside>
+        </div>
+        <nav class="case-pager cvp-in" aria-label="${h(D.labels.es.caseStudy)}">
+          <button type="button" class="prev" data-goto-case="${prev.id}">${arrow}<span><small>${T(L("prev"))}</small>${h(prev.title)}</span></button>
+          <button type="button" class="next" data-goto-case="${next.id}"><span><small>${T(L("next"))}</small>${h(next.title)}</span>${arrow}</button>
+        </nav>
+      </article>`;
+    }).join("");
+  })();
+
   // Ilustraciones: si existe la imagen generada en /img, reemplaza el SVG provisional
   document.querySelectorAll("[data-img]").forEach(slot => {
     const img = new Image();
@@ -810,7 +912,7 @@ main:focus { outline: none; }
   }
   document.addEventListener("click", e => {
     const a = e.target.closest('a[href^="#"]');
-    if (!a || a.hasAttribute("data-open-cv") || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (!a || a.hasAttribute("data-open-cv") || a.hasAttribute("data-open-case") || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
     const id = a.getAttribute("href").slice(1);
     if (!id || ["es", "en", "hablemos"].includes(id)) return;
     if (goTo(id, true)) { e.preventDefault(); closeMenu(false); }
@@ -889,6 +991,7 @@ main:focus { outline: none; }
     sws.forEach(sw => { sw.dataset.on = lang; sw.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang)); });
     try { localStorage.setItem("am-lang", lang); } catch {}
     menuLang = lang; labelMenu();
+    document.querySelectorAll("img[data-alt-en]").forEach(img => { if (!img.dataset.altEs) img.dataset.altEs = img.alt; img.alt = lang === "en" ? img.dataset.altEn : img.dataset.altEs; });
     document.querySelectorAll("[data-pdf]").forEach(a => { a.href = `cv.html?lang=${lang}&version=${a.dataset.pdf}&print=1#cv`; });
     header.querySelector(".logo").setAttribute("aria-label", lang === "en" ? "Armando Medina, home" : "Armando Medina, inicio");
     document.querySelector('.social a[data-open-cv]').setAttribute("aria-label", lang === "en" ? "Résumé" : "Hoja de vida");
@@ -900,55 +1003,97 @@ main:focus { outline: none; }
   setLang(start, false);
 
 
-  // Panel «Hablemos» con la hoja de vida completa
-  const cvp = document.getElementById("hablemos"), cvpSheet = cvp.querySelector(".cvp-sheet");
-  let lastFocus = null;
-  // fondo inerte mientras el panel está abierto: ni foco ni lector de pantalla
+  // Diálogos modales accesibles (panel del CV y casos de estudio):
+  // foco atrapado, fondo inerte, Escape, foco restaurado y animación de entrada y salida.
   const background = [document.querySelector(".skip"), header, document.getElementById("main"), document.querySelector("footer")].filter(Boolean);
-  // Tab y Mayús+Tab circulan dentro del panel
-  cvp.addEventListener("keydown", e => {
-    if (e.key !== "Tab") return;
-    const f = [...cvp.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(el => el.offsetParent !== null || el === document.activeElement);
-    if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && (document.activeElement === first || !cvp.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  const E = "cubic-bezier(.2,.8,.2,1)";
+  function makeDialog(root, animateIn) {
+    const sheet = root.querySelector(".cvp-sheet"), body = root.querySelector(".cvp-body");
+    let lastFocus = null, closingAnim = null;
+    root.addEventListener("keydown", e => {
+      if (e.key !== "Tab") return;
+      const f = [...root.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(el => el.offsetParent !== null || el === document.activeElement);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !root.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    const dlg = {
+      get open() { return !root.hidden && !closingAnim; },
+      show(focusEl) {
+        if (closingAnim) { closingAnim.onfinish = null; closingAnim = null; root.getAnimations({ subtree: true }).forEach(x => x.cancel()); root.hidden = true; }
+        if (!root.hidden) return;
+        dialogs.forEach(d => { if (d !== dlg && d.open) d.hide(true); });
+        closeMenu(false);
+        lastFocus = document.activeElement;
+        root.hidden = false; document.body.classList.add("cvp-open");
+        background.forEach(el => { el.inert = true; });
+        body.scrollTop = 0;
+        if (!reduce && Element.prototype.animate) {
+          root.querySelector(".cvp-backdrop").animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+          sheet.animate([{ transform: "translateY(100%)" }, { transform: "none" }], { duration: 600, easing: E });
+          animateIn?.();
+        }
+        (focusEl || root.querySelector(".cvp-close")).focus({ preventScroll: true });
+      },
+      hide(instant) {
+        if (root.hidden || closingAnim) return;
+        const done = () => { root.hidden = true; if (!dialogs.some(d => d.open)) { document.body.classList.remove("cvp-open"); background.forEach(el => { el.inert = false; }); syncInert(); } if (!instant) lastFocus?.focus?.({ preventScroll: true }); dlg.onclose?.(); };
+        if (!instant && !reduce && Element.prototype.animate) {
+          root.querySelector(".cvp-backdrop").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "forwards" });
+          closingAnim = sheet.animate([{ transform: "none" }, { transform: "translateY(100%)" }], { duration: 380, easing: "cubic-bezier(.6,0,.8,.3)", fill: "forwards" });
+          // se cierra al terminar la animación o, si el navegador no la reproduce (pestaña en segundo plano), a los 450 ms
+          const finish = () => { if (!closingAnim) return; closingAnim = null; root.getAnimations({ subtree: true }).forEach(a => a.cancel()); done(); };
+          closingAnim.onfinish = finish;
+          setTimeout(finish, 450);
+        } else done();
+      }
+    };
+    root.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => dlg.hide()));
+    return dlg;
+  }
+  const stagger = (root, sel, delay, step, from) => root.querySelectorAll(sel).forEach((el, i) => el.offsetParent !== null && el.animate(from, { duration: 600, delay: delay + i * step, easing: E, fill: "backwards" }));
+  const RISE = [{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }];
+
+  // Panel «Hablemos» con la hoja de vida completa
+  const cvp = document.getElementById("hablemos");
+  const cvDialog = makeDialog(cvp, () => {
+    stagger(cvp, ".cvp-in", 250, 90, RISE);
+    stagger(cvp, ".cvp-job", 520, 70, [{ opacity: 0, transform: "translateX(-14px)" }, { opacity: 1, transform: "none" }]);
+    cvp.querySelector(".cvp-photo").animate([{ transform: "scale(.5) rotate(-15deg)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 800, delay: 300, easing: E, fill: "backwards" });
   });
-  let closingAnim = null;
-  function openCV() {
-    if (closingAnim) { closingAnim.onfinish = null; closingAnim = null; cvp.getAnimations({ subtree: true }).forEach(x => x.cancel()); cvp.hidden = true; }
-    if (!cvp.hidden) return;
-    closeMenu(false);
-    lastFocus = document.activeElement;
-    cvp.hidden = false; document.body.classList.add("cvp-open");
-    background.forEach(el => { el.inert = true; });
-    cvp.querySelector(".cvp-body").scrollTop = 0;
-    if (!reduce && Element.prototype.animate) {
-      const E = "cubic-bezier(.2,.8,.2,1)";
-      cvp.querySelector(".cvp-backdrop").animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
-      cvpSheet.animate([{ transform: "translateY(100%)" }, { transform: "none" }], { duration: 600, easing: E });
-      cvp.querySelectorAll(".cvp-in").forEach((el, i) => el.animate([{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }], { duration: 600, delay: 250 + i * 90, easing: E, fill: "backwards" }));
-      cvp.querySelectorAll(".cvp-job").forEach((el, i) => el.animate([{ opacity: 0, transform: "translateX(-14px)" }, { opacity: 1, transform: "none" }], { duration: 500, delay: 520 + i * 70, easing: E, fill: "backwards" }));
-      cvp.querySelector(".cvp-photo").animate([{ transform: "scale(.5) rotate(-15deg)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 800, delay: 300, easing: E, fill: "backwards" });
-    }
-    cvp.querySelector(".cvp-close").focus({ preventScroll: true });
+
+  // Casos de estudio
+  const caseRoot = document.getElementById("caso");
+  const caseDialog = makeDialog(caseRoot, () => stagger(caseRoot, ".case-article:not([hidden]) .cvp-in", 220, 90, RISE));
+  function showCase(id, push) {
+    const art = document.getElementById("caso-" + id);
+    if (!art) return false;
+    caseRoot.querySelectorAll(".case-article").forEach(a => { a.hidden = a !== art; });
+    caseRoot.setAttribute("aria-labelledby", "case-title-" + id);
+    caseRoot.querySelector(".cvp-body").scrollTop = 0;
+    if (push) try { history.replaceState(null, "", "#caso-" + id); } catch {}
+    return true;
   }
-  function closeCV() {
-    if (cvp.hidden || closingAnim) return;
-    const done = () => { cvp.hidden = true; document.body.classList.remove("cvp-open"); background.forEach(el => { el.inert = false; }); syncInert(); lastFocus?.focus?.({ preventScroll: true }); };
-    if (!reduce && Element.prototype.animate) {
-      cvp.querySelector(".cvp-backdrop").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "forwards" });
-      closingAnim = cvpSheet.animate([{ transform: "none" }, { transform: "translateY(100%)" }], { duration: 380, easing: "cubic-bezier(.6,0,.8,.3)", fill: "forwards" });
-      // se cierra al terminar la animación o, si el navegador no la reproduce (pestaña en segundo plano), a los 450 ms
-      const finish = () => { if (!closingAnim) return; closingAnim = null; cvp.getAnimations({ subtree: true }).forEach(a => a.cancel()); done(); };
-      closingAnim.onfinish = finish;
-      setTimeout(finish, 450);
-    } else done();
-  }
+  caseDialog.onclose = () => { if (location.hash.startsWith("#caso-")) try { history.replaceState(null, "", location.pathname + location.search); } catch {} };
+  document.querySelectorAll("[data-open-case]").forEach(a => a.addEventListener("click", e => {
+    e.preventDefault();
+    if (showCase(a.dataset.openCase, true)) caseDialog.show();
+  }));
+  caseRoot.addEventListener("click", e => {
+    const b = e.target.closest("[data-goto-case]");
+    if (!b || !showCase(b.dataset.gotoCase, true)) return;
+    if (!reduce && Element.prototype.animate) stagger(caseRoot, ".case-article:not([hidden]) .cvp-in", 0, 70, RISE);
+    caseRoot.querySelector(`#caso-${b.dataset.gotoCase} .case-pager .next`).focus({ preventScroll: true });
+  });
+
+  const dialogs = [cvDialog, caseDialog];
+  // compatibilidad con el código existente
+  const openCV = () => cvDialog.show(), closeCV = () => cvDialog.hide();
   document.querySelectorAll("[data-open-cv]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); openCV(); }));
-  cvp.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", closeCV));
-  addEventListener("keydown", e => { if (e.key === "Escape") closeCV(); });
+  addEventListener("keydown", e => { if (e.key === "Escape") dialogs.forEach(d => { if (d.open) d.hide(); }); });
   if (location.hash === "#hablemos") openCV();
+  else if (location.hash.startsWith("#caso-") && showCase(location.hash.slice(6))) caseDialog.show();
 
   // Copiar correo y teléfono
   document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {

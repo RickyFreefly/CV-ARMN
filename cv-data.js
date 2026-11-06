@@ -1,5 +1,5 @@
 /* Fuente única de la hoja de vida (español e inglés).
-   La usan el panel «Hablemos» de index.html y cv.html (editor, vista #cv e impresión en PDF).
+   La usan el panel «Hablemos» de index.html y cv.html (editor, vista #cv e impresión en PDF) y los casos de estudio del portafolio.
    Los campos «todo» marcan evidencia pendiente y no se muestran. */
 window.CV_DATA = {
   "name": "Armando Ricardo Medina Nieto",
@@ -177,7 +177,9 @@ window.CV_DATA = {
           "en": "I designed the program's content and coached participants in applying agile, predictive and innovative approaches to real projects in their organizations."
         }
       ],
-      "short": [0]
+      "short": [
+        0
+      ]
     },
     {
       "kind": "doc",
@@ -268,7 +270,11 @@ window.CV_DATA = {
           "en": "I merged cash, billing and energy reconciliation, previously separate reports, into a single daily closing flow."
         }
       ],
-      "short": [0, 2, 4]
+      "short": [
+        0,
+        2,
+        4
+      ]
     },
     {
       "kind": "pro",
@@ -731,7 +737,20 @@ window.CV_DATA = {
       "productRole": "Cargo de producto",
       "full": "CV completo",
       "short": "CV resumido (2 páginas)",
-      "earlier": "Experiencia anterior"
+      "earlier": "Experiencia anterior",
+      "caseStudy": "Caso de estudio",
+      "viewCase": "Ver caso de estudio",
+      "challenge": "El reto",
+      "did": "Qué hice",
+      "decisions": "Decisiones clave",
+      "role": "Rol",
+      "period": "Periodo",
+      "org": "Organización",
+      "stack": "Tecnología",
+      "results": "Resultados",
+      "prev": "Caso anterior",
+      "next": "Siguiente caso",
+      "of": "de"
     },
     "en": {
       "profile": "Professional profile",
@@ -746,7 +765,216 @@ window.CV_DATA = {
       "productRole": "Product role",
       "full": "Full résumé",
       "short": "Short résumé (2 pages)",
-      "earlier": "Earlier experience"
+      "earlier": "Earlier experience",
+      "caseStudy": "Case study",
+      "viewCase": "View case study",
+      "challenge": "The challenge",
+      "did": "What I did",
+      "decisions": "Key decisions",
+      "role": "Role",
+      "period": "Period",
+      "org": "Organization",
+      "stack": "Technology",
+      "results": "Results",
+      "prev": "Previous case",
+      "next": "Next case",
+      "of": "of"
     }
-  }
+  },
+  "projects": [
+    {
+      "id": "flowcol",
+      "title": "Flowcol",
+      "image": "img/flowcol.png",
+      "imageAlt": {
+        "es": "Ilustración de un monitor con el panel de un ERP en la nube",
+        "en": "Illustration of a monitor showing a cloud ERP dashboard"
+      },
+      "subtitle": {
+        "es": "ERP en la nube (SaaS) para pymes",
+        "en": "Cloud ERP (SaaS) for small businesses"
+      },
+      "role": {
+        "es": "Fundador y Product Manager",
+        "en": "Founder & Product Manager"
+      },
+      "period": {
+        "es": "Nov 2025 – Actual",
+        "en": "Nov 2025 – Present"
+      },
+      "context": {
+        "es": "Muchas pymes llevan sus procesos en Excel o en ERPs sobredimensionados para su tamaño, con procesos manuales propensos a error.",
+        "en": "Many small businesses run their operations on Excel or on ERPs built for much larger companies, with error-prone manual processes."
+      },
+      "did": [
+        {
+          "es": "Hice user research con los primeros clientes y a partir de ahí definí la propuesta de valor, el MVP y el roadmap.",
+          "en": "Ran user research with the first clients and used it to define the value proposition, MVP and roadmap."
+        },
+        {
+          "es": "Dirijo el ciclo completo del producto: discovery, definición funcional, desarrollo, lanzamiento, onboarding de clientes y soporte post-venta.",
+          "en": "I run the full product cycle: discovery, functional definition, development, launch, client onboarding and post-sale support."
+        },
+        {
+          "es": "Reemplacé procesos manuales en Excel por flujos automatizados y validados, adaptados a emprendedores y pequeñas empresas.",
+          "en": "Replaced manual Excel processes with automated, validated workflows built for entrepreneurs and small businesses."
+        }
+      ],
+      "decisions": [
+        {
+          "es": "Priorizar los módulos de ventas, compras, inventario, contabilidad, tesorería y terceros.",
+          "en": "Prioritize the sales, purchasing, inventory, accounting, treasury and third-party modules."
+        },
+        {
+          "es": "Arquitectura multiempresa con usuarios, roles y permisos por compañía.",
+          "en": "Multi-company architecture with users, roles and permissions per company."
+        },
+        {
+          "es": "Facturación electrónica integrada con un proveedor externo mediante un microservicio.",
+          "en": "E-invoicing integrated with an external provider through a microservice."
+        }
+      ],
+      "stack": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "React",
+        "Tailwind CSS",
+        "APIs REST",
+        "Render",
+        "Cloudflare"
+      ],
+      "results": [
+        {
+          "es": "Cinco clientes pagos activos en menos de un año desde el lanzamiento.",
+          "en": "Five active paying clients less than a year after launch."
+        }
+      ],
+      "todo": "TODO: añadir métricas de uso o retención, tiempo ahorrado por cliente y capturas reales del producto."
+    },
+    {
+      "id": "gravity",
+      "title": "Flow · Gravity Tunnel",
+      "image": "img/flow-gravity.png",
+      "imageAlt": {
+        "es": "Ilustración de una pantalla de control industrial y una app móvil con un medidor de RPM",
+        "en": "Illustration of an industrial control screen and a mobile app with an RPM gauge"
+      },
+      "subtitle": {
+        "es": "Control industrial y plataforma de gestión para un túnel de viento",
+        "en": "Industrial control and management platform for a wind tunnel"
+      },
+      "role": {
+        "es": "Analista de Soluciones / Desarrollador Full Stack",
+        "en": "Solutions Analyst / Full Stack Developer"
+      },
+      "period": {
+        "es": "Mar 2023 – Sep 2026",
+        "en": "Mar 2023 – Sep 2026"
+      },
+      "context": {
+        "es": "El túnel necesitaba controlar el variador de frecuencia del motor de forma confiable. Caja, facturación y energía se gestionaban como reportes independientes, y el seguimiento del consumo energético se hacía manualmente fuera del sistema.",
+        "en": "The tunnel needed reliable control of the motor's frequency drive. Cash, billing and energy were handled as separate reports, and energy usage was tracked manually outside the system."
+      },
+      "did": [
+        {
+          "es": "Diseñé e implementé el control tipo SCADA del variador de frecuencia con comunicación Modbus TCP.",
+          "en": "Designed and built SCADA-style control of the frequency drive over Modbus TCP."
+        },
+        {
+          "es": "Implementé telemetría en tiempo real (RPM y % de potencia) por WebSockets a las pantallas de operación y de público, con alertas según el tiempo restante de cada vuelo.",
+          "en": "Implemented real-time telemetry (RPM and % power) over WebSockets to operator and public screens, with alerts based on the time left in each flight."
+        },
+        {
+          "es": "Desarrollé una app de control remoto en Flutter (Android) con la misma lógica y telemetría del panel físico.",
+          "en": "Built a Flutter (Android) remote-control app with the same logic and telemetry as the physical panel."
+        },
+        {
+          "es": "Definí y lideré Flow, la plataforma interna de gestión administrativa, usuarios, reportes, facturación, cierres operativos y energía.",
+          "en": "Defined and led Flow, the internal platform for administration, users, reporting, billing, operational closings and energy."
+        }
+      ],
+      "decisions": [
+        {
+          "es": "Arquitectura dual-host con canales separados de lectura y escritura, para sostener el control aunque falle un enlace.",
+          "en": "Dual-host architecture with separate read and write channels, so control holds even if one link fails."
+        },
+        {
+          "es": "Watchdogs, heartbeats, reconexión automática y verificación de escritura para distinguir «backend conectado» de «señal real del variador».",
+          "en": "Watchdogs, heartbeats, automatic reconnection and write verification to tell \"backend connected\" apart from \"real drive signal\"."
+        },
+        {
+          "es": "Backlog priorizado por impacto operativo y costo de implementación, con requerimientos de las áreas de operación y administración.",
+          "en": "Backlog prioritized by operational impact and implementation cost, with requirements from operations and administration."
+        },
+        {
+          "es": "Control de acceso con 5 roles sobre más de 15 módulos, según la responsabilidad operativa.",
+          "en": "Access control with 5 roles across more than 15 modules, based on operational responsibility."
+        }
+      ],
+      "stack": [
+        "Modbus TCP",
+        "WebSockets",
+        "Flutter (Android)"
+      ],
+      "results": [
+        {
+          "es": "Flow es hoy la herramienta central de la operación.",
+          "en": "Flow is now the operation's central tool."
+        },
+        {
+          "es": "Caja, facturación y energía se concilian en un único cierre diario.",
+          "en": "Cash, billing and energy are reconciled in a single daily closing."
+        },
+        {
+          "es": "El consumo de energía es trazable por zona y se puede auditar.",
+          "en": "Energy usage is traceable by zone and can be audited."
+        }
+      ],
+      "todo": "TODO: completar el stack de Flow (backend, base de datos) y añadir métricas de disponibilidad, tiempo de cierre o incidentes."
+    },
+    {
+      "id": "primer-paso",
+      "title": "Primer Paso",
+      "image": "img/primer-paso.png",
+      "imageAlt": {
+        "es": "Ilustración de un teléfono con una app de bienestar",
+        "en": "Illustration of a phone with a wellbeing app"
+      },
+      "subtitle": {
+        "es": "App móvil de orientación en salud mental",
+        "en": "Mobile app for mental-health guidance"
+      },
+      "role": {
+        "es": "Líder del desarrollo",
+        "en": "Development lead"
+      },
+      "period": {
+        "es": "Universidad El Bosque",
+        "en": "Universidad El Bosque"
+      },
+      "periodLabel": "org",
+      "context": {
+        "es": "Aplicación móvil para el diagnóstico inicial y la orientación en salud mental.",
+        "en": "Mobile app for initial mental-health screening and guidance."
+      },
+      "did": [
+        {
+          "es": "Lideré el desarrollo de la aplicación desde la definición del alcance hasta la entrega.",
+          "en": "Led the app's development from scope definition to delivery."
+        }
+      ],
+      "decisions": [],
+      "stack": [
+        "Flutter"
+      ],
+      "results": [
+        {
+          "es": "Aplicación desarrollada y entregada en la Universidad El Bosque.",
+          "en": "App developed and delivered at Universidad El Bosque."
+        }
+      ],
+      "todo": "TODO: público objetivo, alcance funcional, fechas del proyecto, usuarios o resultados de adopción."
+    }
+  ]
 };
