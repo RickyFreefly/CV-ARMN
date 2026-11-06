@@ -77,4 +77,6 @@ Luego abre http://localhost:8000.
 
 ## Publicar con GitHub Pages
 
-En el repositorio, ve a **Settings → Pages**, elige la rama `main` y la carpeta `/ (root)`, y guarda. El sitio queda en `https://rickyfreefly.github.io/CV-ARMN/`.
+El sitio se publica con GitHub Pages desde la rama `main` (carpeta `/ (root)`) en el dominio propio **https://armandomedina.dev**, definido en el archivo `CNAME`. La dirección anterior `rickyfreefly.github.io/CV-ARMN` redirige al dominio.
+
+DNS (Hostinger): registros `A` de `@` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`; registros `AAAA` de `@` a `2606:50c0:8000::153` … `2606:50c0:8003::153`; `CNAME` de `www` a `rickyfreefly.github.io`. HTTPS es obligatorio (dominio `.dev`) y está forzado en la configuración de Pages.
