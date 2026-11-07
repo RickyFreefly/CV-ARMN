@@ -1,385 +1,36 @@
+<!doctype html>
+<html lang="es" data-order="0">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Armando Medina</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>Armando Medina · Product Manager Técnico | Product Owner</title>
+<meta name="description" content="Ingeniero de Sistemas que convierte necesidades de negocio en productos digitales escalables: gestión de producto, arquitectura de software, inteligencia artificial y liderazgo de equipos.">
+<link rel="canonical" href="https://armandomedina.dev/">
+<link rel="alternate" hreflang="es" href="https://armandomedina.dev/">
+<link rel="alternate" hreflang="en" href="https://armandomedina.dev/en/">
+<link rel="alternate" hreflang="x-default" href="https://armandomedina.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Armando Medina">
+<meta property="og:title" content="Armando Medina · Product Manager Técnico | Product Owner">
+<meta property="og:description" content="Ingeniero de Sistemas que convierte necesidades de negocio en productos digitales escalables: gestión de producto, arquitectura de software, inteligencia artificial y liderazgo de equipos.">
+<meta property="og:url" content="https://armandomedina.dev/">
+<meta property="og:image" content="https://armandomedina.dev/img/og-es.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fdfcfa">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
-<style>
-/* Layout: portafolio de una página, columna centrada de 1120px; ilustraciones de línea negra con un solo acento naranja. Tema claro único, por decisión. */
-:root {
-  --bg: #fdfcfa;
-  --ink: #15130f;
-  --muted: #5f5a52;
-  --line: #ece7df;
-  --orange: #f26b1d;
-  --orange-soft: #fff1e7;
-  --orange-ink: #b14a0c;    /* naranja para texto pequeño y foco: 5.3:1 sobre el fondo */
-  --orange-strong: #c2540f; /* rellenos con texto blanco y títulos grandes: 4.6:1 */
-  --card: #ffffff;
-  --f-display: "Sora", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --ease: cubic-bezier(.2,.8,.2,1);
-  color-scheme: light;
-}
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h, 80px) + 12px); }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
-a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 3px solid var(--orange-ink); outline-offset: 3px; border-radius: 6px; }
-svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-
-.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-
-/* nav */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
-header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter: blur(10px); }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 18px; }
-.logo { font-family: var(--f-display); font-weight: 800; font-size: 26px; letter-spacing: -.06em; display: inline-flex; align-items: baseline; }
-.logo b { color: var(--orange-ink); }
-.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; font-weight: 600; font-size: 14px; }
-.nav ul a { position: relative; padding: 4px 0; white-space: nowrap; transition: color .2s; }
-.nav ul a::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 18px; height: 2px; border-radius: 2px; background: var(--orange); transform: translateX(-50%) scaleX(0); transition: transform .3s var(--ease); }
-.nav ul a:hover, .nav ul a.on { color: var(--orange-ink); }
-.nav ul a.on::after { transform: translateX(-50%) scaleX(1); }
-
-/* botón de menú (solo en pantallas estrechas) */
-.menu-btn { display: none; width: 44px; height: 44px; border: 1.5px solid var(--ink); border-radius: 10px; background: #fff; cursor: pointer; place-items: center; padding: 0; transition: background .2s; }
-.menu-btn:hover { background: var(--orange-soft); }
-.menu-btn .bars { position: relative; width: 18px; height: 12px; display: block; }
-.menu-btn .bars i { position: absolute; left: 0; width: 100%; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .35s var(--ease), opacity .2s, top .35s var(--ease); }
-.menu-btn .bars i:nth-child(1) { top: 0; }
-.menu-btn .bars i:nth-child(2) { top: 5px; }
-.menu-btn .bars i:nth-child(3) { top: 10px; }
-.menu-btn[aria-expanded="true"] .bars i:nth-child(1) { top: 5px; transform: rotate(45deg); }
-.menu-btn[aria-expanded="true"] .bars i:nth-child(2) { opacity: 0; transform: scaleX(.2); }
-.menu-btn[aria-expanded="true"] .bars i:nth-child(3) { top: 5px; transform: rotate(-45deg); }
-
-.nav-end { display: flex; align-items: center; gap: 12px; }
-.lang { display: flex; padding: 3px; border: 1.5px solid var(--line); border-radius: 999px; position: relative; background: #fff; }
-.lang::before { content: ""; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 999px; background: var(--orange-strong); transition: transform .35s var(--ease); }
-.lang[data-on="en"]::before { transform: translateX(100%); }
-.lang button { position: relative; z-index: 1; border: 0; background: none; font: inherit; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 6px 11px; border-radius: 999px; cursor: pointer; color: var(--muted); transition: color .3s; }
-.lang button[aria-pressed="true"] { color: #fff; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; border: 1.5px solid var(--ink); cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s, color .2s; }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgba(21,19,15,.45); }
-.btn svg { transition: transform .25s var(--ease); }
-.btn:hover svg { transform: translateX(3px); }
-.btn.dark { background: var(--ink); color: #fff; padding: 10px 16px; }
-.btn.orange { background: var(--orange-strong); border-color: var(--orange-strong); color: #fff; }
-.btn.outline { background: transparent; }
-.btn.outline svg { color: var(--orange); }
-
-/* hero */
-.hero .wrap { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; padding-block: 48px 40px; }
-.hi { font-weight: 700; font-size: 16px; margin: 0; }
-.squiggle { display: block; width: 34px; height: 8px; margin-top: 4px; }
-.squiggle path { fill: none; stroke: var(--orange); stroke-width: 2.4; stroke-linecap: round; }
-h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(46px, 7vw, 80px); line-height: 1; letter-spacing: -.045em; margin: 22px 0 14px; }
-h1 .w { display: inline-block; white-space: nowrap; }
-h1 .ch { display: inline-block; }
-h1 .orange { color: var(--orange-strong); }
-.role { font-weight: 600; color: var(--muted); font-size: 17px; margin: 0; }
-.pitch { max-width: 46ch; color: var(--muted); margin: 22px 0 30px; font-size: 15.5px; }
-.cta { display: flex; gap: 14px; flex-wrap: wrap; }
-.stats { display: flex; gap: 34px; margin-top: 36px; flex-wrap: wrap; }
-.stats div { display: flex; flex-direction: column; max-width: 14ch; }
-.stats b { font-family: var(--f-display); font-size: 26px; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-.stats span { font-size: 12.5px; color: var(--muted); }
-
-/* illustration slots: SVG de respaldo, se reemplaza si existe la imagen */
-.illo { position: relative; margin: 0; }
-.illo img { width: 100%; height: auto; display: block; }
-.illo.has-img svg.art { display: none; }
-.hero .illo img { animation: float 6s ease-in-out infinite; }
-svg.art { width: 100%; height: auto; display: block; overflow: visible; }
-svg.art .k { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-svg.art .o { fill: var(--orange); }
-svg.art .w { fill: #fff; }
-svg.art .ink { fill: var(--ink); }
-.lamp { transform-origin: 175px 0; animation: swing 5s ease-in-out infinite; }
-.glow { animation: glow 2.6s ease-in-out infinite; }
-.float { animation: float 6s ease-in-out infinite; }
-.typing { animation: type .5s steps(2) infinite; }
-.steam path { stroke: var(--muted); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-dasharray: 30; animation: steam 2.4s linear infinite; }
-.steam path:nth-child(2) { animation-delay: .8s; }
-.leaf { transform-origin: 452px 108px; animation: sway 4s ease-in-out infinite; }
-
-/* sections */
-section, footer { scroll-margin-top: calc(var(--nav-h, 80px) + 12px); }
-section[tabindex="-1"]:focus, footer[tabindex="-1"]:focus { outline: none; }
-.sec { padding-block: 56px; }
-.sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
-h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(24px, 3vw, 30px); letter-spacing: -.03em; margin: 0; line-height: 1.15; text-wrap: balance; }
-.more { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; font-size: 14px; }
-.more svg { color: var(--orange); transition: transform .25s var(--ease); }
-.more:hover svg { transform: translateX(4px); }
-
-.about .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
-.about p { color: var(--muted); max-width: 58ch; margin: 18px 0 26px; }
-.traits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 20px; }
-.trait { display: flex; gap: 10px; align-items: center; font-weight: 600; font-size: 13.5px; }
-.trait svg { color: var(--orange); width: 22px; height: 22px; transition: transform .4s var(--ease); }
-.trait:hover svg { transform: rotate(-12deg) scale(1.15); }
-hr.div { border: 0; border-top: 1px solid var(--line); margin: 0; }
-
-.skills { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px; }
-.skill { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 8px 14px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; font-size: 12.5px; font-weight: 600; transition: transform .3s var(--ease), border-color .3s, box-shadow .3s; }
-.skill svg { width: 30px; height: 30px; stroke-width: 1.6; transition: color .3s; }
-.skill:hover { transform: translateY(-6px); border-color: var(--orange); box-shadow: 0 16px 30px -18px rgba(242,107,29,.6); }
-.skill:hover svg { color: var(--orange); }
-
-.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform .35s var(--ease), box-shadow .35s; }
-.card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -26px rgba(21,19,15,.35); }
-.thumb { aspect-ratio: 4/3; max-width: 100%; display: grid; place-items: center; background: var(--orange-soft); position: relative; overflow: hidden; }
-.thumb.grey { background: #f3f2ef; }
-.thumb svg.art { width: 74%; transition: transform .5s var(--ease); }
-.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform .5s var(--ease); }
-.card:hover .thumb img { transform: scale(1.04); }
-.card:hover .thumb svg.art { transform: scale(1.05) rotate(-1deg); }
-.card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.card h3 { margin: 0; font-family: var(--f-display); font-size: 16px; letter-spacing: -.02em; display: flex; gap: 8px; align-items: center; }
-.card h3 svg { color: var(--orange); width: 16px; height: 16px; }
-.card p { margin: 0; color: var(--muted); font-size: 13.5px; flex: 1; }
-.tags { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--muted); font-weight: 600; }
-.tags span + span::before { content: "•"; color: var(--orange-ink); margin-right: 10px; }
-
-.exp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; position: relative; }
-.job { display: grid; grid-template-columns: 56px 1fr; gap: 14px; position: relative; }
-.job-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--orange-soft); display: grid; place-items: center; transition: background .3s, color .3s; }
-.job-ic svg { width: 24px; height: 24px; }
-.job:hover .job-ic { background: var(--orange); color: #fff; }
-.when { color: var(--orange-ink); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
-.job h3 { margin: 2px 0 2px; font-family: var(--f-display); font-size: 15px; letter-spacing: -.02em; line-height: 1.3; }
-.org { color: var(--orange-ink); font-size: 12.5px; font-weight: 600; }
-.job p { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
-
-.process { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; position: relative; }
-.process::before { content: ""; position: absolute; top: 34px; left: 10%; right: 10%; height: 2px; background: repeating-linear-gradient(90deg, var(--orange) 0 8px, transparent 8px 16px); opacity: .55; animation: dash 1.2s linear infinite; }
-.step { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
-.step-ic { width: 68px; height: 68px; border-radius: 50%; background: var(--orange-soft); display: grid; place-items: center; margin-bottom: 10px; border: 6px solid var(--bg); box-sizing: content-box; transition: transform .35s var(--ease), background .3s, color .3s; }
-.step-ic svg { width: 26px; height: 26px; }
-.step:hover .step-ic { transform: translateY(-6px) rotate(-6deg); background: var(--orange); color: #fff; }
-.step .n { color: var(--orange-ink); font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
-.step b { font-size: 14px; }
-.step span:last-child { font-size: 12.5px; color: var(--muted); max-width: 20ch; }
-
-footer { background: #fbf4ee; margin-top: 40px; }
-footer .wrap { padding-block: 48px 26px; }
-.foot { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 30px; align-items: start; }
-.foot h2 .orange { color: var(--orange-strong); }
-.contact { display: flex; flex-direction: column; gap: 14px; font-size: 14px; font-weight: 500; }
-.contact div { display: flex; gap: 12px; align-items: center; overflow-wrap: anywhere; }
-.copy-btn { border: 0; background: none; padding: 2px 6px; font: inherit; font-size: 12px; color: var(--orange-ink); font-weight: 700; cursor: pointer; }
-.social b { display: block; font-size: 14px; margin-bottom: 14px; }
-.social .row { display: flex; gap: 12px; flex-wrap: wrap; }
-.social a { width: 44px; height: 44px; border: 1.5px solid var(--ink); border-radius: 10px; display: grid; place-items: center; background: #fff; transition: transform .25s var(--ease), background .2s, color .2s; }
-.social a:hover { transform: translateY(-3px); background: var(--ink); color: #fff; }
-.legal { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 40px; display: flex; justify-content: center; gap: 6px; align-items: center; }
-.legal svg { color: var(--orange); fill: var(--orange); width: 14px; height: 14px; animation: beat 1.6s ease-in-out infinite; }
-
-/* scroll reveal: visible en reposo; anima solo donde el navegador soporta view timelines */
-@supports (animation-timeline: view()) {
-  .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
-}
-
-@keyframes rise { from { opacity: .15; transform: translateY(36px); } to { opacity: 1; transform: none; } }
-@keyframes swing { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
-@keyframes glow { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
-@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-@keyframes type { 50% { transform: translateY(1.5px); } }
-@keyframes steam { from { stroke-dashoffset: 30; opacity: 0; } 40% { opacity: 1; } to { stroke-dashoffset: -30; opacity: 0; } }
-@keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
-@keyframes dash { to { background-position: 16px 0; } }
-@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } }
-
-
-/* Panel «Hablemos»: hoja de vida completa */
-body.cvp-open { overflow: hidden; }
-.cvp { position: fixed; inset: 0; z-index: 100; display: flex; justify-content: center; align-items: flex-end; }
-.cvp-backdrop { position: absolute; inset: 0; background: rgba(21,19,15,.42); backdrop-filter: blur(6px); }
-.cvp-sheet { position: relative; width: min(980px, 100%); height: calc(100% - 24px - env(safe-area-inset-top, 0px)); background: var(--bg); border-radius: 22px 22px 0 0; display: flex; flex-direction: column; box-shadow: 0 -30px 80px -30px rgba(21,19,15,.5); overflow: hidden; }
-.cvp-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); border-bottom: 1px solid var(--line); background: color-mix(in oklab, var(--bg) 92%, transparent); }
-.cvp-close, .cvp-pdf { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--ink); background: #fff; border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
-.cvp-close:hover, .cvp-pdf:hover { background: var(--ink); color: #fff; }
-.cvp-content { display: contents; }
-.cvp-pdf svg { color: var(--orange); }
-.cvp-pdf:hover svg { color: #fff; }
-.cvp-body { overflow-y: auto; padding-block: 36px 60px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 40px; }
-.cvp-head { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; }
-.cvp-head h2 { font-size: clamp(30px, 5vw, 46px); letter-spacing: -.045em; line-height: 1.02; }
-.cvp-head .orange { color: var(--orange-strong); }
-.cvp-role { margin: 10px 0 0; font-weight: 600; color: var(--muted); font-size: 16px; }
-.cvp-contact { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
-.cvp-contact span, .cvp-contact a { display: inline-flex; gap: 7px; align-items: center; overflow-wrap: anywhere; }
-.cvp-contact svg { width: 15px; height: 15px; color: var(--orange); }
-.cvp-contact a:hover { color: var(--orange-ink); }
-.cvp-photo { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--bg), 0 0 0 7px var(--orange); }
-.cvp-sec h3, .cvp-cta h3 { margin: 0 0 18px; font-family: var(--f-display); font-size: 20px; letter-spacing: -.03em; display: flex; flex-direction: column; gap: 6px; }
-.cvp-sec h3::after { content: ""; width: 30px; height: 3px; border-radius: 3px; background: var(--orange); }
-.cvp-lead { margin: 0; color: var(--muted); max-width: 75ch; font-size: 15px; line-height: 1.7; }
-.cvp-timeline { position: relative; display: flex; flex-direction: column; gap: 26px; padding-left: 26px; }
-.cvp-timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--orange), color-mix(in oklab, var(--orange) 12%, transparent)); border-radius: 2px; }
-.cvp-job { position: relative; }
-.cvp-job::before { content: ""; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2.5px solid var(--orange); box-sizing: border-box; transition: background .25s; }
-.cvp-job:hover::before { background: var(--orange); }
-.cvp-job-top { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; align-items: baseline; }
-.cvp-job h4 { margin: 0; font-size: 15.5px; font-weight: 500; line-height: 1.35; }
-.cvp-job h4 b { font-weight: 700; }
-.cvp-job h4 i { font-style: normal; color: var(--orange-ink); margin: 0 2px; }
-.cvp-job h4 > span { color: var(--orange-ink); }
-.cvp-date { font-size: 12.5px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.cvp-job ul { margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 80ch; }
-.cvp-job li::marker { color: var(--orange); }
-.cvp-stack { margin: 8px 0 0; font-size: 12.5px; font-style: italic; color: var(--muted); }
-.cvp-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; }
-.cvp-grid > * { min-width: 0; display: flex; flex-direction: column; gap: 40px; }
-.cvp-grid > section { gap: 0; }
-.cvp-comp { margin-bottom: 18px; }
-.cvp-comp > b { display: block; font-size: 13.5px; margin-bottom: 8px; }
-.cvp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.cvp-chips span { font-size: 12.5px; padding: 4px 10px; border-radius: 8px; background: var(--orange-soft); font-weight: 500; transition: background .2s, color .2s; }
-.cvp-chips span:hover { background: var(--orange-strong); color: #fff; }
-.cvp-list, .cvp-certs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.cvp-list li, .cvp-certs li { display: flex; flex-direction: column; font-size: 14px; }
-.cvp-list li > span, .cvp-certs li > span { font-size: 12.5px; color: var(--muted); }
-.cvp-certs { margin-bottom: 20px; }
-.cvp-certs > b { display: block; font-size: 13.5px; margin-bottom: 10px; color: var(--orange-ink); }
-.cvp-certs li { flex-direction: row; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
-.cvp-certs li > span { font-weight: 700; font-variant-numeric: tabular-nums; }
-.cvp-cta { background: #fbf4ee; border-radius: 18px; padding: 28px; }
-.cvp-cta p { margin: -6px 0 18px; color: var(--muted); }
-.cvp-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.cvp-pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
-.cvp-pill svg { color: var(--orange); width: 17px; height: 17px; }
-@media (max-width: 760px) {
-  .cvp-sheet { height: calc(100% - 10px - env(safe-area-inset-top, 0px)); border-radius: 18px 18px 0 0; }
-  .cvp-head { grid-template-columns: 1fr; }
-  .cvp-photo { order: -1; width: 96px; height: 96px; }
-  .cvp-grid { grid-template-columns: 1fr; }
-  .cvp-summary { grid-template-columns: 1fr; }
-}
-
-
-/* competencias por grupo */
-.skill-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
-.skill-group { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.skill-group h3 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
-.skill-group .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-/* experiencia: profesional y docente */
-.exp-note { margin: -10px 0 26px; color: var(--muted); font-size: 14px; }
-.exp-title { margin: 0 0 18px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
-.exp + .exp-title { margin-top: 38px; }
-.exp-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-/* panel: resumen y etiquetas */
-.cvp-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.cvp-sum { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.cvp-sum-label { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-ink); }
-.cvp-sum b { font-family: var(--f-display); font-size: 20px; letter-spacing: -.03em; }
-.cvp-sum p { margin: 4px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
-.cvp-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 6px; background: var(--orange-soft); color: var(--orange-ink); font-size: 11px; font-weight: 700; letter-spacing: .02em; vertical-align: 2px; }
-
-/* casos de estudio */
-.card { position: relative; }
-.case-link { align-self: flex-start; margin-top: 4px; font-size: 13.5px; }
-.case-link::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
-.case-link:focus-visible { outline: none; }
-.card:has(.case-link:focus-visible) { outline: 3px solid var(--orange-ink); outline-offset: 3px; }
-.card:hover .case-link svg { transform: translateX(4px); }
-.case-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-.case-media { margin: 0; background: var(--orange-soft); border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3; max-width: 100%; display: grid; place-items: center; }
-.case-media.grey { background: #f3f2ef; }
-.case-media img { width: 100%; height: 100%; object-fit: contain; }
-.case-eyebrow { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
-.case-hero h2 { font-size: clamp(28px, 4.4vw, 42px); letter-spacing: -.04em; line-height: 1.05; }
-.case-sub { margin: 10px 0 0; font-size: 17px; font-weight: 600; color: var(--muted); }
-.case-meta { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.case-meta span { font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 8px; background: #fff; border: 1px solid var(--line); }
-.case-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 40px; align-items: start; }
-.case-main { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
-.case-main ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: 15px; line-height: 1.6; }
-.case-main li::marker { color: var(--orange); }
-.case-facts { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
-.case-facts h3 { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
-.case-facts p { margin: 0; font-weight: 600; }
-.case-results { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.case-results li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14.5px; line-height: 1.5; }
-.case-results svg { width: 18px; height: 18px; margin-top: 2px; color: var(--orange-ink); }
-.case-pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
-.case-pager button { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 14px; border: 1.5px solid var(--ink); border-radius: 10px; background: #fff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
-.case-pager button:hover { background: var(--ink); color: #fff; }
-.case-pager .prev svg { transform: rotate(180deg); }
-.case-pager small { display: block; font-size: 11px; font-weight: 600; color: var(--muted); text-align: left; }
-.case-pager button:hover small { color: #fff; }
-@media (max-width: 760px) {
-  .case-hero, .case-grid { grid-template-columns: 1fr; }
-  .case-hero { gap: 20px; }
-}
-
-@media (max-width: 1000px) {
-  .skills { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .exp, .exp-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .skill-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 860px) {
-  .menu-btn { display: grid; }
-  .nav ul {
-    position: absolute; top: 100%; left: 0; right: 0;
-    flex-direction: column; gap: 2px;
-    padding-block: 10px 18px;
-    padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px));
-    background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 24px 40px -28px rgba(21,19,15,.35);
-    font-size: 17px;
-    visibility: hidden; opacity: 0; transform: translateY(-10px);
-    transition: opacity .25s var(--ease), transform .35s var(--ease), visibility 0s linear .35s;
-  }
-  .nav[data-open] ul { visibility: visible; opacity: 1; transform: none; transition: opacity .25s var(--ease), transform .35s var(--ease), visibility 0s; }
-  .nav ul li { opacity: 0; transform: translateY(-6px); transition: opacity .25s, transform .35s var(--ease); }
-  .nav[data-open] ul li { opacity: 1; transform: none; }
-  .nav[data-open] ul li:nth-child(2) { transition-delay: .03s; }
-  .nav[data-open] ul li:nth-child(3) { transition-delay: .06s; }
-  .nav[data-open] ul li:nth-child(4) { transition-delay: .09s; }
-  .nav[data-open] ul li:nth-child(5) { transition-delay: .12s; }
-  .nav[data-open] ul li:nth-child(6) { transition-delay: .15s; }
-  .nav ul a { display: flex; padding: 12px 4px; border-bottom: 1px solid var(--line); }
-  .nav ul li:last-child a { border-bottom: 0; }
-  .nav ul a::after { left: auto; right: 4px; bottom: 50%; width: 8px; height: 8px; border-radius: 50%; transform: translateY(50%) scale(0); }
-  .nav ul a.on::after { transform: translateY(50%) scale(1); }
-  .hero .wrap, .about .wrap { grid-template-columns: 1fr; }
-  .hero .illo { order: -1; max-width: 520px; }
-  .work { grid-template-columns: 1fr; }
-  .foot { grid-template-columns: 1fr; }
-  .process { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
-  .process::before { display: none; }
-  .traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 520px) {
-  .nav .btn.dark { display: none; }
-  .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .exp, .exp-3 { grid-template-columns: 1fr; }
-  .skill-groups { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  html { scroll-behavior: auto; }
-}
-
-/* accesibilidad */
-.skip { position: absolute; left: max(12px, env(safe-area-inset-left, 0px)); top: calc(env(safe-area-inset-top, 0px) + 8px); z-index: 200; padding: 10px 14px; border-radius: 10px; background: var(--ink); color: #fff; font-weight: 700; transform: translateY(-160%); transition: transform .2s var(--ease); }
-.skip:focus { transform: none; }
-.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.copy-btn { min-height: 28px; min-width: 44px; padding: 4px 8px; border-radius: 6px; }
-.copy-btn:hover { background: var(--orange-soft); }
-.more { padding-block: 4px; }
-.lang button { min-height: 28px; }
-main:focus { outline: none; }
-</style>
-
-<!-- íconos reutilizables -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+<link rel="stylesheet" href="/assets/site.css?v=mw5ywsr9">
+<script>(function(){var m={"en":"/en/","es":"/","hablemos":"/contacto/","contacto":"/contacto/","sobre-mi":"/sobre-mi/","competencias":"/sobre-mi/","proceso":"/sobre-mi/#metodologia","proyectos":"/proyectos/","experiencia":"/experiencia/","inicio":"/","caso-flowcol":"/proyectos/flowcol/","caso-gravity":"/proyectos/flow-gravity-tunnel/","caso-primer-paso":"/proyectos/primer-paso/"},k=location.hash.slice(1);if(m[k]&&m[k]!==location.pathname)location.replace(m[k]);})();</script>
+<script src="/assets/site.js?v=mw5ywsr9" defer></script>
+</head>
+<body data-page="home">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
@@ -412,694 +63,95 @@ main:focus { outline: none; }
   <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
 </svg>
-
-<a class="skip" href="#main" data-en="Skip to content">Saltar al contenido</a>
+<a class="skip" href="#main">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="/" aria-label="Armando Medina, Inicio">AM<b>.</b></a>
+      <nav class="site-nav" aria-label="Secciones del sitio">
+        <ul id="site-menu" class="menu">
+          <li><a href="/" aria-current="page" class="on">Inicio</a></li>
+          <li><a href="/sobre-mi/">Sobre mí</a></li>
+          <li><a href="/proyectos/">Proyectos</a></li>
+          <li><a href="/experiencia/">Experiencia</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
+          <li class="menu-cta"><a class="btn dark" href="/contacto/">Hablemos <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+      </nav>
+      <div class="bar-end">
+        <div class="lang" role="group" aria-label="Idioma" data-on="es">
+          <a href="/" hreflang="es" lang="es" data-lang="es" aria-current="true"><span aria-hidden="true">ES</span><span class="sr-only">Español</span></a>
+          <a href="/en/" hreflang="en" lang="en" data-lang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+        </div>
+        <a class="btn dark talk" href="/contacto/">Hablemos <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+        <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-menu" aria-label="Abrir menú" data-label-open="Abrir menú" data-label-close="Cerrar menú">
+          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </header>
 <p class="sr-only" id="live" aria-live="polite"></p>
-<header class="nav">
-  <div class="wrap">
-    <a href="#inicio" class="logo" aria-label="Armando Medina, inicio">AM<b>.</b></a>
-    <nav aria-label="Secciones" id="site-nav">
-      <ul id="nav-menu">
-        <li><a href="#inicio" class="on"><span data-en="Home">Inicio</span></a></li>
-        <li><a href="#sobre-mi"><span data-en="About">Sobre mí</span></a></li>
-        <li><a href="#competencias"><span data-en="Skills">Competencias</span></a></li>
-        <li><a href="#proyectos"><span data-en="Work">Proyectos</span></a></li>
-        <li><a href="#experiencia"><span data-en="Experience">Experiencia</span></a></li>
-        <li><a href="#contacto"><span data-en="Contact">Contacto</span></a></li>
-      </ul>
-    </nav>
-    <div class="nav-end">
-    <div class="lang" role="group" aria-label="Idioma / Language">
-      <button type="button" data-lang="es" aria-pressed="true">ES</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-    <a href="#contacto" class="btn dark nav-cta"><span data-en="Let&#x27;s talk">Hablemos</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
-    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
-      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    </button>
-    </div>
-  </div>
-</header>
-
 <main id="main" tabindex="-1">
-<section class="hero" id="inicio">
-  <div class="wrap">
-    <div>
-      <p class="hi"><span data-en="Hi, I&#x27;m">Hola, soy</span></p>
-      <svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
-      <h1 id="name" aria-label="Armando Medina"><span class="w">Armando</span> <span class="w orange">Medina</span></h1>
-      <p class="role"><span data-en="Technical Product Manager | Product Owner">Product Manager Técnico | Product Owner</span></p>
-      <p class="pitch"><span data-en="Systems Engineer focused on turning business needs into scalable digital products. I combine product management, software architecture, artificial intelligence and team leadership to take solutions from discovery through implementation and ongoing evolution.">Ingeniero de Sistemas especializado en transformar necesidades de negocio en productos digitales escalables. Combino gestión de producto, arquitectura de software, inteligencia artificial y liderazgo de equipos para llevar soluciones desde el descubrimiento hasta su implementación y evolución.</span></p>
-      <div class="cta">
-        <a href="#proyectos" class="btn orange"><span data-en="View my work">Ver mi trabajo</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
-        <a href="#hablemos" data-open-cv class="btn outline"><span data-en="View full CV">Ver CV completo</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-book"/></svg></a>
-        <a href="cv.html?lang=es&amp;version=completo&amp;print=1#cv" data-pdf="completo" target="_blank" rel="noopener" class="btn outline"><span data-en="Download CV (PDF)">Descargar CV en PDF</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
-      </div>
-      <div class="stats">
-        <div><b data-count="14">14+</b><span><span data-en="years of professional experience">años de experiencia profesional</span></span></div>
-        <div><b data-count="5">5</b><span><span data-en="paying Flowcol clients">clientes pagos en Flowcol</span></span></div>
-        <div><b data-count="3">3</b><span><span data-en="universities as a lecturer">universidades como docente</span></span></div>
-      </div>
-    </div>
 
-    <figure class="illo" data-img="img/hero.png">
-      <svg class="art" viewBox="0 0 540 400" role="img" aria-label="Ilustración: Armando trabajando en su portátil sobre un puf">
-        <!-- lámpara -->
-        <g class="lamp">
-          <path class="k" d="M175 0v70"/>
-          <path class="k w" d="M135 112c0-24 18-42 40-42s40 18 40 42z"/>
-          <circle class="o glow" cx="175" cy="124" r="16" opacity=".5"/>
-          <circle class="o" cx="175" cy="118" r="6"/>
-          <path class="k" d="M160 140l-4 8M175 144v9M190 140l4 8" stroke-width="2.4"/>
-        </g>
-        <!-- repisa -->
-        <path class="k" d="M380 150h150M392 150v8M518 150v8"/>
-        <rect class="k w" x="398" y="78" width="12" height="72" rx="2"/>
-        <rect class="k w" x="414" y="86" width="12" height="64" rx="2"/>
-        <rect class="k o" x="430" y="92" width="11" height="58" rx="2" transform="rotate(-8 435 150)"/>
-        <g class="leaf"><path class="k" d="M470 108c-6-18 2-34 14-40 4 16-2 32-14 40zM470 108c10-14 26-18 38-12-8 14-24 18-38 12zM470 108c-14-8-18-22-14-34 12 6 18 20 14 34z"/></g>
-        <path class="k o" d="M452 112h36l-5 36h-26z"/>
-        <!-- piso -->
-        <path class="k" d="M70 372h440"/>
-        <g class="float">
-          <!-- puf -->
-          <path class="o" d="M262 372c-40 0-58-22-50-62 10-52 40-118 106-124 70-6 112 48 116 112 4 52-26 74-70 74z"/>
-          <path class="k" d="M262 372c-40 0-58-22-50-62 10-52 40-118 106-124 70-6 112 48 116 112 4 52-26 74-70 74z"/>
-          <path class="k" d="M350 210c24 22 34 60 30 100" stroke-width="2.4" opacity=".55"/>
-          <!-- cuerpo -->
-          <path class="k w" d="M286 208c-26 4-42 26-46 60l-4 44 110 4 4-58c2-34-26-54-64-50z"/>
-          <!-- piernas -->
-          <path class="k ink" d="M236 312c-30 4-74 16-98 28l8 18c30-6 64-10 96-12l90-2c14 0 20-14 14-26z"/>
-          <path class="k o" d="M128 338c-10 6-14 16-10 22h40l-6-22z"/>
-          <path class="k o" d="M150 346c-10 6-12 14-8 20h36l-4-20z" transform="translate(30 0)"/>
-          <!-- cabeza -->
-          <path class="k w" d="M286 206v-18"/>
-          <circle class="k w" cx="290" cy="150" r="36"/>
-          <path class="ink" d="M256 140c-2-26 20-44 44-40 18 3 30 14 30 30-14-8-30-10-44-4-10 4-20 10-30 14z"/>
-          <circle class="k" cx="278" cy="152" r="10" stroke-width="2.6"/>
-          <circle class="k" cx="304" cy="152" r="10" stroke-width="2.6"/>
-          <path class="k" d="M288 152h6" stroke-width="2.6"/>
-          <path class="ink" d="M266 168c4 16 14 24 26 24s22-8 24-22c-8 6-14 6-24 6s-18-2-26-8z"/>
-          <path class="k" d="M284 176c4 2 8 2 12 0" stroke="#fff" stroke-width="2"/>
-          <!-- portátil -->
-          <path class="k w" d="M196 232l92 0 -14 64h-92z"/>
-          <circle class="o" cx="236" cy="264" r="7"/>
-          <path class="k" d="M182 296h104"/>
-          <!-- brazos -->
-          <path class="k w typing" d="M262 226c-14 18-20 40-6 62l40 4"/>
-          <path class="k w typing" style="animation-delay:.25s" d="M318 226c10 26 6 52-16 64"/>
-        </g>
-      </svg>
-    </figure>
+<section class="hero wrap" aria-labelledby="page-title">
+  <div class="hero-copy">
+    <p class="eyebrow rise" style="--i:0">Product Manager Técnico | Product Owner</p>
+    <h1 id="page-title" class="title display"><span class="w" style="--i:0">Armando</span> <span class="w accent" style="--i:1">Medina</span></h1>
+    <svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
+    <p class="lead rise" style="--i:3">Ingeniero de Sistemas especializado en transformar necesidades de negocio en productos digitales escalables. Combino gestión de producto, arquitectura de software, inteligencia artificial y liderazgo de equipos para llevar soluciones desde el descubrimiento hasta su implementación y evolución.</p>
+    <div class="actions rise" style="--i:4">
+      <a class="btn primary" href="/proyectos/"><span>Explorar proyectos</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+      <a class="btn outline" href="/cv.html?lang=es&amp;version=completo#cv"><span>Ver CV</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-book"/></svg></a>
+    </div>
   </div>
+  <figure class="hero-visual rise" style="--i:2">
+    <img src="/img/hero.webp" alt="Ilustración: Armando trabajando en su portátil sobre un puf" width="1200" height="900" fetchpriority="high">
+    <svg class="links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M18 18 C 40 4, 62 4, 84 20"/><path d="M84 20 C 96 46, 92 66, 76 86"/><path d="M18 18 C 4 44, 10 70, 30 84"/>
+    </svg>
+    <ul class="concepts" role="list" aria-label="Producto, Tecnología, Estrategia">
+      <li class="concept c1"><span class="dot" aria-hidden="true"></span>Producto</li><li class="concept c2"><span class="dot" aria-hidden="true"></span>Tecnología</li><li class="concept c3"><span class="dot" aria-hidden="true"></span>Estrategia</li>
+    </ul>
+  </figure>
 </section>
 
-<section class="sec about" id="sobre-mi">
-  <div class="wrap">
-    <figure class="illo reveal" data-img="img/sobre-mi.png">
-      <svg class="art" viewBox="0 0 420 300" role="img" aria-label="Ilustración: Armando con una taza de café junto a una ventana">
-        <path class="k" d="M30 160V60c0-30 22-50 50-50s50 20 50 50v100M80 10v150M30 90h100"/>
-        <path class="k" d="M44 72c0-8 8-12 14-8 2-8 14-8 16 0 8-2 12 6 8 10H44z" stroke-width="2.4"/>
-        <g class="float">
-          <path class="k w" d="M150 290c0-60 30-96 76-96s74 36 74 96"/>
-          <circle class="k w" cx="226" cy="140" r="44"/>
-          <path class="ink" d="M184 128c-4-34 26-54 54-48 22 4 36 22 32 44-16-14-40-16-58-8-12 6-20 10-28 12z"/>
-          <circle class="ink" cx="244" cy="140" r="4"/>
-          <path class="k" d="M250 160c-6 6-14 6-20 2" stroke-width="2.6"/>
-          <path class="k" d="M258 132c4-2 8-2 12 1" stroke-width="2.6"/>
-          <path class="k w" d="M190 290c-6-34 4-56 30-62l60 4"/>
-          <rect class="k o" x="270" y="206" width="38" height="44" rx="6"/>
-          <path class="k" d="M308 216c14 0 14 24 0 24"/>
-          <g class="steam"><path d="M280 196c-6-8 6-14 0-24"/><path d="M296 196c-6-8 6-14 0-24"/></g>
-        </g>
-        <rect class="k w" x="330" y="262" width="74" height="16" rx="3"/>
-        <rect class="k w" x="336" y="246" width="66" height="16" rx="3"/>
-        <rect class="k o" x="328" y="230" width="70" height="16" rx="3"/>
-        <path class="k" d="M20 290h390"/>
-      </svg>
-    </figure>
-    <div class="reveal">
-      <h2><span data-en="About me">Sobre mí</span></h2>
-      <svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg>
-      <p><span data-en="Systems Engineer with 14 years of professional experience in banking and insurance, the public sector, construction, industry and education. I have held Product Manager, Product Owner and technical lead roles, founded Flowcol, a cloud ERP for small businesses, and have taught at universities since 2023. I am currently pursuing a Master&#x27;s in Artificial Intelligence.">Ingeniero de Sistemas con 14 años de experiencia profesional en banca y seguros, sector público, construcción, industria y educación. He ocupado cargos de Product Manager, Product Owner y líder técnico; fundé Flowcol, un ERP en la nube para pymes, y desde 2023 soy docente universitario. Actualmente curso un Máster en Inteligencia Artificial.</span></p>
-      <div class="traits">
-        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span data-en="Hybrid profile">Perfil híbrido</span></div>
-        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg><span data-en="Data-driven decisions">Decisiones con datos</span></div>
-        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span data-en="Agile leadership">Liderazgo ágil</span></div>
-        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span data-en="Lifelong learner">Aprendizaje continuo</span></div>
-        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg><span data-en="University lecturer">Docente universitario</span></div>
-        <div class="trait"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-bulb"/></svg><span data-en="Business vision">Visión de negocio</span></div>
-      </div>
-    </div>
-  </div>
+<section class="wrap stats-band" aria-label="Indicadores profesionales">
+  <ul class="stats" role="list">
+    <li class="rise" style="--i:5"><b>14+</b><span>años de experiencia profesional</span></li><li class="rise" style="--i:6"><b>5</b><span>clientes pagos en Flowcol</span></li><li class="rise" style="--i:7"><b>3</b><span>universidades como docente</span></li>
+  </ul>
 </section>
 
-<div class="wrap"><hr class="div"></div>
-
-<section class="sec" id="competencias">
-  <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="Skills">Competencias</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
-      <a class="more" href="#hablemos" data-open-cv><span data-en="More skills">Más competencias</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
-    <div class="skill-groups reveal">
-      <div class="skill-group">
-        <h3 data-en="Product">Producto</h3>
-        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg>Discovery</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg><span data-en="MVP &amp;amp; roadmap">MVP y roadmap</span></div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Backlog</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-target"/></svg><span data-en="KPIs &amp;amp; OKRs">KPIs y OKRs</span></div></div>
-      </div>
-      <div class="skill-group">
-        <h3 data-en="Leadership">Liderazgo</h3>
-        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cycle"/></svg>Scrum</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-kanban"/></svg><span data-en="Jira &amp;amp; Kanban">Jira y Kanban</span></div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Stakeholders</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-brief"/></svg><span data-en="PMI framework">Marco PMI</span></div></div>
-      </div>
-      <div class="skill-group">
-        <h3 data-en="Engineering">Ingeniería</h3>
-        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-hex"/></svg>Node.js</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-atom"/></svg>React</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-db"/></svg>PostgreSQL</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cloud"/></svg><span data-en="Azure &amp;amp; AWS">Azure y AWS</span></div></div>
-      </div>
-      <div class="skill-group">
-        <h3 data-en="Data &amp;amp; AI">Datos e IA</h3>
-        <div class="skills"><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg>Power BI</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg>Tableau</div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg><span data-en="Generative AI">IA generativa</span></div><div class="skill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span data-en="AI risk">Riesgos de IA</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="proyectos">
-  <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="Selected work">Proyectos destacados</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
-      <a class="more" href="#hablemos" data-open-cv><span data-en="View full career">Ver trayectoria completa</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
-    <div class="work">
-      <article class="card reveal">
-        <div class="thumb" data-img="img/flowcol.png">
-          <svg class="art" viewBox="0 0 240 150" aria-hidden="true">
-            <rect class="k w" x="20" y="10" width="200" height="112" rx="8"/>
-            <rect class="ink" x="20" y="10" width="200" height="16" rx="6"/>
-            <circle class="o" cx="32" cy="18" r="3"/>
-            <rect class="ink" x="20" y="26" width="44" height="96" opacity=".9"/>
-            <path class="k" d="M30 42h24M30 54h20M30 66h24M30 78h16" stroke="#fff" stroke-width="2.4"/>
-            <rect class="o" x="76" y="36" width="40" height="22" rx="4"/><rect class="k" x="124" y="36" width="40" height="22" rx="4" stroke-width="2"/><rect class="k" x="172" y="36" width="38" height="22" rx="4" stroke-width="2"/>
-            <path class="k" d="M78 72h130M78 86h130M78 100h130M78 112h90" stroke-width="2" opacity=".5"/>
-            <path class="k" d="M100 122l-8 18h56l-8-18M86 140h68"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h3>Flowcol</h3>
-          <p><span data-en="Cloud ERP for small businesses: sales, purchasing, inventory, accounting and e-invoicing. Five paying clients in under a year.">ERP en la nube para pymes: ventas, compras, inventario, contabilidad y facturación electrónica. Cinco clientes pagos en menos de un año.</span></p>
-          <div class="tags"><span>Node.js</span><span>PostgreSQL</span><span>React</span></div>
-          <a class="more case-link" href="#caso-flowcol" data-open-case="flowcol"><span data-en="View case study">Ver caso de estudio</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-      <article class="card reveal">
-        <div class="thumb grey" data-img="img/flow-gravity.png">
-          <svg class="art" viewBox="0 0 240 150" aria-hidden="true">
-            <rect class="k w" x="20" y="10" width="200" height="112" rx="8"/>
-            <path class="k" d="M20 26h200" stroke-width="2"/>
-            <circle class="o" cx="30" cy="18" r="3"/><circle class="k" cx="40" cy="18" r="3" stroke-width="2"/>
-            <path class="k" d="M44 96a32 32 0 0 1 64 0" stroke-width="5"/>
-            <path d="M44 96a32 32 0 0 1 48-27.7" fill="none" stroke="var(--orange)" stroke-width="5" stroke-linecap="round"/>
-            <path class="k" d="M76 96l14-16" stroke-width="2.6"/>
-            <path class="k" d="M124 100l18-20 16 10 18-30 20 14" stroke-width="2.6"/>
-            <path d="M124 100l18-20 16 10 18-30 20 14" fill="none" stroke="var(--orange)" stroke-width="2.6" stroke-dasharray="4 5" transform="translate(0 6)" opacity=".7"/>
-            <rect class="o" x="124" y="36" width="30" height="10" rx="3"/><rect class="k" x="160" y="36" width="44" height="10" rx="3" stroke-width="2"/>
-            <path class="k" d="M100 122l-8 18h56l-8-18M86 140h68"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h3>Flow · Gravity Tunnel</h3>
-          <p><span data-en="SCADA-style control of the wind tunnel over Modbus TCP, real-time telemetry and a management platform with 15 modules and 5 roles.">Control tipo SCADA del túnel de viento por Modbus TCP, telemetría en tiempo real y plataforma de gestión con 15 módulos y 5 roles.</span></p>
-          <div class="tags"><span>Modbus TCP</span><span>WebSockets</span><span>Flutter</span></div>
-          <a class="more case-link" href="#caso-gravity" data-open-case="gravity"><span data-en="View case study">Ver caso de estudio</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-      <article class="card reveal">
-        <div class="thumb" data-img="img/primer-paso.png">
-          <svg class="art" viewBox="0 0 240 150" aria-hidden="true" style="width:46%">
-            <rect class="k w" x="80" y="4" width="80" height="142" rx="14" transform="rotate(8 120 75)"/>
-            <g transform="rotate(8 120 75)">
-              <path class="k" d="M108 14h24" stroke-width="2.4"/>
-              <circle class="o" cx="120" cy="46" r="14"/>
-              <path class="k" d="M113 46l5 5 9-10" stroke="#fff" stroke-width="2.6"/>
-              <rect class="k" x="92" y="72" width="56" height="12" rx="6" stroke-width="2"/>
-              <rect class="k" x="92" y="90" width="56" height="12" rx="6" stroke-width="2"/>
-              <rect class="o" x="92" y="112" width="56" height="14" rx="7"/>
-            </g>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h3>Primer Paso</h3>
-          <p><span data-en="Mobile app for initial mental-health screening and guidance at Universidad El Bosque, from scope definition to delivery.">App móvil de diagnóstico inicial y orientación en salud mental para la Universidad El Bosque, desde el alcance hasta la entrega.</span></p>
-          <div class="tags"><span>Flutter</span><span>Discovery</span><span><span data-en="Product">Producto</span></span></div>
-          <a class="more case-link" href="#caso-primer-paso" data-open-case="primer-paso"><span data-en="View case study">Ver caso de estudio</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="experiencia">
-  <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="Experience">Experiencia</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div>
-      <a class="more" href="#hablemos" data-open-cv><span data-en="All 10 roles">Las 10 posiciones</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
-    <p class="exp-note reveal"><span data-en="14 years of professional experience since 2012 · university lecturer since 2023">14 años de experiencia profesional desde 2012 · docente universitario desde 2023</span></p>
-    <h3 class="exp-title reveal" data-en="Product &amp;amp; technology">Producto y tecnología</h3>
-    <div class="exp">
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-brief"/></svg></div><div>
-        <div class="when"><span data-en="2025 – Present">2025 – Actual</span></div><h3><span data-en="Founder &amp;amp; Product Manager">Fundador y Product Manager</span></h3><div class="org">Flowcol</div>
-        <p><span data-en="From idea to a live product: MVP, roadmap and onboarding of five paying clients.">De la idea al producto en operación: MVP, roadmap y onboarding de cinco clientes pagos.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg></div><div>
-        <div class="when">2023 – 2026</div><h3><span data-en="Solutions Analyst / Full Stack">Analista de Soluciones / Full Stack</span></h3><div class="org">Gravity Tunnel</div>
-        <p><span data-en="SCADA system, real-time telemetry and the internal Flow platform.">Sistema SCADA, telemetría en tiempo real y la plataforma interna Flow.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-bank"/></svg></div><div>
-        <div class="when">2022 – 2023</div><h3>Service Manager</h3><div class="org">Sophos Solutions</div>
-        <p><span data-en="Teams of 15 for Banco de Bogotá, Seguros Alfa, ATH and the Colombian Stock Exchange.">Equipos de 15 personas para Banco de Bogotá, Seguros Alfa, ATH y la Bolsa de Valores de Colombia.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></div><div>
-        <div class="when">2022</div><h3>Product Manager</h3><div class="org">Lavenir SAS</div>
-        <p><span data-en="Roadmap, user stories and backlog under Scrum as Product Owner.">Roadmap, historias de usuario y backlog bajo Scrum como Product Owner.</span></p></div></div>
-    </div>
-    <h3 class="exp-title reveal" data-en="University teaching">Docencia universitaria</h3>
-    <div class="exp exp-3">
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg></div><div>
-        <div class="when"><span data-en="2026 – Present">2026 – Actual</span></div><h3><span data-en="Full-time Lecturer">Docente tiempo completo</span></h3><div class="org">Universidad Manuela Beltrán</div>
-        <p><span data-en="Artificial intelligence, databases, web development, expert systems and mobile computing.">Inteligencia artificial, bases de datos, desarrollo web, sistemas expertos y computación móvil.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg></div><div>
-        <div class="when"><span data-en="2024 – Present">2024 – Actual</span></div><h3><span data-en="Continuing Education Lecturer">Docente de Educación Continuada</span></h3><div class="org">Universidad de los Andes</div>
-        <p><span data-en="AI-driven strategic leadership, Scrum, PMP and innovation for professionals.">Liderazgo estratégico con IA, Scrum, PMP e innovación para profesionales.</span></p></div></div>
-      <div class="job reveal"><div class="job-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></div><div>
-        <div class="when">2023 – 2026</div><h3><span data-en="Associate Instructor">Instructor Asociado</span></h3><div class="org">Universidad El Bosque</div>
-        <p><span data-en="Data structures and databases in Systems Engineering; managed cybersecurity diploma programs.">Estructuras de datos y bases de datos en Ingeniería de Sistemas; gestión de diplomados en ciberseguridad.</span></p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="proceso">
-  <div class="wrap">
-    <div class="sec-head reveal"><div><h2><span data-en="How I build a product">Cómo trabajo un producto</span></h2><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></div></div>
-    <div class="process reveal">
-      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></div><span class="n">01</span><b><span data-en="Discover">Descubrir</span></b><span><span data-en="User research and the real problem.">User research y el problema real.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg></div><span class="n">02</span><b><span data-en="Define">Definir</span></b><span><span data-en="Value proposition and MVP.">Propuesta de valor y MVP.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></div><span class="n">03</span><b><span data-en="Prioritize">Priorizar</span></b><span><span data-en="Roadmap and backlog by impact.">Roadmap y backlog por impacto.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg></div><span class="n">04</span><b><span data-en="Deliver">Entregar</span></b><span><span data-en="Scrum sprints and launch.">Sprints con Scrum y lanzamiento.</span></span></div>
-      <div class="step"><div class="step-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg></div><span class="n">05</span><b><span data-en="Measure">Medir</span></b><span><span data-en="KPIs, learning and iteration.">KPIs, aprendizaje e iteración.</span></span></div>
-    </div>
-  </div>
+<section class="wrap doors-band" aria-labelledby="doors-title">
+  <h2 id="doors-title" class="kicker">Por dónde empezar</h2>
+  <ul class="doors" role="list">
+        <li><a class="door rise" style="--i:8" href="/sobre-mi/">
+          <span class="door-title">Sobre mí <svg class="i" aria-hidden="true" focusable="false" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
+          <span class="door-text">Perfil, especialidades y forma de trabajo.</span>
+        </a></li>
+        <li><a class="door rise" style="--i:9" href="/proyectos/">
+          <span class="door-title">Proyectos <svg class="i" aria-hidden="true" focusable="false" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
+          <span class="door-text">Tres casos de estudio de producto y tecnología.</span>
+        </a></li>
+        <li><a class="door rise" style="--i:10" href="/experiencia/">
+          <span class="door-title">Experiencia <svg class="i" aria-hidden="true" focusable="false" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
+          <span class="door-text">14 años de trayectoria en producto, tecnología y docencia.</span>
+        </a></li>
+  </ul>
 </section>
 </main>
-
-<footer id="contacto">
-  <div class="wrap">
-    <div class="foot">
-      <h2><span data-en="Let&#x27;s build something&lt;br&gt;meaningful &lt;span class=&quot;orange&quot;&gt;together.&lt;/span&gt;">Construyamos algo<br>con impacto <span class="orange">juntos.</span></span><svg class="squiggle" aria-hidden="true" focusable="false" viewBox="0 0 34 8" style="margin-top:10px"><path d="M2 5c5-3 9-3 15 0s10 2 15-1"/></svg></h2>
-      <div class="contact">
-        <div><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><span id="mail">rmedinan2009@gmail.com</span><button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></div>
-        <div><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span>+57 320 434 4662</span><button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></div>
-        <div><svg class="i" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><span>Bogotá, Colombia</span></div>
-      </div>
-      <div class="social">
-        <b data-en="Let&#x27;s connect">Conectemos</b>
-        <div class="row">
-          <a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-in"/></svg></a>
-          <a href="#hablemos" data-open-cv aria-label="Hoja de vida"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg></a>
-        </div>
-      </div>
+<nav class="pager wrap" aria-label="Anterior / Siguiente">
+    <span></span>
+    <a class="pager-link next" href="/sobre-mi/" rel="next"><span><small>Siguiente</small>Sobre mí</span><svg class="i" aria-hidden="true" focusable="false" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
+  </nav>
+<footer class="site-footer">
+    <div class="wrap foot">
+      <a class="logo" href="/" aria-label="Armando Medina, Inicio">AM<b>.</b></a>
+      <ul class="foot-links" role="list">
+        <li><a href="mailto:rmedinan2009@gmail.com"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-mail"/></svg> rmedinan2009@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-in"/></svg> LinkedIn</a></li>
+        <li><a href="/contacto/"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-arrow"/></svg> Hablemos</a></li>
+      </ul>
+      <p class="legal">© 2026 Armando Medina · Hecho en Bogotá</p>
     </div>
-    <div class="legal">© 2026 Armando Medina. <span data-en="Made with">Hecho con</span> <svg class="i" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg> <span data-en="in Bogotá.">en Bogotá.</span></div>
-  </div>
-</footer>
-
-<div class="cvp case" id="caso" role="dialog" aria-modal="true" aria-labelledby="case-title-flowcol" hidden>
-  <div class="cvp-backdrop" data-close></div>
-  <div class="cvp-sheet">
-    <div class="cvp-bar">
-      <span class="logo">AM<b>.</b></span>
-      <div class="nav-end">
-        <div class="lang" role="group" aria-label="Idioma / Language">
-          <button type="button" data-lang="es" aria-pressed="true">ES</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-        <button type="button" class="cvp-close" data-close aria-label="Cerrar / Close"><span data-en="Close">Cerrar</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-      </div>
-    </div>
-    <div class="cvp-body" id="case-body"></div>
-  </div>
-</div>
-
-<div class="cvp" id="hablemos" role="dialog" aria-modal="true" aria-labelledby="cvp-name" hidden>
-  <div class="cvp-backdrop" data-close></div>
-  <div class="cvp-sheet">
-    <div class="cvp-bar">
-      <span class="logo">AM<b>.</b></span>
-      <div class="nav-end">
-        <div class="lang" role="group" aria-label="Idioma / Language">
-          <button type="button" data-lang="es" aria-pressed="true">ES</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-        <a class="cvp-pdf" href="cv.html?lang=es&amp;version=completo&amp;print=1#cv" data-pdf="completo" target="_blank" rel="noopener"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg> <span data-en="PDF">PDF</span></a>
-        <button type="button" class="cvp-close" data-close aria-label="Cerrar / Close"><span data-en="Close">Cerrar</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-      </div>
-    </div>
-    <div class="cvp-body">
-      <div class="cvp-content" id="cvp-content"></div>
-
-      <section class="cvp-cta cvp-in">
-        <h3><span data-en="Shall we talk?">¿Hablamos?</span></h3>
-        <p><span data-en="Email or call me and let&amp;#x27;s talk about your product.">Escríbeme o llámame y conversamos sobre tu producto.</span></p>
-        <div class="cvp-cta-row">
-          <span class="cvp-pill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>rmedinan2009@gmail.com <button class="copy-btn" data-copy="rmedinan2009@gmail.com" data-en="Copy">Copiar</button></span>
-          <span class="cvp-pill"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>+57 320 434 4662 <button class="copy-btn" data-copy="+573204344662" data-en="Copy">Copiar</button></span>
-          <a class="btn outline" href="cv.html?lang=es&amp;version=completo&amp;print=1#cv" data-pdf="completo" target="_blank" rel="noopener"><span data-en="Full CV (PDF)">CV completo (PDF)</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
-          <a class="btn outline" href="cv.html?lang=es&amp;version=resumen&amp;print=1#cv" data-pdf="resumen" target="_blank" rel="noopener"><span data-en="2-page CV (PDF)">CV de 2 páginas (PDF)</span> <svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-down"/></svg></a>
-          <a class="btn orange" href="https://www.linkedin.com/in/armandomedinapm" target="_blank" rel="noopener"><svg class="i" aria-hidden="true" focusable="false" style="width:16px;height:16px"><use href="#i-in"/></svg> LinkedIn</a>
-        </div>
-      </section>
-    </div>
-  </div>
-</div>
-
-<script src="cv-data.js"></script>
-<script>
-(() => {
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-
-  // Panel «Hablemos»: se genera desde cv-data.js (misma fuente que cv.html)
-  (function renderCVPanel() {
-    const D = window.CV_DATA, box = document.getElementById("cvp-content");
-    if (!D || !box) return;
-    const h = v => String(v).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    // data-en guarda HTML escapado; el cambio de idioma lo asigna con innerHTML
-    const T = (o, tag = "span", cls = "") => o.es === o.en ? `<${tag}${cls ? ` class="${cls}"` : ""}>${h(o.es)}</${tag}>`
-      : `<${tag}${cls ? ` class="${cls}"` : ""} data-en="${h(h(o.en))}">${h(o.es)}</${tag}>`;
-    const L = k => ({ es: D.labels.es[k], en: D.labels.en[k] });
-    const c = D.contact;
-    const job = e => `
-        <article class="cvp-job">
-          <div class="cvp-job-top"><h4><b>${h(e.org)}</b> <i>—</i> ${T(e.role)}${e.product ? " " + T(L("productRole"), "span", "cvp-tag") : ""}</h4>${T({ es: `${e.start.es} – ${e.end.es}`, en: `${e.start.en} – ${e.end.en}` }, "span", "cvp-date")}</div>
-          <ul>${e.bullets.map(b => `<li>${T(b)}</li>`).join("")}</ul>${e.stack ? `<p class="cvp-stack">Stack: ${h(e.stack)}</p>` : ""}
-        </article>`;
-    const chips = g => g.items.es.map((x, i) => T({ es: x, en: g.items.en[i] })).join("");
-    box.innerHTML = `
-      <header class="cvp-head cvp-in">
-        <div>
-          <h2 id="cvp-name">Armando Ricardo <span class="orange">Medina Nieto</span></h2>
-          <p class="cvp-role">${T({ es: `${D.role.es} · ${D.degree.es}`, en: `${D.role.en} · ${D.degree.en}` })}</p>
-          <p class="cvp-contact"><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>${h(c.location)}</span><span><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>${h(c.phone)}</span><span><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>${h(c.email)}</span><a href="${h(c.linkedinUrl)}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg>${h(c.linkedin)}</a><span>${T({ es: "Inglés: B1", en: "English: B1" })}</span></p>
-        </div>
-        <img class="cvp-photo" src="${h(c.photo)}" alt="Armando Medina" width="132" height="132">
-      </header>
-      <section class="cvp-sec cvp-in"><h3>${T({ es: "Perfil", en: "Profile" })}</h3><p class="cvp-lead">${T(D.profile)}</p></section>
-      <section class="cvp-sec cvp-in"><h3>${T(L("summary"))}</h3><div class="cvp-summary">${D.summary.map(x => `<div class="cvp-sum">${T(x.label, "span", "cvp-sum-label")}${T(x.value, "b")}${T(x.text, "p")}</div>`).join("")}</div></section>
-      <section class="cvp-sec cvp-in"><h3>${T(L("experience"))}</h3><div class="cvp-timeline">${D.experience.filter(e => e.kind === "pro").map(job).join("")}</div></section>
-      <section class="cvp-sec cvp-in"><h3>${T(L("teaching"))}</h3><div class="cvp-timeline">${D.experience.filter(e => e.kind === "doc").map(job).join("")}</div></section>
-      <div class="cvp-grid">
-        <section class="cvp-sec cvp-in"><h3>${T(L("skills"))}</h3>${D.skills.map(g => `<div class="cvp-comp">${T(g.group, "b")}<div class="cvp-chips">${chips(g)}</div></div>`).join("")}</section>
-        <div>
-          <section class="cvp-sec cvp-in"><h3>${T(L("education"))}</h3><ul class="cvp-list">${D.education.map(x => `<li>${T(x.title, "b")}<span>${h(x.school)} · ${T(x.year)}</span></li>`).join("")}</ul></section>
-          <section class="cvp-sec cvp-in"><h3>${T(L("certifications"))}</h3>${D.certifications.map(g => `<div class="cvp-certs">${T(g.group, "b")}<ul>${g.items.map(i => `<li>${T(i.name)}<span>${[i.issuer, i.year].filter(Boolean).map(h).join(" · ")}</span></li>`).join("")}</ul></div>`).join("")}</section>
-        </div>
-      </div>`;
-  })();
-
-
-  // Casos de estudio: se generan desde cv-data.js
-  (function renderCases() {
-    const D = window.CV_DATA, box = document.getElementById("case-body");
-    if (!D || !box || !D.projects) return;
-    const h = v => String(v).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    const T = (o, tag = "span", attrs = "") => o.es === o.en ? `<${tag}${attrs}>${h(o.es)}</${tag}>` : `<${tag}${attrs} data-en="${h(h(o.en))}">${h(o.es)}</${tag}>`;
-    const L = k => ({ es: D.labels.es[k], en: D.labels.en[k] });
-    const P = D.projects, n = P.length;
-    const arrow = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>';
-    box.innerHTML = P.map((p, i) => {
-      const prev = P[(i - 1 + n) % n], next = P[(i + 1) % n];
-      return `
-      <article class="case-article" id="caso-${p.id}" data-case="${p.id}" hidden>
-        <header class="case-hero cvp-in">
-          <div>
-            <p class="case-eyebrow">${T(L("caseStudy"))} · ${i + 1} ${T(L("of"))} ${n}</p>
-            <h2 id="case-title-${p.id}">${h(p.title)}</h2>
-            <p class="case-sub">${T(p.subtitle)}</p>
-            <p class="case-meta"><span>${T(p.role)}</span><span>${T(p.period)}</span></p>
-          </div>
-          <figure class="case-media${p.id === "gravity" ? " grey" : ""}"><img src="${h(p.image)}" alt="${h(p.imageAlt.es)}" data-alt-en="${h(p.imageAlt.en)}" loading="lazy" width="1200" height="900"></figure>
-        </header>
-        <div class="case-grid">
-          <div class="case-main">
-            <section class="cvp-sec cvp-in"><h3>${T(L("challenge"))}</h3><p class="cvp-lead">${T(p.context)}</p></section>
-            <section class="cvp-sec cvp-in"><h3>${T(L("did"))}</h3><ul>${p.did.map(d => `<li>${T(d)}</li>`).join("")}</ul></section>
-            ${p.decisions.length ? `<section class="cvp-sec cvp-in"><h3>${T(L("decisions"))}</h3><ul>${p.decisions.map(d => `<li>${T(d)}</li>`).join("")}</ul></section>` : ""}
-          </div>
-          <aside class="case-facts cvp-in">
-            <div><h3>${T(L("results"))}</h3><ul class="case-results">${p.results.map(r => `<li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>${T(r)}</li>`).join("")}</ul></div>
-            <div><h3>${T(L("role"))}</h3><p>${T(p.role)}</p></div>
-            <div><h3>${T(L(p.periodLabel === "org" ? "org" : "period"))}</h3><p>${T(p.period)}</p></div>
-            <div><h3>${T(L("stack"))}</h3><div class="cvp-chips">${p.stack.map(x => `<span>${h(x)}</span>`).join("")}</div></div>
-          </aside>
-        </div>
-        <nav class="case-pager cvp-in" aria-label="${h(D.labels.es.caseStudy)}">
-          <button type="button" class="prev" data-goto-case="${prev.id}">${arrow}<span><small>${T(L("prev"))}</small>${h(prev.title)}</span></button>
-          <button type="button" class="next" data-goto-case="${next.id}"><span><small>${T(L("next"))}</small>${h(next.title)}</span>${arrow}</button>
-        </nav>
-      </article>`;
-    }).join("");
-  })();
-
-  // Ilustraciones: si existe la imagen generada en /img, reemplaza el SVG provisional
-  document.querySelectorAll("[data-img]").forEach(slot => {
-    const img = new Image();
-    img.alt = slot.querySelector("svg.art")?.getAttribute("aria-label") || "";
-    img.onload = () => { slot.classList.add("has-img"); slot.querySelector("svg.art")?.remove(); slot.appendChild(img); };
-    img.src = slot.dataset.img;
-  });
-
-  // Entrada del nombre letra por letra
-  const h1 = document.getElementById("name");
-  h1.querySelectorAll(".w").forEach(w => { w.innerHTML = [...w.textContent].map(c => `<span class="ch">${c}</span>`).join(""); });
-  if (!reduce && Element.prototype.animate) {
-    const E = "cubic-bezier(.2,.8,.2,1)";
-    h1.querySelectorAll(".ch").forEach((c, i) => c.animate(
-      [{ transform: "translateY(60%) rotate(6deg)", opacity: 0 }, { transform: "none", opacity: 1 }],
-      { duration: 700, delay: 150 + i * 40, easing: E, fill: "backwards" }));
-    document.querySelectorAll(".hero .role, .hero .pitch, .hero .cta, .hero .stats").forEach((el, i) => el.animate(
-      [{ transform: "translateY(16px)", opacity: 0 }, { transform: "none", opacity: 1 }],
-      { duration: 700, delay: 650 + i * 120, easing: E, fill: "backwards" }));
-    const art = document.querySelector(".hero .illo");
-    art.animate([{ transform: "translateX(40px) scale(.96)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 1000, delay: 200, easing: E, fill: "backwards" });
-
-    // contadores
-    document.querySelectorAll("[data-count]").forEach(el => {
-      const end = +el.dataset.count, suffix = el.textContent.replace(/\d+/, ""), t0 = performance.now() + 900;
-      const tick = now => { const p = Math.min(Math.max((now - t0) / 1200, 0), 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suffix; if (p < 1) requestAnimationFrame(tick); };
-      requestAnimationFrame(tick);
-    });
-  }
-
-  // Altura real del encabezado sticky, para compensar el desplazamiento a cada sección
-  const header = document.querySelector("header.nav");
-  const navH = () => header.getBoundingClientRect().height;
-  const syncNavH = () => document.documentElement.style.setProperty("--nav-h", navH() + "px");
-  syncNavH();
-  if (window.ResizeObserver) new ResizeObserver(syncNavH).observe(header);
-
-  // Desplazamiento suave a una sección, descontando el encabezado
-  let activeLock = 0;
-  function goTo(id, push) {
-    const t = document.getElementById(id);
-    if (!t) return false;
-    if (typeof setActive === "function" && document.querySelector(`.nav ul a[href="#${id}"]`)) { setActive(id); activeLock = performance.now() + 1000; }
-    const top = t.getBoundingClientRect().top + scrollY - navH() - 12;
-    scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
-    if (!t.hasAttribute("tabindex")) t.setAttribute("tabindex", "-1");
-    t.focus({ preventScroll: true });
-    if (push) try { history.pushState(null, "", "#" + id); } catch {}
-    return true;
-  }
-  document.addEventListener("click", e => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a || a.hasAttribute("data-open-cv") || a.hasAttribute("data-open-case") || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    const id = a.getAttribute("href").slice(1);
-    if (!id || ["es", "en", "hablemos"].includes(id)) return;
-    if (goTo(id, true)) { e.preventDefault(); closeMenu(false); }
-  });
-
-  // Enlace activo del menú según la sección visible
-  const links = [...document.querySelectorAll(".nav ul a")];
-  const setActive = id => links.forEach(a => {
-    const on = a.getAttribute("href") === "#" + id;
-    a.classList.toggle("on", on);
-    on ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current");
-  });
-  // el pie de contacto es corto: al llegar al final de la página, se marca él
-  const atBottom = () => innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (performance.now() < activeLock) return;
-    if (atBottom()) setActive("contacto"); else if (e.isIntersecting) setActive(e.target.id);
-  }), { rootMargin: "-45% 0px -50% 0px" });
-  ["inicio", "sobre-mi", "competencias", "proyectos", "experiencia", "contacto"].forEach(id => { const s = document.getElementById(id); if (s) io.observe(s); });
-  addEventListener("scroll", () => { if (performance.now() >= activeLock && atBottom()) setActive("contacto"); }, { passive: true });
-
-  // Menú responsive (≤ 860 px): botón con aria-expanded, Escape, flechas y cierre al elegir
-  const nav = document.querySelector(".nav"), menuBtn = nav.querySelector(".menu-btn"), menu = document.getElementById("nav-menu");
-  const narrow = matchMedia("(max-width: 860px)");
-  const MENU = { es: ["Abrir menú", "Cerrar menú", "Secciones"], en: ["Open menu", "Close menu", "Sections"] };
-  let menuLang = "es";
-  function labelMenu() {
-    const open = nav.hasAttribute("data-open");
-    menuBtn.setAttribute("aria-label", MENU[menuLang][open ? 1 : 0]);
-    document.getElementById("site-nav").setAttribute("aria-label", MENU[menuLang][2]);
-  }
-  const syncInert = () => { menu.inert = narrow.matches && !nav.hasAttribute("data-open"); };
-  function openMenu() {
-    nav.setAttribute("data-open", "");
-    syncInert();
-    menuBtn.setAttribute("aria-expanded", "true");
-    labelMenu();
-    (menu.querySelector("a.on") || menu.querySelector("a")).focus({ preventScroll: true });
-  }
-  function closeMenu(returnFocus) {
-    if (!nav.hasAttribute("data-open")) return;
-    nav.removeAttribute("data-open");
-    syncInert();
-    menuBtn.setAttribute("aria-expanded", "false");
-    labelMenu();
-    if (returnFocus) menuBtn.focus({ preventScroll: true });
-  }
-  menuBtn.addEventListener("click", () => nav.hasAttribute("data-open") ? closeMenu(true) : openMenu());
-  nav.addEventListener("keydown", e => {
-    if (!nav.hasAttribute("data-open")) return;
-    if (e.key === "Escape") { e.stopPropagation(); closeMenu(true); return; }
-    const items = [...menu.querySelectorAll("a")], i = items.indexOf(document.activeElement);
-    if (i < 0) return;
-    const next = { ArrowDown: i + 1, ArrowUp: i - 1, Home: 0, End: items.length - 1 }[e.key];
-    if (next !== undefined) { e.preventDefault(); items[(next + items.length) % items.length].focus(); }
-  });
-  document.addEventListener("click", e => { if (nav.hasAttribute("data-open") && !nav.contains(e.target)) closeMenu(false); });
-  nav.addEventListener("focusout", e => { if (nav.hasAttribute("data-open") && e.relatedTarget && !nav.contains(e.relatedTarget)) closeMenu(false); });
-  narrow.addEventListener("change", () => { closeMenu(false); syncInert(); });
-  syncInert();
-
-  // Idioma: español / inglés
-  const UI = { es: { copied: "Copiado", copy: "Copiar" }, en: { copied: "Copied", copy: "Copy" } };
-  let lang = "es";
-  const tr = [...document.querySelectorAll("[data-en]")];
-  tr.forEach(el => { el.dataset.es = el.innerHTML; });
-  const sws = [...document.querySelectorAll(".lang")];
-  function setLang(l, animate) {
-    lang = l === "en" ? "en" : "es";
-    const apply = () => tr.forEach(el => { el.innerHTML = el.dataset[lang]; });
-    if (animate && !reduce && Element.prototype.animate) {
-      tr.forEach(el => el.animate([{ opacity: 1, filter: "blur(0)" }, { opacity: 0, filter: "blur(3px)" }], { duration: 160, fill: "forwards" }));
-      setTimeout(() => { apply(); tr.forEach(el => { el.getAnimations().forEach(a => a.cancel()); el.animate([{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "none" }], { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" }); }); }, 160);
-    } else apply();
-    document.documentElement.lang = lang;
-    sws.forEach(sw => { sw.dataset.on = lang; sw.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang)); });
-    try { localStorage.setItem("am-lang", lang); } catch {}
-    menuLang = lang; labelMenu();
-    document.querySelectorAll("img[data-alt-en]").forEach(img => { if (!img.dataset.altEs) img.dataset.altEs = img.alt; img.alt = lang === "en" ? img.dataset.altEn : img.dataset.altEs; });
-    document.querySelectorAll("[data-pdf]").forEach(a => { a.href = `cv.html?lang=${lang}&version=${a.dataset.pdf}&print=1#cv`; });
-    header.querySelector(".logo").setAttribute("aria-label", lang === "en" ? "Armando Medina, home" : "Armando Medina, inicio");
-    document.querySelector('.social a[data-open-cv]').setAttribute("aria-label", lang === "en" ? "Résumé" : "Hoja de vida");
-  }
-  sws.forEach(sw => sw.addEventListener("click", e => { const b = e.target.closest("button[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); }));
-  let start = location.hash === "#en" ? "en" : location.hash === "#es" ? "es" : null;
-  if (!start) { try { start = localStorage.getItem("am-lang"); } catch {} }
-  if (!start) start = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
-  setLang(start, false);
-
-
-  // Diálogos modales accesibles (panel del CV y casos de estudio):
-  // foco atrapado, fondo inerte, Escape, foco restaurado y animación de entrada y salida.
-  const background = [document.querySelector(".skip"), header, document.getElementById("main"), document.querySelector("footer")].filter(Boolean);
-  const E = "cubic-bezier(.2,.8,.2,1)";
-  function makeDialog(root, animateIn) {
-    const sheet = root.querySelector(".cvp-sheet"), body = root.querySelector(".cvp-body");
-    let lastFocus = null, closingAnim = null;
-    root.addEventListener("keydown", e => {
-      if (e.key !== "Tab") return;
-      const f = [...root.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(el => el.offsetParent !== null || el === document.activeElement);
-      if (!f.length) return;
-      const first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && (document.activeElement === first || !root.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    });
-    const dlg = {
-      get open() { return !root.hidden && !closingAnim; },
-      show(focusEl) {
-        if (closingAnim) { closingAnim.onfinish = null; closingAnim = null; root.getAnimations({ subtree: true }).forEach(x => x.cancel()); root.hidden = true; }
-        if (!root.hidden) return;
-        dialogs.forEach(d => { if (d !== dlg && d.open) d.hide(true); });
-        closeMenu(false);
-        lastFocus = document.activeElement;
-        root.hidden = false; document.body.classList.add("cvp-open");
-        background.forEach(el => { el.inert = true; });
-        body.scrollTop = 0;
-        if (!reduce && Element.prototype.animate) {
-          root.querySelector(".cvp-backdrop").animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
-          sheet.animate([{ transform: "translateY(100%)" }, { transform: "none" }], { duration: 600, easing: E });
-          animateIn?.();
-        }
-        (focusEl || root.querySelector(".cvp-close")).focus({ preventScroll: true });
-      },
-      hide(instant) {
-        if (root.hidden || closingAnim) return;
-        const done = () => { root.hidden = true; if (!dialogs.some(d => d.open)) { document.body.classList.remove("cvp-open"); background.forEach(el => { el.inert = false; }); syncInert(); } if (!instant) lastFocus?.focus?.({ preventScroll: true }); dlg.onclose?.(); };
-        if (!instant && !reduce && Element.prototype.animate) {
-          root.querySelector(".cvp-backdrop").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "forwards" });
-          closingAnim = sheet.animate([{ transform: "none" }, { transform: "translateY(100%)" }], { duration: 380, easing: "cubic-bezier(.6,0,.8,.3)", fill: "forwards" });
-          // se cierra al terminar la animación o, si el navegador no la reproduce (pestaña en segundo plano), a los 450 ms
-          const finish = () => { if (!closingAnim) return; closingAnim = null; root.getAnimations({ subtree: true }).forEach(a => a.cancel()); done(); };
-          closingAnim.onfinish = finish;
-          setTimeout(finish, 450);
-        } else done();
-      }
-    };
-    root.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => dlg.hide()));
-    return dlg;
-  }
-  const stagger = (root, sel, delay, step, from) => root.querySelectorAll(sel).forEach((el, i) => el.offsetParent !== null && el.animate(from, { duration: 600, delay: delay + i * step, easing: E, fill: "backwards" }));
-  const RISE = [{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }];
-
-  // Panel «Hablemos» con la hoja de vida completa
-  const cvp = document.getElementById("hablemos");
-  const cvDialog = makeDialog(cvp, () => {
-    stagger(cvp, ".cvp-in", 250, 90, RISE);
-    stagger(cvp, ".cvp-job", 520, 70, [{ opacity: 0, transform: "translateX(-14px)" }, { opacity: 1, transform: "none" }]);
-    cvp.querySelector(".cvp-photo").animate([{ transform: "scale(.5) rotate(-15deg)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 800, delay: 300, easing: E, fill: "backwards" });
-  });
-
-  // Casos de estudio
-  const caseRoot = document.getElementById("caso");
-  const caseDialog = makeDialog(caseRoot, () => stagger(caseRoot, ".case-article:not([hidden]) .cvp-in", 220, 90, RISE));
-  function showCase(id, push) {
-    const art = document.getElementById("caso-" + id);
-    if (!art) return false;
-    caseRoot.querySelectorAll(".case-article").forEach(a => { a.hidden = a !== art; });
-    caseRoot.setAttribute("aria-labelledby", "case-title-" + id);
-    caseRoot.querySelector(".cvp-body").scrollTop = 0;
-    if (push) try { history.replaceState(null, "", "#caso-" + id); } catch {}
-    return true;
-  }
-  caseDialog.onclose = () => { if (location.hash.startsWith("#caso-")) try { history.replaceState(null, "", location.pathname + location.search); } catch {} };
-  document.querySelectorAll("[data-open-case]").forEach(a => a.addEventListener("click", e => {
-    e.preventDefault();
-    if (showCase(a.dataset.openCase, true)) caseDialog.show();
-  }));
-  caseRoot.addEventListener("click", e => {
-    const b = e.target.closest("[data-goto-case]");
-    if (!b || !showCase(b.dataset.gotoCase, true)) return;
-    if (!reduce && Element.prototype.animate) stagger(caseRoot, ".case-article:not([hidden]) .cvp-in", 0, 70, RISE);
-    caseRoot.querySelector(`#caso-${b.dataset.gotoCase} .case-pager .next`).focus({ preventScroll: true });
-  });
-
-  const dialogs = [cvDialog, caseDialog];
-  // compatibilidad con el código existente
-  const openCV = () => cvDialog.show(), closeCV = () => cvDialog.hide();
-  document.querySelectorAll("[data-open-cv]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); openCV(); }));
-  addEventListener("keydown", e => { if (e.key === "Escape") dialogs.forEach(d => { if (d.open) d.hide(); }); });
-  if (location.hash === "#hablemos") openCV();
-  else if (location.hash.startsWith("#caso-") && showCase(location.hash.slice(6))) caseDialog.show();
-
-  // Copiar correo y teléfono
-  document.querySelectorAll(".copy-btn").forEach(b => b.addEventListener("click", () => {
-    const done = () => { b.textContent = UI[lang].copied; document.getElementById("live").textContent = UI[lang].copied + ": " + b.dataset.copy; setTimeout(() => b.textContent = UI[lang].copy, 1600); };
-    const sel = () => { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Ctrl/Cmd + C"; };
-    navigator.clipboard ? navigator.clipboard.writeText(b.dataset.copy).then(done, sel) : sel();
-  }));
-})();
-</script>
+  </footer>
+</body>
+</html>

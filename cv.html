@@ -385,7 +385,7 @@ body.ats-mode .app, body.ats-mode .modal { display: none !important; }
     <div class="stage-inner">
       <div class="stage-bar">
         <span class="label-edit">VISTA PREVIA · A4 · 210 × 297 MM</span>
-        <a class="share-logo" href="index.html">AM<b>.</b> <span>Ver portafolio</span></a>
+        <a class="share-logo" href="/">AM<b>.</b> <span>Ver portafolio</span></a>
         <div class="btns">
           <button class="btn primary" id="btn-play">▶ Reproducir animación</button>
           <button class="btn" id="btn-print" hidden>Imprimir / PDF</button>
@@ -412,7 +412,7 @@ body.ats-mode .app, body.ats-mode .modal { display: none !important; }
 
 <div class="ats-view" id="ats-view" hidden>
   <div class="ats-bar" role="toolbar" aria-label="Opciones de la hoja de vida">
-    <a class="share-logo ats-logo" id="ats-home" href="index.html">AM<b>.</b> <span id="ats-home-label">Ver portafolio</span></a>
+    <a class="share-logo ats-logo" id="ats-home" href="/">AM<b>.</b> <span id="ats-home-label">Ver portafolio</span></a>
     <div class="ats-controls">
       <div class="seg" role="group" id="ats-lang" aria-label="Idioma / Language">
         <button type="button" data-lang="es" aria-pressed="true">ES</button>
@@ -813,7 +813,7 @@ function startATS() {
     // el título define el nombre sugerido del PDF
     document.title = `Armando-Medina-CV-${lang.toUpperCase()}-${version === "resumen" ? (lang === "en" ? "short" : "resumido") : (lang === "en" ? "full" : "completo")}`;
     $("#ats-home-label").textContent = U.home;
-    $("#ats-home").href = `index.html#${lang}`;
+    $("#ats-home").href = lang === "en" ? "/en/" : "/";
     $("#ats-hint").textContent = U.hint;
     $("#ats-print").textContent = U.print;
     view.querySelector(".ats-bar").setAttribute("aria-label", U.toolbar);

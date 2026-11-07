@@ -1,5 +1,6 @@
 /* Fuente única de la hoja de vida (español e inglés).
-   La usan el panel «Hablemos» de index.html y cv.html (editor, vista #cv e impresión en PDF) y los casos de estudio del portafolio.
+   La usan build.mjs (todas las páginas del sitio y los casos de estudio) y cv.html (editor, vista #cv e impresión en PDF).
+   Tras editar este archivo, ejecuta: node build.mjs
    Los campos «todo» marcan evidencia pendiente y no se muestran. */
 window.CV_DATA = {
   "name": "Armando Ricardo Medina Nieto",
@@ -17,6 +18,10 @@ window.CV_DATA = {
     "es": "Product Manager Técnico | Product Owner",
     "en": "Technical Product Manager | Product Owner"
   },
+  "pitch": {
+    "es": "Ingeniero de Sistemas especializado en transformar necesidades de negocio en productos digitales escalables. Combino gestión de producto, arquitectura de software, inteligencia artificial y liderazgo de equipos para llevar soluciones desde el descubrimiento hasta su implementación y evolución.",
+    "en": "Systems Engineer focused on turning business needs into scalable digital products. I combine product management, software architecture, artificial intelligence and team leadership to take solutions from discovery through implementation and ongoing evolution."
+  },
   "degree": {
     "es": "Ingeniero de Sistemas",
     "en": "Systems Engineer"
@@ -28,6 +33,10 @@ window.CV_DATA = {
   "profileShort": {
     "es": "Ingeniero de Sistemas con 14 años de experiencia profesional (desde 2012) en banca y seguros, sector público, construcción, industria, consultoría y educación. Product Manager y Product Owner con experiencia en arquitectura de software e inteligencia artificial. Fundador de Flowcol, ERP en la nube con cinco clientes pagos, y docente universitario desde 2023.",
     "en": "Systems Engineer with 14 years of professional experience (since 2012) in banking and insurance, the public sector, construction, industry, consulting and education. Product Manager and Product Owner with a background in software architecture and artificial intelligence. Founder of Flowcol, a cloud ERP with five paying clients, and university lecturer since 2023."
+  },
+  "approach": {
+    "es": "Combino gestión de producto (discovery, MVP, roadmap y backlog), arquitectura de software e inteligencia artificial para traducir necesidades de negocio en decisiones técnicas viables y trabajar de igual a igual con equipos de desarrollo, arquitectura y datos.",
+    "en": "I combine product management (discovery, MVP, roadmap and backlog), software architecture and artificial intelligence to translate business needs into viable technical decisions and work as a peer with development, architecture and data teams."
   },
   "summary": [
     {
@@ -850,7 +859,10 @@ window.CV_DATA = {
           "en": "Five active paying clients less than a year after launch."
         }
       ],
-      "todo": "TODO: añadir métricas de uso o retención, tiempo ahorrado por cliente y capturas reales del producto."
+      "todo": "TODO: añadir métricas de uso o retención, tiempo ahorrado por cliente y capturas reales del producto.",
+      "slug": "flowcol",
+      "objectives": [],
+      "learnings": []
     },
     {
       "id": "gravity",
@@ -931,7 +943,10 @@ window.CV_DATA = {
           "en": "Energy usage is traceable by zone and can be audited."
         }
       ],
-      "todo": "TODO: completar el stack de Flow (backend, base de datos) y añadir métricas de disponibilidad, tiempo de cierre o incidentes."
+      "todo": "TODO: completar el stack de Flow (backend, base de datos) y añadir métricas de disponibilidad, tiempo de cierre o incidentes.",
+      "slug": "flow-gravity-tunnel",
+      "objectives": [],
+      "learnings": []
     },
     {
       "id": "primer-paso",
@@ -974,7 +989,10 @@ window.CV_DATA = {
           "en": "App developed and delivered at Universidad El Bosque."
         }
       ],
-      "todo": "TODO: público objetivo, alcance funcional, fechas del proyecto, usuarios o resultados de adopción."
+      "todo": "TODO: público objetivo, alcance funcional, fechas del proyecto, usuarios o resultados de adopción.",
+      "slug": "primer-paso",
+      "objectives": [],
+      "learnings": []
     }
   ]
 };

@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- Plantilla de la imagen de vista previa (1200×630) para LinkedIn, WhatsApp y correo.
+     Regenerar:  ver README → «Imagen de vista previa». Idioma con ?lang=en -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@500;700&display=swap">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #fdfcfa; color: #15130f; font-family: "DM Sans", sans-serif; display: grid; grid-template-columns: 1fr 520px; align-items: center; gap: 40px; padding: 0 64px; box-sizing: border-box; }
+  .k { font-size: 17px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #b14a0c; margin: 0 0 18px; }
+  h1 { font-family: "Sora", sans-serif; font-size: 104px; line-height: .92; letter-spacing: -.05em; margin: 0; }
+  h1 span { color: #c2540f; }
+  p { font-size: 26px; line-height: 1.4; color: #5f5a52; margin: 26px 0 0; max-width: 560px; }
+  .url { margin-top: 30px; font-family: "Sora", sans-serif; font-weight: 700; font-size: 24px; }
+  .url b { color: #f26b1d; }
+  img { width: 520px; border-radius: 28px; background: #fff; box-shadow: 0 40px 80px -50px rgba(21,19,15,.5); }
+</style>
+</head>
+<body>
+  <div>
+    <p class="k" id="role">Product Manager Técnico | Product Owner</p>
+    <h1>Armando<br><span>Medina</span></h1>
+    <p id="pitch">Producto, arquitectura de software e IA: de la necesidad de negocio al producto en operación.</p>
+    <div class="url">armandomedina<b>.</b>dev</div>
+  </div>
+  <img src="../img/hero.webp" alt="">
+<script>
+  if (new URLSearchParams(location.search).get("lang") === "en") {
+    document.documentElement.lang = "en";
+    document.getElementById("role").textContent = "Technical Product Manager | Product Owner";
+    document.getElementById("pitch").textContent = "Product, software architecture and AI: from business need to a product in operation.";
+  }
+</script>
+</body>
+</html>

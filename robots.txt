@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /docs/
+Disallow: /tests/
+Sitemap: https://armandomedina.dev/sitemap.xml

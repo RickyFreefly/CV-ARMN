@@ -1,5 +1,7 @@
 # Auditoría de accesibilidad WCAG 2.2 AA · CV-ARMN
 
+> **Nota (7 de noviembre de 2026):** esta auditoría se hizo sobre la versión de página única. El rediseño multipágina sustituyó el panel «Hablemos» y el diálogo de casos por páginas propias, y mantiene los mismos criterios (contraste, foco, objetivos, menú accesible, movimiento reducido). `tests/accesibilidad.js` se actualizó para revisar cualquier página.
+
 Fecha: 5 de noviembre de 2026. Alcance: `index.html` (portafolio y panel de la hoja de vida) y `cv.html` (vista `#cv`, impresión y editor).
 
 ## Incidencias y correcciones

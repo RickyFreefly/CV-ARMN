@@ -1,82 +1,103 @@
 # Armando Medina · Portafolio y hoja de vida
 
-Sitio estático (HTML, CSS y JavaScript sin dependencias) con el portafolio y la hoja de vida de Armando Ricardo Medina Nieto, Product Manager Técnico | Product Owner. Funciona en español e inglés.
+Sitio estático multipágina, en español e inglés, del portafolio y la hoja de vida de Armando Ricardo Medina Nieto, Product Manager Técnico | Product Owner. Se publica en **https://armandomedina.dev** con GitHub Pages.
 
-## Archivos
+HTML, CSS y JavaScript sin frameworks ni dependencias. Las páginas se generan con un script de Node a partir de los datos y de plantillas.
 
-| Archivo | Qué es |
-|---|---|
-| `index.html` | Portafolio. «Ver CV completo» abre la hoja de vida en un panel; «Descargar CV en PDF» abre la versión imprimible. |
-| `cv.html` | Hoja de vida. `cv.html#cv` es la versión para compartir e imprimir (ATS); sin `#cv`, es el editor con vista previa animada. |
-| `cv-data.js` | **Fuente única de la hoja de vida en español e inglés.** La usan el panel del portafolio, la vista `#cv` y el editor. Los campos `todo` marcan evidencia pendiente y no se muestran. |
-| `img/` | Ilustraciones y foto. |
-| `tests/` | Pruebas de navegación y de accesibilidad que se ejecutan en la consola del navegador. |
-| `docs/auditoria-accesibilidad.md` | Auditoría WCAG 2.2 AA: incidencias, correcciones, criterios de aceptación y limitaciones. |
-| `PROMPTS-CHATGPT.md` | Prompts usados para generar las ilustraciones. |
+## Páginas y rutas
 
-Para cambiar un cargo, una fecha o una viñeta, edita solo `cv-data.js`; el panel, el PDF y el editor se actualizan juntos.
+| Página | Español | Inglés |
+|---|---|---|
+| Inicio | `/` | `/en/` |
+| Sobre mí | `/sobre-mi/` | `/en/about/` |
+| Proyectos | `/proyectos/` | `/en/projects/` |
+| Caso: Flowcol | `/proyectos/flowcol/` | `/en/projects/flowcol/` |
+| Caso: Flow · Gravity Tunnel | `/proyectos/flow-gravity-tunnel/` | `/en/projects/flow-gravity-tunnel/` |
+| Caso: Primer Paso | `/proyectos/primer-paso/` | `/en/projects/primer-paso/` |
+| Experiencia | `/experiencia/` | `/en/experience/` |
+| Contacto | `/contacto/` | `/en/contact/` |
+| CV (ATS / PDF) | `/cv.html?lang=es#cv` | `/cv.html?lang=en#cv` |
 
-## Casos de estudio
+Cada ruta es un archivo `index.html` real en su carpeta: se puede recargar o compartir sin errores 404. Rutas inexistentes muestran `404.html`.
 
-Cada tarjeta de «Proyectos destacados» tiene un enlace «Ver caso de estudio» que abre un diálogo con el reto, lo que hice, las decisiones clave, los resultados, el rol, el periodo y la tecnología. Se navega entre casos con «Caso anterior» y «Siguiente caso».
+**Enlaces antiguos** de la página única siguen funcionando y redirigen desde la portada: `/#en` → `/en/`, `/#hablemos` y `/#contacto` → `/contacto/`, `/#caso-flowcol` → `/proyectos/flowcol/`, `/#experiencia` → `/experiencia/`, etc.
 
-- Los casos están en `projects` dentro de `cv-data.js`, en español e inglés. Solo incluyen hechos de la hoja de vida. Lo que falta (métricas, adopción, stack completo de Flow, fechas de Primer Paso) está en el campo `todo` de cada caso y no se muestra.
-- Enlaces directos: `index.html#caso-flowcol`, `#caso-gravity` y `#caso-primer-paso`.
-- El diálogo comparte el comportamiento accesible del panel del CV: foco atrapado, fondo inerte, Escape y foco devuelto al enlace.
+## Estructura
+
+```
+cv-data.js              Datos de la hoja de vida y de los casos (ES/EN). Fuente única.
+build.mjs               Genera todas las páginas, sitemap.xml y robots.txt.
+src/
+  i18n.mjs              Rutas y textos de interfaz en español e inglés.
+  layouts/base.mjs      <head> con SEO por ruta, encabezado, contenido, recorrido y pie.
+  components/           header.mjs, footer.mjs, ui.mjs (botones, chips, títulos), icons.mjs.
+  pages/                home, about, projects, case, experience, contact, notfound.
+  og.html               Plantilla de la imagen de vista previa (1200×630).
+assets/site.css         Estilos compartidos (tokens, componentes, motion, responsive).
+assets/site.js          Menú móvil, transiciones, filtro de experiencia, índice de casos, copiar.
+cv.html                 Editor de la hoja de vida y vista ATS/PDF (#cv).
+img/                    Ilustraciones (PNG originales y WebP para la web), foto, favicon y vistas previas.
+tests/                  Pruebas de rutas (Node) y de accesibilidad (navegador).
+docs/                   Propuesta del rediseño y auditoría de accesibilidad.
+```
+
+Las carpetas de rutas (`sobre-mi/`, `proyectos/`, `experiencia/`, `contacto/`, `en/`), `index.html`, `404.html`, `sitemap.xml` y `robots.txt` **se generan**: no se editan a mano.
+
+## Cómo actualizar el sitio
+
+1. Edita el contenido en `cv-data.js` (cargos, viñetas, casos, competencias) o los textos de interfaz en `src/i18n.mjs`.
+2. Genera las páginas y pruébalas:
+   ```bash
+   node build.mjs
+   ```
+   ```bash
+   node tests/rutas.mjs
+   ```
+3. Revisa en local:
+   ```bash
+   python3 -m http.server 8000
+   ```
+   y abre http://localhost:8000.
+4. Haz commit y push a `main`; GitHub Pages publica en un minuto.
+
+**Casos de estudio:** cada caso tiene ocho secciones posibles. Las que no tienen datos verificados (por ahora «Objetivos del producto» y «Aprendizajes») no se muestran. Para activarlas, completa `objectives` y `learnings` del proyecto en `cv-data.js` (cada elemento con `es` y `en`) y vuelve a generar. Los campos `todo` señalan la evidencia pendiente y nunca se publican.
+
+## Navegación y motion
+
+- **Encabezado persistente** en todas las páginas: AM. · Inicio · Sobre mí · Proyectos · Experiencia · Contacto · ES/EN · Hablemos. La página activa lleva `aria-current="page"`; en un caso de estudio, «Proyectos» se marca como sección actual.
+- **ES/EN** lleva a la misma página en el otro idioma.
+- **Recorrido:** «Anterior / Siguiente» al final de cada página; en los casos, «Caso anterior / Todos los proyectos / Siguiente caso».
+- **Menú móvil (≤ 920 px):** panel a pantalla completa; el foco entra al menú, circula con Tab, flechas e Inicio/Fin; Escape cierra y devuelve el foco; el fondo queda inerte.
+- **Transiciones entre páginas** con View Transitions entre documentos (~300 ms): el encabezado permanece y el contenido se desliza hacia adelante o hacia atrás según el recorrido. En navegadores sin soporte (Firefox) la navegación es normal.
+- **Entradas** de títulos por palabras y del contenido en cascada; hover de 150–200 ms en tarjetas y botones; flotación suave del visual del hero.
+- Con `prefers-reduced-motion` se desactivan todas las animaciones y transiciones.
+
+## SEO
+
+Cada página tiene título, descripción, `canonical`, `hreflang` ES/EN y vista previa Open Graph (`img/og-es.png`, `img/og-en.png`). `sitemap.xml` lista las 16 URL con sus alternativas de idioma.
+
+**Imagen de vista previa:** para regenerarla tras cambiar `src/og.html`, con el servidor local en marcha:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --window-size=1200,630 --screenshot="$PWD/img/og-es.png" "http://localhost:8000/src/og.html"
+```
+
+(Para inglés, `og-en.png` y `?lang=en` al final de la URL.)
 
 ## Hoja de vida en PDF
 
-`cv.html#cv` muestra el CV en una sola columna, con texto real (seleccionable), títulos estándar y contacto en texto, pensado para sistemas ATS. La barra superior permite elegir idioma y versión:
+`cv.html#cv` muestra el CV en una sola columna, con texto seleccionable y títulos estándar (apto para ATS). Versión completa (4 páginas A4) o resumida (2 páginas), en español o inglés:
 
-| Enlace | Resultado |
-|---|---|
-| `cv.html?lang=es&version=completo#cv` | CV completo en español (4 páginas A4) |
-| `cv.html?lang=es&version=resumen#cv` | CV resumido en español (2 páginas A4) |
-| `cv.html?lang=en&version=completo#cv` | Full résumé in English (4 pages) |
-| `cv.html?lang=en&version=resumen#cv` | Short résumé in English (2 pages) |
+- `cv.html?lang=es&version=completo#cv` · `cv.html?lang=es&version=resumen#cv`
+- `cv.html?lang=en&version=completo#cv` · `cv.html?lang=en&version=resumen#cv`
 
-Al añadir `&print=1` se abre directamente el cuadro de impresión; ahí se elige **«Guardar como PDF»**. El PDF se genera en el navegador a partir de los datos vigentes, así que no hay archivos PDF guardados que puedan quedar desactualizados. El nombre sugerido del archivo sigue el patrón `Armando-Medina-CV-ES-completo`.
-
-La impresión usa `@media print` con márgenes A4 de 15–16 mm, tipografía en puntos y saltos de página que evitan títulos huérfanos y viñetas partidas. La versión resumida conserva las viñetas marcadas en `short` dentro de `cv-data.js` y agrupa los cargos anteriores a 2022 en una línea cada uno.
-
-## Navegación
-
-- **Menú:** Inicio, Sobre mí, Competencias, Proyectos, Experiencia y Contacto. Cada enlace se desplaza con suavidad y deja la sección justo debajo del encabezado sticky (variable CSS `--nav-h`, medida en vivo).
-- **«Hablemos»** (encabezado) lleva a `#contacto`.
-- **El panel de la hoja de vida** se abre desde «Ver CV completo», «Más competencias», «Las 10 posiciones» y el ícono de libro del pie (atributo `data-open-cv`).
-- **Menú responsive (≤ 860 px):** botón con `aria-expanded` y `aria-controls`. Con el teclado: flechas, Inicio y Fin recorren los enlaces, y Escape cierra y devuelve el foco al botón. Se cierra al elegir un enlace, al hacer clic fuera o al salir con Tab. Cerrado, el menú es `inert`.
-- El enlace de la sección visible lleva `aria-current="location"`.
-
-## Accesibilidad
-
-- Enlace «Saltar al contenido», foco visible de 3 px y `scroll-padding-top` para que el encabezado no tape el foco.
-- Panel del CV como diálogo modal: foco inicial en «Cerrar», Tab y Mayús+Tab circulan dentro, el fondo queda `inert`, Escape cierra y el foco vuelve al botón que lo abrió.
-- Contraste AA: el naranja de marca (`#f26b1d`) se reserva para rellenos e íconos; el texto naranja usa `--orange-ink` (`#b14a0c`, 5.3:1) y los botones con texto blanco usan `--orange-strong` (`#c2540f`, 4.6:1).
-- Todas las animaciones se desactivan con `prefers-reduced-motion`.
-
-## Enlaces útiles
-
-- `index.html#en` / `#es`: portafolio en inglés o español.
-- `index.html#hablemos`: abre el portafolio con la hoja de vida desplegada.
-- `index.html#contacto` (o cualquier sección): abre el portafolio en esa sección.
+Con `&print=1` se abre el cuadro de impresión para «Guardar como PDF». Sin `#cv`, `cv.html` es el editor con vista previa animada.
 
 ## Pruebas
 
-Abre el sitio, pega el archivo en la consola del navegador y pulsa Enter. Muestra una tabla con el resultado de cada prueba.
+- `node tests/rutas.mjs`: recorre todas las páginas generadas y comprueba enlaces internos, anclas, idioma de cada ruta, título, descripción única, `canonical`, `hreflang`, vista previa, página activa, sitemap y redirecciones de enlaces antiguos.
+- `tests/accesibilidad.js`: pégalo en la consola del navegador en cualquier página. Comprueba contraste, tamaño de objetivos, texto alternativo, ids, enlace de salto, desbordamiento y el menú móvil. Ejecútalo en 320, 375, 390, 430, 768, 1024, 1440 y 1920 px.
 
-- `tests/navegacion.js`: enlaces, desplazamiento con compensación, menú responsive, teclado y accesos al panel. Ejecútala en escritorio, tablet (768 px) y móvil (375 px).
-- `tests/accesibilidad.js`: contraste, tamaño de objetivos, texto alternativo, ids duplicados, desbordamiento, menú inerte, panel del CV y los tres casos de estudio. Ejecútala en 320, 375, 390, 430, 768, 1024, 1440 y 1920 px.
+## Dominio
 
-## Verlo en local
-
-```bash
-python3 -m http.server 8000
-```
-
-Luego abre http://localhost:8000.
-
-## Publicar con GitHub Pages
-
-El sitio se publica con GitHub Pages desde la rama `main` (carpeta `/ (root)`) en el dominio propio **https://armandomedina.dev**, definido en el archivo `CNAME`. La dirección anterior `rickyfreefly.github.io/CV-ARMN` redirige al dominio.
-
-DNS (Hostinger): registros `A` de `@` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`; registros `AAAA` de `@` a `2606:50c0:8000::153` … `2606:50c0:8003::153`; `CNAME` de `www` a `rickyfreefly.github.io`. HTTPS es obligatorio (dominio `.dev`) y está forzado en la configuración de Pages.
+`armandomedina.dev` se define en el archivo `CNAME`. DNS en Hostinger: registros `A` de `@` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`; `AAAA` de `@` a `2606:50c0:8000::153` … `2606:50c0:8003::153`; `CNAME` de `www` a `rickyfreefly.github.io`. HTTPS forzado en la configuración de Pages.

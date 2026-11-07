@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Propuesta de rediseño · armandomedina.dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<style>
+/* Documento de propuesta: wireframes en bloques grises con el acento de la marca. */
+:root {
+  --bg: #fdfcfa; --ink: #15130f; --muted: #5f5a52; --line: #e4ded4; --wire: #ece7df; --wire-2: #f5f1ea;
+  --orange: #f26b1d; --orange-ink: #b14a0c; --soft: #fff1e7;
+  --f-display: "Sora", "Helvetica Neue", Arial, sans-serif; --f-body: "DM Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 48px 80px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1 { font-family: var(--f-display); font-size: clamp(30px, 5vw, 48px); letter-spacing: -.04em; line-height: 1.05; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-size: 24px; letter-spacing: -.03em; margin: 64px 0 6px; }
+h3 { font-size: 15px; margin: 0 0 8px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); margin: 0 0 10px; }
+.lead { color: var(--muted); max-width: 70ch; margin: 12px 0 0; }
+p { max-width: 75ch; }
+.note { font-size: 13px; color: var(--muted); }
+code { font-size: 12.5px; background: var(--wire-2); padding: 1px 6px; border-radius: 5px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-width: 0; }
+.card ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+.card li + li { margin-top: 4px; }
+.tag { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: var(--soft); color: var(--orange-ink); }
+.tag.ok { background: #e7f4ec; color: #1d6b3f; }
+.tag.warn { background: #fdf0d8; color: #7a4d00; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.scroll { overflow-x: auto; }
+
+/* sitemap */
+.tree { font-family: ui-monospace, Menlo, monospace; font-size: 13px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; white-space: pre; overflow-x: auto; line-height: 1.7; }
+
+/* wireframes */
+.frames { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 22px; align-items: start; margin-top: 18px; }
+.frame { background: #fff; border: 1.5px solid var(--ink); border-radius: 12px; overflow: hidden; min-width: 0; }
+.frame-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.fhead { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid var(--wire); font-size: 10.5px; font-weight: 700; }
+.fhead .logo { font-family: var(--f-display); font-weight: 800; font-size: 13px; margin-right: auto; }
+.fhead .logo b { color: var(--orange); }
+.fhead .nav { display: flex; gap: 9px; color: var(--muted); }
+.fhead .nav .on { color: var(--orange-ink); text-decoration: underline; text-underline-offset: 3px; }
+.fhead .pill { padding: 2px 6px; border: 1px solid var(--wire); border-radius: 99px; }
+.fhead .cta { background: var(--ink); color: #fff; padding: 3px 8px; border-radius: 5px; }
+.fhead .burger { width: 18px; height: 14px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); position: relative; }
+.fhead .burger::after { content: ""; position: absolute; left: 0; right: 0; top: 4px; border-top: 2px solid var(--ink); }
+.fbody { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; gap: 10px; }
+.col { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+.b { background: var(--wire); border-radius: 6px; min-height: 8px; }
+.b.t { height: 8px; } .b.t2 { height: 8px; width: 70%; } .b.t3 { height: 8px; width: 45%; }
+.b.h1 { height: 22px; width: 80%; background: var(--ink); opacity: .85; }
+.b.h2 { height: 13px; width: 50%; background: var(--ink); opacity: .7; }
+.b.img { height: 110px; background: var(--soft); display: grid; place-items: center; font-size: 10px; color: var(--orange-ink); font-weight: 700; }
+.b.img.s { height: 54px; }
+.b.btn { height: 20px; width: 92px; border-radius: 5px; background: var(--orange); }
+.b.btn.o { background: #fff; border: 1.5px solid var(--ink); }
+.b.chip { height: 12px; width: 44px; border-radius: 4px; background: var(--soft); }
+.b.card { min-height: 66px; background: #fff; border: 1px solid var(--wire); padding: 6px; display: flex; flex-direction: column; gap: 5px; }
+.b.stat { height: 30px; flex: 1; background: var(--wire-2); }
+.lbl { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.ffoot { display: flex; justify-content: space-between; padding: 8px 12px; border-top: 1px solid var(--wire); font-size: 10px; color: var(--muted); font-weight: 700; }
+.timeline { border-left: 2px solid var(--orange); padding-left: 10px; display: flex; flex-direction: column; gap: 8px; }
+.mobile .fbody { padding: 10px; }
+.mobile .b.img { height: 80px; }
+
+@media (max-width: 760px) {
+  .frames, .grid2, .grid3 { grid-template-columns: 1fr; }
+  .mobile { max-width: 260px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="eyebrow">Propuesta · antes de implementar</p>
+  <h1>Rediseño multipágina de armandomedina.dev</h1>
+  <p class="lead">Arquitectura, wireframes y decisiones técnicas para pasar de una landing de scroll continuo a un portafolio con páginas reales, conservando la identidad visual, el contenido verificado y lo que ya funciona (CV en PDF, casos, ES/EN, accesibilidad).</p>
+
+  <h2>1. Diagnóstico del proyecto actual</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Stack</h3>
+      <ul>
+        <li>Sitio estático en GitHub Pages, sin framework ni paso de compilación.</li>
+        <li><code>index.html</code> (90 KB) con CSS, JS y HTML en línea: portada, secciones, panel del CV y diálogo de casos.</li>
+        <li><code>cv-data.js</code>: fuente única bilingüe (perfil, experiencia, competencias, educación, certificaciones, proyectos).</li>
+        <li><code>cv.html</code>: editor y vista ATS/PDF (<code>#cv</code>, <code>?lang</code>, <code>?version</code>).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Qué se reutiliza</h3>
+      <ul>
+        <li>Paleta, tipografías (Sora + DM Sans), tokens de contraste AA y foco.</li>
+        <li>Ilustraciones de <code>img/</code> y la foto.</li>
+        <li>Íconos SVG, tarjetas, línea de tiempo, chips, botones, selector ES/EN.</li>
+        <li>Datos de <code>cv-data.js</code> y las pruebas de <code>tests/</code>.</li>
+        <li><code>cv.html</code> y sus enlaces al PDF, sin cambios.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>2. Mapa del sitio y rutas</h2>
+  <p class="lead">Cada página es un archivo HTML real en su carpeta, así que la URL funciona al recargar o compartir, sin trucos de 404. El inglés tiene sus propias rutas para que cada idioma tenga título, descripción y vista previa propios.</p>
+  <div class="grid2" style="margin-top:16px">
+<div class="tree">/                         Inicio
+/sobre-mi/                Sobre mí
+/proyectos/               Proyectos
+/proyectos/flowcol/       Caso: Flowcol
+/proyectos/flow-gravity-tunnel/
+/proyectos/primer-paso/
+/experiencia/             Experiencia
+/contacto/                Contacto
+/cv.html#cv               CV / PDF (sin cambios)
+/404.html                 Página no encontrada</div>
+<div class="tree">/en/                      Home
+/en/about/                About
+/en/projects/             Projects
+/en/projects/flowcol/
+/en/projects/flow-gravity-tunnel/
+/en/projects/primer-paso/
+/en/experience/           Experience
+/en/contact/              Contact
+/cv.html?lang=en#cv       Résumé / PDF</div>
+  </div>
+  <p class="note">Enlaces antiguos que se conservan: <code>/#en</code> → <code>/en/</code>, <code>/#hablemos</code> → <code>/contacto/</code>, <code>/#caso-flowcol</code> → <code>/proyectos/flowcol/</code>, <code>/#experiencia</code> → <code>/experiencia/</code>, etc. Se resuelven con un pequeño script en la portada.</p>
+
+  <h2>3. Navegación</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Encabezado persistente</h3>
+      <ul>
+        <li><b>Escritorio:</b> AM. · Inicio · Sobre mí · Proyectos · Experiencia · Contacto · ES/EN · <b>Hablemos</b> (→ Contacto).</li>
+        <li>Página activa: color de acento, subrayado y <code>aria-current="page"</code>. En un caso de estudio, «Proyectos» queda activo.</li>
+        <li><b>Móvil (≤ 860 px):</b> AM. · ES/EN · botón de menú → panel a pantalla completa con los enlaces grandes y «Hablemos». Foco atrapado, Escape y cierre al elegir.</li>
+        <li>ES/EN lleva a la misma página en el otro idioma (no a la portada).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Recorrido y transiciones</h3>
+      <ul>
+        <li>Pie compartido con «← Anterior · Siguiente →» en orden: Inicio → Sobre mí → Proyectos → Experiencia → Contacto.</li>
+        <li>Casos: «Caso anterior / Siguiente caso» y «Todos los proyectos», sin volver al inicio.</li>
+        <li>Transición entre páginas sin recarga visible con <b>View Transitions</b> entre documentos: el encabezado se queda fijo y el contenido entra en ~300 ms.</li>
+        <li>Atrás/adelante, posición de scroll y enlaces directos los resuelve el navegador de forma nativa.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>4. Wireframes</h2>
+  <p class="lead">Escritorio a la izquierda, móvil a la derecha. Bloques oscuros: titulares; naranja: acciones; crema: imágenes.</p>
+
+  <!-- INICIO -->
+  <h3 style="margin-top:28px">Inicio · <code>/</code></h3>
+  <p class="note">Portada breve: quién es, qué propone y dos puertas de entrada. Sin resumir todas las páginas.</p>
+  <div class="frames">
+    <div><p class="frame-label">Escritorio</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="nav"><span class="on">Inicio</span><span>Sobre mí</span><span>Proyectos</span><span>Experiencia</span><span>Contacto</span></span><span class="pill">ES|EN</span><span class="cta">Hablemos</span></div>
+        <div class="fbody">
+          <div class="row">
+            <div class="col" style="flex:1.1;gap:9px">
+              <span class="lbl">Product Manager Técnico | Product Owner</span>
+              <div class="b h1"></div><div class="b h1" style="width:55%;background:var(--orange)"></div>
+              <div class="b t"></div><div class="b t2"></div><div class="b t3"></div>
+              <div class="row"><div class="b btn"></div><div class="b btn o"></div></div>
+            </div>
+            <div class="col"><div class="b img" style="height:150px">Visual: producto · tecnología · estrategia</div></div>
+          </div>
+          <div class="row"><div class="b stat"></div><div class="b stat"></div><div class="b stat"></div></div>
+          <span class="lbl">14+ años · 5 clientes Flowcol · 3 universidades</span>
+        </div>
+        <div class="ffoot"><span>© Armando Medina</span><span>Siguiente: Sobre mí →</span></div>
+      </div>
+    </div>
+    <div class="mobile"><p class="frame-label">Móvil</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="pill">ES|EN</span><span class="burger"></span></div>
+        <div class="fbody">
+          <div class="b img">Visual</div>
+          <span class="lbl">PM Técnico | PO</span>
+          <div class="b h1"></div><div class="b h1" style="width:55%;background:var(--orange)"></div>
+          <div class="b t"></div><div class="b t2"></div>
+          <div class="b btn" style="width:100%"></div><div class="b btn o" style="width:100%"></div>
+          <div class="row"><div class="b stat"></div><div class="b stat"></div><div class="b stat"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE MÍ -->
+  <h3 style="margin-top:36px">Sobre mí · <code>/sobre-mi/</code></h3>
+  <p class="note">Presentación con la ilustración, cuatro especialidades en tarjetas, metodología en cinco pasos y formación.</p>
+  <div class="frames">
+    <div><p class="frame-label">Escritorio</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="nav"><span>Inicio</span><span class="on">Sobre mí</span><span>Proyectos</span><span>Experiencia</span><span>Contacto</span></span><span class="pill">ES|EN</span><span class="cta">Hablemos</span></div>
+        <div class="fbody">
+          <div class="row"><div class="col" style="flex:1.3"><div class="b h2"></div><div class="b t"></div><div class="b t2"></div><div class="b t3"></div></div><div class="col"><div class="b img s" style="height:80px">Ilustración</div></div></div>
+          <span class="lbl">Especialidades</span>
+          <div class="row"><div class="b card"><div class="b t3"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div></div><div class="b card"><div class="b t3"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div></div><div class="b card"><div class="b t3"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div></div><div class="b card"><div class="b t3"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div></div></div>
+          <span class="lbl">Metodología: Descubrir → Definir → Priorizar → Entregar → Medir</span>
+          <div class="row"><div class="b stat"></div><div class="b stat"></div><div class="b stat"></div><div class="b stat"></div><div class="b stat"></div></div>
+          <span class="lbl">Formación y certificaciones</span>
+          <div class="row"><div class="b card"></div><div class="b card"></div></div>
+        </div>
+        <div class="ffoot"><span>← Inicio</span><span>Proyectos →</span></div>
+      </div>
+    </div>
+    <div class="mobile"><p class="frame-label">Móvil</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="pill">ES|EN</span><span class="burger"></span></div>
+        <div class="fbody"><div class="b h2"></div><div class="b t"></div><div class="b t2"></div><div class="b card"></div><div class="b card"></div><div class="b card"></div><div class="b card"></div><div class="timeline"><div class="b t2"></div><div class="b t2"></div><div class="b t2"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROYECTOS -->
+  <h3 style="margin-top:36px">Proyectos · <code>/proyectos/</code></h3>
+  <p class="note">Tarjetas grandes con imagen, nombre, resumen, rol, tecnologías y «Ver caso de estudio». Toda la tarjeta es clicable.</p>
+  <div class="frames">
+    <div><p class="frame-label">Escritorio</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="nav"><span>Inicio</span><span>Sobre mí</span><span class="on">Proyectos</span><span>Experiencia</span><span>Contacto</span></span><span class="pill">ES|EN</span><span class="cta">Hablemos</span></div>
+        <div class="fbody">
+          <div class="b h2"></div><div class="b t2"></div>
+          <div class="row">
+            <div class="b card"><div class="b img s">Flowcol</div><div class="b t3"></div><div class="b t"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div><div class="b btn o" style="width:70px;height:14px"></div></div>
+            <div class="b card"><div class="b img s">Flow · Gravity</div><div class="b t3"></div><div class="b t"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div><div class="b btn o" style="width:70px;height:14px"></div></div>
+            <div class="b card"><div class="b img s">Primer Paso</div><div class="b t3"></div><div class="b t"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div><div class="b btn o" style="width:70px;height:14px"></div></div>
+          </div>
+        </div>
+        <div class="ffoot"><span>← Sobre mí</span><span>Experiencia →</span></div>
+      </div>
+    </div>
+    <div class="mobile"><p class="frame-label">Móvil</p>
+      <div class="frame"><div class="fhead"><span class="logo">AM<b>.</b></span><span class="pill">ES|EN</span><span class="burger"></span></div>
+        <div class="fbody"><div class="b h2"></div><div class="b card"><div class="b img s"></div><div class="b t3"></div><div class="b t"></div></div><div class="b card"><div class="b img s"></div><div class="b t3"></div></div></div></div>
+    </div>
+  </div>
+
+  <!-- CASO -->
+  <h3 style="margin-top:36px">Caso de estudio · <code>/proyectos/flowcol/</code></h3>
+  <p class="note">Ruta propia por caso. En escritorio, índice lateral fijo con las ocho secciones; en móvil, el índice se convierte en un desplegable al inicio.</p>
+  <div class="frames">
+    <div><p class="frame-label">Escritorio</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="nav"><span>Inicio</span><span>Sobre mí</span><span class="on">Proyectos</span><span>Experiencia</span><span>Contacto</span></span><span class="pill">ES|EN</span><span class="cta">Hablemos</span></div>
+        <div class="fbody">
+          <span class="lbl">Proyectos / Flowcol</span>
+          <div class="row"><div class="col"><div class="b h1" style="width:50%"></div><div class="b t2"></div><div class="row"><div class="b chip"></div><div class="b chip"></div></div></div><div class="col"><div class="b img s" style="height:80px">Imagen del caso</div></div></div>
+          <div class="row">
+            <div class="col" style="flex:.45;gap:5px"><span class="lbl">Índice</span><div class="b t"></div><div class="b t"></div><div class="b t"></div><div class="b t"></div><div class="b t"></div><div class="b t"></div><div class="b t"></div><div class="b t"></div></div>
+            <div class="col" style="gap:8px"><span class="lbl">1 Contexto · 2 Objetivos · 3 Rol · 4 Solución</span><div class="b t"></div><div class="b t2"></div><span class="lbl">5 Tecnología · 6 Decisiones · 7 Resultados · 8 Aprendizajes</span><div class="b t"></div><div class="b t3"></div></div>
+          </div>
+        </div>
+        <div class="ffoot"><span>← Primer Paso</span><span>Todos los proyectos</span><span>Flow · Gravity →</span></div>
+      </div>
+    </div>
+    <div class="mobile"><p class="frame-label">Móvil</p>
+      <div class="frame"><div class="fhead"><span class="logo">AM<b>.</b></span><span class="pill">ES|EN</span><span class="burger"></span></div>
+        <div class="fbody"><span class="lbl">Proyectos / Flowcol</span><div class="b img s"></div><div class="b h2"></div><div class="b btn o" style="width:100%;height:16px"></div><div class="b t"></div><div class="b t2"></div><div class="b t"></div></div></div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCIA -->
+  <h3 style="margin-top:36px">Experiencia · <code>/experiencia/</code></h3>
+  <p class="note">Resumen (14 años, 2 cargos de producto, docencia desde 2023), filtro Todo / Producto y tecnología / Docencia y línea de tiempo con logros desplegables. Acceso al CV completo y al PDF.</p>
+  <div class="frames">
+    <div><p class="frame-label">Escritorio</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="nav"><span>Inicio</span><span>Sobre mí</span><span>Proyectos</span><span class="on">Experiencia</span><span>Contacto</span></span><span class="pill">ES|EN</span><span class="cta">Hablemos</span></div>
+        <div class="fbody">
+          <div class="row"><div class="col"><div class="b h2"></div></div><div class="b btn o"></div></div>
+          <div class="row"><div class="b stat"></div><div class="b stat"></div><div class="b stat"></div></div>
+          <div class="row"><div class="b chip" style="width:50px;background:var(--ink)"></div><div class="b chip" style="width:90px"></div><div class="b chip" style="width:60px"></div></div>
+          <div class="timeline"><div class="row"><div class="b t3"></div><div class="b chip"></div></div><div class="b t"></div><div class="row"><div class="b t3"></div></div><div class="b t2"></div><div class="row"><div class="b t3"></div></div><div class="b t"></div></div>
+        </div>
+        <div class="ffoot"><span>← Proyectos</span><span>Contacto →</span></div>
+      </div>
+    </div>
+    <div class="mobile"><p class="frame-label">Móvil</p>
+      <div class="frame"><div class="fhead"><span class="logo">AM<b>.</b></span><span class="pill">ES|EN</span><span class="burger"></span></div>
+        <div class="fbody"><div class="b h2"></div><div class="row"><div class="b chip" style="width:40px;background:var(--ink)"></div><div class="b chip"></div><div class="b chip"></div></div><div class="timeline"><div class="b t2"></div><div class="b t"></div><div class="b t2"></div><div class="b t"></div></div></div></div>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <h3 style="margin-top:36px">Contacto · <code>/contacto/</code></h3>
+  <p class="note">Tres motivos de contacto (oportunidades, colaboración, consultoría) y los canales reales: correo, LinkedIn, teléfono y CV en PDF (completo o 2 páginas, ES/EN). Sin formulario: el sitio no tiene servidor para recibirlo.</p>
+  <div class="frames">
+    <div><p class="frame-label">Escritorio</p>
+      <div class="frame">
+        <div class="fhead"><span class="logo">AM<b>.</b></span><span class="nav"><span>Inicio</span><span>Sobre mí</span><span>Proyectos</span><span>Experiencia</span><span class="on">Contacto</span></span><span class="pill">ES|EN</span><span class="cta">Hablemos</span></div>
+        <div class="fbody">
+          <div class="b h1" style="width:60%"></div><div class="b t2"></div>
+          <div class="row"><div class="b card"></div><div class="b card"></div><div class="b card"></div></div>
+          <div class="row"><div class="b card" style="min-height:40px"></div><div class="b card" style="min-height:40px"></div><div class="b card" style="min-height:40px"></div><div class="b card" style="min-height:40px;background:var(--soft)"></div></div>
+          <span class="lbl">Correo · LinkedIn · Teléfono · CV PDF</span>
+        </div>
+        <div class="ffoot"><span>← Experiencia</span><span>Inicio ↺</span></div>
+      </div>
+    </div>
+    <div class="mobile"><p class="frame-label">Móvil</p>
+      <div class="frame"><div class="fhead"><span class="logo">AM<b>.</b></span><span class="pill">ES|EN</span><span class="burger"></span></div>
+        <div class="fbody"><div class="b h1"></div><div class="b card" style="min-height:36px"></div><div class="b card" style="min-height:36px"></div><div class="b card" style="min-height:36px"></div><div class="b card" style="min-height:36px;background:var(--soft)"></div></div></div>
+    </div>
+  </div>
+
+  <h2>5. Motion design</h2>
+  <div class="scroll"><table>
+    <tr><th>Momento</th><th>Efecto</th><th>Duración</th></tr>
+    <tr><td>Cambio de página</td><td>El encabezado permanece; el contenido sale desvaneciéndose y el nuevo entra subiendo 12 px. Hacia «Siguiente», de derecha a izquierda; hacia «Anterior», al revés.</td><td>300 ms</td></tr>
+    <tr><td>Entrada de títulos</td><td>Titular por palabras, texto y acciones en cascada.</td><td>400–600 ms en total</td></tr>
+    <tr><td>Hover en tarjetas y botones</td><td>Elevación de 4 px, borde de acento, flecha que avanza.</td><td>150–200 ms</td></tr>
+    <tr><td>Visual del hero</td><td>Flotación lenta de la ilustración y puntos de conexión entre «producto · tecnología · estrategia».</td><td>Ciclo de 6 s</td></tr>
+    <tr><td>Movimiento reducido</td><td>Sin transiciones ni animaciones; cambio de página instantáneo.</td><td>0 ms</td></tr>
+  </table></div>
+  <p class="note">Sin Framer Motion: el sitio no usa React. Las transiciones usan View Transitions (Chrome, Edge, Safari 18.2+) y en Firefox la navegación es normal, sin animación.</p>
+
+  <h2>6. Arquitectura técnica</h2>
+  <div class="grid2">
+<div class="tree">src/
+  layouts/base.mjs     &lt;head&gt; con SEO, header, footer
+  components/          header, footer, card, timeline,
+                       case-section, contact-option…
+  pages/               home, about, projects, case,
+                       experience, contact, 404
+  i18n.mjs             textos de interfaz ES/EN
+cv-data.js             datos (sin cambios de formato)
+build.mjs              genera las páginas (Node, sin dependencias)
+assets/site.css        estilos compartidos
+assets/site.js         menú, idioma, copiar, motion
+→ salida: index.html, sobre-mi/, proyectos/…, en/…,
+  sitemap.xml, robots.txt, 404.html</div>
+    <div class="card">
+      <h3>Por qué generar páginas estáticas</h3>
+      <ul>
+        <li><b>URLs reales:</b> cada ruta es un archivo, así que recargar o compartir nunca da 404 y GitHub Pages responde 200.</li>
+        <li><b>SEO por ruta:</b> título, descripción, canonical, hreflang ES/EN y vista previa Open Graph por página.</li>
+        <li><b>Sin duplicar:</b> el layout y los componentes viven una sola vez en <code>src/</code>; los datos siguen en <code>cv-data.js</code>.</li>
+        <li><b>Sin dependencias nuevas:</b> un script de Node (<code>node build.mjs</code>) y archivos HTML/CSS/JS.</li>
+        <li>Alternativa descartada: una SPA con enrutador en JavaScript necesita un truco de <code>404.html</code> en GitHub Pages, devuelve errores 404 a los buscadores y depende de JavaScript para mostrar contenido.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>7. Contenido: lo que hay y lo que falta</h2>
+  <p class="lead">Los casos de estudio piden ocho secciones. Con los datos verificados actuales:</p>
+  <div class="scroll"><table>
+    <tr><th>Sección</th><th>Flowcol</th><th>Flow · Gravity Tunnel</th><th>Primer Paso</th></tr>
+    <tr><td>1. Contexto y problema</td><td><span class="tag ok">Sí</span></td><td><span class="tag ok">Sí</span></td><td><span class="tag warn">Mínimo</span></td></tr>
+    <tr><td>2. Objetivos del producto</td><td><span class="tag warn">Falta</span></td><td><span class="tag warn">Falta</span></td><td><span class="tag warn">Falta</span></td></tr>
+    <tr><td>3. Rol y responsabilidades</td><td><span class="tag ok">Sí</span></td><td><span class="tag ok">Sí</span></td><td><span class="tag ok">Sí</span></td></tr>
+    <tr><td>4. Solución implementada</td><td><span class="tag ok">Sí</span></td><td><span class="tag ok">Sí</span></td><td><span class="tag warn">Mínimo</span></td></tr>
+    <tr><td>5. Arquitectura / tecnologías</td><td><span class="tag ok">Sí</span></td><td><span class="tag warn">Parcial</span></td><td><span class="tag warn">Solo Flutter</span></td></tr>
+    <tr><td>6. Decisiones técnicas y de negocio</td><td><span class="tag ok">Sí</span></td><td><span class="tag ok">Sí</span></td><td><span class="tag warn">Falta</span></td></tr>
+    <tr><td>7. Resultados verificables</td><td><span class="tag ok">5 clientes</span></td><td><span class="tag ok">Sí (sin cifras)</span></td><td><span class="tag warn">Solo entrega</span></td></tr>
+    <tr><td>8. Aprendizajes</td><td><span class="tag warn">Falta</span></td><td><span class="tag warn">Falta</span></td><td><span class="tag warn">Falta</span></td></tr>
+  </table></div>
+  <p class="note">Propuesta: las secciones sin evidencia no se muestran (no se inventan) y quedan como campos <code>todo</code> en <code>cv-data.js</code>. Cuando me envíes objetivos y aprendizajes, aparecen automáticamente en el caso.</p>
+
+  <h2>8. Validación prevista</h2>
+  <div class="grid3">
+    <div class="card"><h3>Rutas y enlaces</h3><ul><li>Rastreo de todos los enlaces internos de las 15 páginas (sin 404).</li><li>Redirecciones de los enlaces antiguos.</li><li>Recarga directa de cada URL.</li></ul></div>
+    <div class="card"><h3>Accesibilidad</h3><ul><li>Pruebas actuales adaptadas a cada página, en 8 anchos.</li><li>Foco, teclado, contraste, objetivos táctiles.</li><li>Menú móvil como diálogo accesible.</li></ul></div>
+    <div class="card"><h3>Idiomas y SEO</h3><ul><li>Cada página ES con su par EN.</li><li>Sin textos sin traducir.</li><li>Título, descripción, canonical y hreflang únicos por ruta.</li></ul></div>
+  </div>
+</main>
+</body>
+</html>
